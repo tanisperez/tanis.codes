@@ -1,7 +1,6 @@
 baseurl      = "localhost"
 title        = "tanis.codes"
 languageCode = "en-us"
-theme        = "hello-friend-ng"
 paginate     = 10
 
 [params]
