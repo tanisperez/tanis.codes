@@ -141,15 +141,11 @@
         color: $light-color-secondary;
       }
     
-      [data-theme=dark] & {
+      & {
         background: $dark-background;
         color: $dark-color-secondary;
       }
     
-      [data-theme=light] & {
-        background: $light-background;
-        color: $light-color-secondary;
-      }
     }
 
     hr {
@@ -197,12 +193,8 @@
     background: $light-background-secondary;
   }
 
-  [data-theme=dark] & {
+  & {
     background: $dark-background-secondary;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-secondary;
   }
 
   + .button {

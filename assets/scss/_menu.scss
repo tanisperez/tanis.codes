@@ -11,12 +11,8 @@
     background: $light-background-header;
   }
 
-  [data-theme=dark] & {
+  & {
     background: $dark-background-header;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-header;
   }
 
   @media #{$media-size-phone} {
@@ -94,12 +90,8 @@
     background: $light-background-header;
   }
 
-  [data-theme=dark] & {
+  & {
     background: $dark-background-header;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-header;
   }
 
   ul {
@@ -127,12 +119,8 @@
       background: $light-background-header;
     }
     
-    [data-theme=dark] & {
+    & {
       background: $dark-background-header;
-    }
-  
-    [data-theme=light] & {
-      background: $light-background-header;
     }
   }
 
@@ -150,12 +138,8 @@
       background: $light-background-header;
     }
 
-    [data-theme=dark] & {
+    & {
       background: $dark-background-header;
-    }
-  
-    [data-theme=light] & {
-      background: $light-background-header;
     }
   }
 

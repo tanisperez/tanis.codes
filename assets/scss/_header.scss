@@ -15,14 +15,10 @@
     background: $light-background-header;
   }
 
-  [data-theme=dark] & {
+  & {
     background: $dark-background-header;
   }
-
-  [data-theme=light] & {
-    background: $light-background-header;
-  }
-
+  
   &__right {
     display: flex;
     flex-direction: row;

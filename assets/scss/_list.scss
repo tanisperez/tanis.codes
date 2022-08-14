@@ -21,12 +21,8 @@
       border-bottom: 1px solid $light-border-color;
     }
   
-    [data-theme=dark] & {
+    & {
       border-bottom: 1px solid $dark-border-color;
-    }
-  
-    [data-theme=light] & {
-      border-bottom: 1px solid $light-border-color;
     }
   }
 

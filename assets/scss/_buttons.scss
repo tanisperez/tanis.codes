@@ -33,13 +33,9 @@ a.button {
     background: $light-background-header;
   }
 
-  [data-theme=dark] & {
+  & {
     background: $dark-background-header;
     color: inherit;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-header;
   }
 
   &.outline {
@@ -58,13 +54,9 @@ a.button {
       border-color: $light-background-secondary;
     }
   
-    [data-theme=dark] & {
+    & {
       border-color: $dark-background-secondary;
       color: inherit;
-    }
-  
-    [data-theme=light] & {
-      border-color: $light-background-secondary;
     }
 
     :hover {
@@ -127,13 +119,9 @@ a.button {
       background: $light-background-secondary;
     }
   
-    [data-theme=dark] & {
+    & {
       background: $dark-background-secondary;
       color: inherit;
-    }
-  
-    [data-theme=light] & {
-      background: $light-background-secondary;
     }
   }
 }

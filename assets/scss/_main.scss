@@ -47,14 +47,9 @@ body {
     color: $light-color;
   }
 
-  [data-theme=dark] & {
+  & {
     background-color: $dark-background;
     color: $dark-color;
-  }
-
-  [data-theme=light] & {
-    background-color: $light-background;
-    color: $light-color;
   }
 }
 
@@ -201,12 +196,8 @@ em, i, strong {
     color: $light-color-variant;
   }
 
-  [data-theme=dark] & {
+  & {
     color: white;
-  }
-
-  [data-theme=light] & {
-    color: black;
   }
 }
 
@@ -229,22 +220,14 @@ code {
     background: $light-background-secondary;
   }
 
-  [data-theme=dark] & {
+  & {
     background: $dark-background-secondary;
-  }
-
-  [data-theme=light] & {
-    background: $light-background-secondary;
   }
 }
 
 pre {
-  [data-theme=dark] & {
+  & {
     background-color: $dark-background-secondary;
-  }
-
-  [data-theme=light] & {
-    background-color: $light-background-secondary;
   }
 
   padding: 10px 10px 10px 20px;
@@ -273,12 +256,8 @@ pre {
       color: #ccc;
     }
   
-    [data-theme=dark] & {
+    & {
       color: inherit;
-    }
-  
-    [data-theme=light] & {
-      color: #ccc;
     }
   }
 }
@@ -361,12 +340,8 @@ hr {
     background: $light-border-color;
   }
 
-  [data-theme=dark] & {
+  & {
     background: $dark-border-color;
-  }
-
-  [data-theme=light] & {
-    background: $light-border-color;
   }
 }
 
