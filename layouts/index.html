@@ -5,27 +5,23 @@
 {{ define "main" }}
     <main aria-role="main">
         <div>
-            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "==" "posts") }}
-                {{ range $paginator.Pages }}
+            <h1>Last articles</h1>
 
+            <div class="last-articles">
+                {{ $paginator := .Paginate (where .Site.RegularPages "Type" "==" "posts") }}
+                {{ range $paginator.Pages }}
+                
                 <a class="home-article" href="{{.Permalink}}">
                     <div class="home-article-image">
                         <img src="{{ with .Params.image }}{{ . }}{{ end }}" decoding="async" width="60" height="60" alt="{{ .Title }}"/>
                     </div>
                     <div class="home-article-content">
                         <h2>{{ .Title }}</h2>
-                        <span>{{ .Date }}</span>
+                        <span>{{ .Date.Month }} {{ .Date.Day }}, {{ .Date.Year }}</span>
                     </div>
                 </a>
-            {{ end }}
-
-            {{ if .Site.Params.Portrait.Path }}
-               <img src="{{ .Site.Params.Portrait.Path }}" class="circle" alt="{{ .Site.Params.Portrait.Alt }}" style="max-width:{{ .Site.Params.Portrait.MaxWidth }}" />
-            {{ end }}
-
-            <h1>{{ .Site.Title }}</h1>
-
-            {{ partial "subtitle.html" . }}
+                {{ end }}
+            </div>
 
             {{- with .Site.Params.social }}
                 <div>

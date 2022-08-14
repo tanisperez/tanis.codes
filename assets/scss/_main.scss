@@ -339,7 +339,6 @@ ol ol {
   flex-direction: column;
   flex: 1 auto;
   align-items: center;
-  justify-content: center;
   margin: 0;
 
   @media #{$media-size-phone} {
@@ -434,19 +433,30 @@ hr {
   margin: 30px auto;
 }
 
+.last-articles {
+  margin-top: 1rem;
+}
+
 .home-article {
   display: flex;
   flex-direction: row;
   text-decoration: none;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
 
 .home-article-image {
-  margin-right: 10px;
+  margin-right: 2rem;
 }
 
 .home-article-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.home-article-content span {
+  text-align: left;
+  font-size: 1rem;
 }
 
 .home-article-content h2{
