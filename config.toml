@@ -8,6 +8,7 @@ paginate     = 10
     dateformShort   = "Aug 7"
     dateformNum     = "2022-08-07"
     dateformNumTime = "2022-08-07 21:50"
+    dateFormat      = "02 Jan 06 15:04 MST"
 
     # Subtitle for home
     homeSubtitle = "A simple and beautiful blog"
