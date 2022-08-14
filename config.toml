@@ -1,4 +1,4 @@
-baseurl      = "localhost"
+baseurl      = "https://tanisperez.github.io/tanis.codes"
 title        = "tanis.codes"
 languageCode = "en-us"
 paginate     = 10
