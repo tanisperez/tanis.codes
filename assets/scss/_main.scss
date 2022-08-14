@@ -433,3 +433,23 @@ hr {
 .highlight {
   margin: 30px auto;
 }
+
+.home-article {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  margin: 1rem 0;
+}
+
+.home-article-image {
+  margin-right: 10px;
+}
+
+.home-article-content {
+
+}
+
+.home-article-content h2{
+  padding: 0;
+  margin: 0;
+}
