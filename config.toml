@@ -1,4 +1,4 @@
-baseURL      = "https://tanisperez.github.io/tanis.codes"
+baseURL      = "https://tanis.codes"
 title        = "tanis.codes"
 languageCode = "en-us"
 paginate     = 10
@@ -39,7 +39,7 @@ paginate     = 10
 
     [languages.en.params.logo]
         logoText = "tanis.codes"
-        logoHomeLink = "https://tanisperez.github.io/tanis.codes"
+        logoHomeLink = "https://tanis.codes"
     # or
     #
     # path = "/img/your-example-logo.svg"
