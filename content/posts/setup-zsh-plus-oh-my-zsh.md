@@ -1,5 +1,5 @@
 ---
-title: "Oh My Zsh Setup"
+title: "Setup Zsh + Oh My Zsh"
 date: 2022-08-14T13:33:49+02:00
 draft: false
 toc: false
