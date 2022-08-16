@@ -10,9 +10,6 @@ paginate     = 10
     dateformNumTime = "2022-08-07 21:50"
     dateFormat      = "02 Jan 06 15:04 MST"
 
-    # Subtitle for home
-    homeSubtitle = "A simple and beautiful blog"
-
     # Set disableReadOtherPosts to true in order to hide the links to other posts.
     disableReadOtherPosts = false
 
