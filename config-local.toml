@@ -1,7 +1,8 @@
-baseURL      = "https://tanis.codes"
+baseURL      = "http://localhost"
 title        = "tanis.codes"
 languageCode = "en-us"
 paginate     = 10
+env          = "local"
 
 [params]
     dateform        = "Aug 7, 2022"
@@ -26,7 +27,7 @@ paginate     = 10
 
     [languages.en.params.logo]
         logoText = "tanis.codes"
-        logoHomeLink = "https://tanis.codes"
+        logoHomeLink = "/"
 
     [[menu.main]]
         identifier = "blog"

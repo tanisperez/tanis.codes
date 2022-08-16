@@ -1,0 +1,35 @@
+baseURL      = "https://tanis.codes"
+title        = "tanis.codes"
+languageCode = "en-us"
+paginate     = 10
+env          = "pro"
+
+[params]
+    dateform        = "Aug 7, 2022"
+    dateformShort   = "Aug 7"
+    dateformNum     = "2022-08-07"
+    dateformNumTime = "2022-08-07 21:50"
+    dateFormat      = "02 Jan 06 15:04 MST"
+
+    # Set disableReadOtherPosts to true in order to hide the links to other posts.
+    disableReadOtherPosts = false
+
+    # Enable sharing buttons, if you like
+    enableSharingButtons = true
+
+[languages]
+    [languages.en]
+        title = "tanis.codes"
+        subtitle = ""
+        keywords = ""
+        copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+        readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+        logoText = "tanis.codes"
+        logoHomeLink = "https://tanis.codes"
+
+    [[menu.main]]
+        identifier = "blog"
+        name       = "Blog"
+        url        = "/posts"
