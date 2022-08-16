@@ -100,6 +100,7 @@ h4 {
 
 a {
   color: inherit;
+  word-break: break-word;
 }
 
 img {
@@ -216,6 +217,7 @@ code {
   font-size: 0.95rem;
   // Default
   background: $light-background-secondary;
+  word-break: break-word;
 
   @media (prefers-color-scheme: dark) {
     background: $dark-background-secondary;
