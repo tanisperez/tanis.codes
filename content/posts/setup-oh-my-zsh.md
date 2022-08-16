@@ -3,7 +3,7 @@ title: "Setup Oh My Zsh"
 date: 2022-08-14T13:33:49+02:00
 draft: false
 toc: false
-image: "/images/oh-my-zsh/logo.png"
+image: "/images/setup-oh-my-zsh/logo.png"
 tags:
   - zsh
   - terminal
@@ -12,7 +12,7 @@ The Z shell (Zsh) is an Unix shell that can be used as an interactive login shel
 
 [Oh My Zsh](https://ohmyz.sh/) is an open source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins and themes.
 
-![Oh My Zsh setup](/images/oh-my-zsh/my-setup.png)
+![Oh My Zsh setup](/images/setup-oh-my-zsh/my-setup.png)
 
 ## Setup Zsh
 
@@ -30,7 +30,7 @@ brew install zsh
 
 When the installation is done, you can set zsh as your default shell using the command **chsh**.
 
-![Setup zsh as the default shell](/images/oh-my-zsh/change-to-zsh-on-mac.png#center)
+![Setup zsh as the default shell](/images/setup-oh-my-zsh/change-to-zsh-on-mac.png#center)
 
 ## Install Oh My Zsh
 
