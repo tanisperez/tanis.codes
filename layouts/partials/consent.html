@@ -81,7 +81,7 @@
     }
 
     function acceptAllConsentScripts() {
-        var consentValue = "";
+        var consentValue = "_";
         scripts.forEach(function(){
             consentValue = consentValue + "1";
         });
@@ -118,7 +118,7 @@
     
     function setConsentValue() {
         var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
-        var consentValue = "";
+        var consentValue = "_";
         elements.forEach(function(el) {
             if(el.checked) consentValue = consentValue + "1";
             else consentValue = consentValue + "0";
