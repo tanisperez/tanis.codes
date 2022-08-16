@@ -2,9 +2,10 @@ baseURL         = "https://tanis.codes"
 title           = "tanis.codes"
 languageCode    = "en-us"
 paginate        = 10
-googleAnalytics = "G-ZFD81JVCQZ"
 
 [params]
+    env             = "pro"
+
     dateform        = "Aug 7, 2022"
     dateformShort   = "Aug 7"
     dateformNum     = "2022-08-07"

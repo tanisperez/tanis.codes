@@ -3,8 +3,18 @@
 {{ $secureJS := slice $menu $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 
-{{ template "_internal/google_analytics.html" . }}
-{{ template "_internal/google_analytics_async.html" . }}
+{{ if eq .Site.Params.Env "pro"}}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZFD81JVCQZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-ZFD81JVCQZ');
+    </script>
+{{ end }}
 
 {{ range $val := $.Site.Params.customJS }}
     {{ if gt (len $val) 0 }}
