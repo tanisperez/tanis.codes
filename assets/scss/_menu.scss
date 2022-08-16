@@ -1,15 +1,6 @@
 .menu {
   z-index: 9999;
-  // Default
-  background: $light-background-header;
-
-  @media (prefers-color-scheme: dark) {
-    background: $dark-background-header;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-background-header;
-  }
+  background: $dark-background-header;
 
   & {
     background: $dark-background-header;
@@ -80,15 +71,7 @@
 
 
 .submenu {
-  background: $light-background-header;
-
-  @media (prefers-color-scheme: dark) {
-    background: $dark-background-header;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-background-header;
-  }
+  background: $dark-background-header;
 
   & {
     background: $dark-background-header;
@@ -114,10 +97,6 @@
     display: none;
     position: absolute;
     background: $dark-background-header;
-
-    @media (prefers-color-scheme: light) {
-      background: $light-background-header;
-    }
     
     & {
       background: $dark-background-header;
@@ -133,10 +112,6 @@
 
   .dropdown-content a:hover {
     background: $dark-background-header;
-    
-    @media (prefers-color-scheme: light) {
-      background: $light-background-header;
-    }
 
     & {
       background: $dark-background-header;

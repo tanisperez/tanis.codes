@@ -29,22 +29,11 @@ body {
   min-height: 100vh;
   flex-direction: column;
 
-  // Default
-  background-color: $light-background;
-  color: $light-color;
+  background-color: $dark-background;
+  color: $dark-color;
 
   @media #{$media-size-phone} {
     font-size: 1rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: $dark-background;
-    color: $dark-color;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background-color: $light-background;
-    color: $light-color;
   }
 
   & {
@@ -191,16 +180,7 @@ figure {
 }
 
 em, i, strong {
-  // Default
-  color: $light-color-variant;
-
-  @media (prefers-color-scheme: dark) {
-    color: $dark-color-variant;
-  }
-
-  @media (prefers-color-scheme: light) {
-    color: $light-color-variant;
-  }
+  color: $dark-color-variant;
 
   & {
     color: white;
@@ -215,17 +195,8 @@ code {
   margin: 0 2px;
   border-radius: 5px;
   font-size: 0.95rem;
-  // Default
-  background: $light-background-secondary;
+  background: $dark-background-secondary;
   word-break: break-word;
-
-  @media (prefers-color-scheme: dark) {
-    background: $dark-background-secondary;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-background-secondary;
-  }
 
   & {
     background: $dark-background-secondary;
@@ -252,16 +223,7 @@ pre {
     margin: 0;
     padding: 0;
     font-size: inherit;
-    // Default
-    color: #ccc;
-
-    @media (prefers-color-scheme: dark) {
-      color: inherit;
-    }
-  
-    @media (prefers-color-scheme: light) {
-      color: #ccc;
-    }
+    color: inherit;
   
     & {
       color: inherit;
@@ -336,16 +298,7 @@ hr {
   width: 100%;
   border: none;
   height: 1px;
-  // Default
-  background: $light-border-color;
-
-  @media (prefers-color-scheme: dark) {
-    background: $dark-border-color;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-border-color;
-  }
+  background: $dark-border-color;
 
   & {
     background: $dark-border-color;

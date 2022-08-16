@@ -21,17 +21,9 @@ a.button {
   appearance: none;
   cursor: pointer;
   outline: none;
-  // Default
-  background: $light-background-header;
 
-  @media (prefers-color-scheme: dark) {
-    background: $dark-background-header;
-    color: inherit;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $light-background-header;
-  }
+  background: $dark-background-header;
+  color: inherit;
 
   & {
     background: $dark-background-header;
@@ -42,17 +34,9 @@ a.button {
     background: transparent;
     box-shadow: none;
     padding: 8px 18px;
-    // Default
-    border-color: $light-background-secondary;
 
-    @media (prefers-color-scheme: dark) {
-      border-color: $dark-background-secondary;
-      color: inherit;
-    }
-  
-    @media (prefers-color-scheme: light) {
-      border-color: $light-background-secondary;
-    }
+    border-color: $dark-background-secondary;
+    color: inherit;
   
     & {
       border-color: $dark-background-secondary;
@@ -107,17 +91,9 @@ a.button {
     appearance: none;
     cursor: pointer;
     outline: none;
-    // Default
-    background: $light-background-secondary;
 
-    @media (prefers-color-scheme: dark) {
-      background: $dark-background-secondary;
-      color: inherit;
-    }
-  
-    @media (prefers-color-scheme: light) {
-      background: $light-background-secondary;
-    }
+    background: $dark-background-secondary;
+    color: inherit;
   
     & {
       background: $dark-background-secondary;
