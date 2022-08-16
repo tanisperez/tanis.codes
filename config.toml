@@ -27,12 +27,7 @@ paginate     = 10
     [languages.en.params.logo]
         logoText = "tanis.codes"
         logoHomeLink = "https://tanis.codes"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
 
-  # And you can even create generic menu
     [[menu.main]]
         identifier = "blog"
         name       = "Blog"
