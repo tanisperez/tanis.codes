@@ -1,5 +1,5 @@
 <style>
-    #consent-notice {padding: 1rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: 100%; background: #222; color: rgba(255,255,255,0.8);}
+    #consent-notice {padding: 0.5rem; display: none; text-align: center; position: fixed; bottom: 0; width: 100%; background: #222; color: rgba(255,255,255,0.8);}
     #consent-notice span {margin-right: 1rem;}
     #consent-notice button {cursor: pointer; display: inline-block; width: auto;}
     #consent-notice span a {color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.5);}
@@ -20,11 +20,16 @@
 
     @media (max-width: 767px) {
         #consent-overlay > div {padding: 1.75rem 1rem;}
-        #consent-notice span {display: block; padding-top: 3px; margin-bottom: 1.5rem;}
+        #consent-notice span {display: block; padding-top: 3px; margin: 0.75rem auto;}
         #consent-notice button.btn {position: relative; bottom: 4px;}
     }
 </style>
-<div id="consent-notice"><span>We would like to use <a class="manage-consent" href="#manage-consent">third party code</a> to improve the functionality of this website.</span><button class="btn manage-consent">Manage preferences</button><button class="btn deny-consent">Deny</button><button class="btn approve-consent">Allow</button></div>
+<div id="consent-notice">
+    <span>We use <a class="manage-consent" href="#manage-consent">third party code</a> to improve the functionality of this website.</span>
+    <button class="btn manage-consent">Manage</button>
+    <button class="btn deny-consent">Deny</button>
+    <button class="btn approve-consent">Allow</button>
+</div>
 <div id="consent-overlay">
     <div>
         {{ range $index, $item := .Site.Data.consent.items }}
@@ -43,7 +48,6 @@
     </div>
 </div>
 <script>
-
     const scripts = [];{{ range $index, $item := (where .Site.Data.consent.items "is_functional" false) }}
     scripts[{{ $index }}] = "/js/{{ $item.script_file }}";{{ end }}
 
@@ -56,6 +60,7 @@
         }
         document.cookie = name + "=" + value + expires + "; path=/";
     }
+
     function readCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
@@ -66,9 +71,7 @@
         }
         return null;
     }
-    function eraseCookie(name) {
-        createCookie(name,"",-1);
-    }
+
     function denyAllConsentScripts() {
         var consentValue = "";
         scripts.forEach(function(){
@@ -76,6 +79,7 @@
         });
         acceptSomeConsentScripts(consentValue);
     }
+
     function acceptAllConsentScripts() {
         var consentValue = "";
         scripts.forEach(function(){
@@ -83,6 +87,7 @@
         });
         acceptSomeConsentScripts(consentValue);
     }
+
     function acceptSomeConsentScripts(consentValue) {
         setConsentInputs(consentValue);
         createCookie('consent-settings',consentValue,31);
@@ -90,6 +95,7 @@
         document.getElementById('consent-overlay').classList.remove('active');
         loadConsentScripts(consentValue);
     }
+
     function loadConsentScripts(consentValue) {
         scripts.forEach(function(value,key){
             //console.log('script'+key+' is set to ' +consentValue[key]+' and is file '+value);
@@ -101,6 +107,7 @@
             }
         });
     }
+
     function setConsentInputs(consentValue) {
         var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
         elements.forEach(function(el,index) {
@@ -108,6 +115,7 @@
             else el.checked = false;
         });
     }
+    
     function setConsentValue() {
         var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
         var consentValue = "";

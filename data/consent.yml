@@ -1,7 +1,4 @@
 items:
-  - title: Google Anaytics (functional)
-    description: This code gives us insight into the number of people that visit our website, where they are from and what they are clicking on. We follow the guidelines of the European Union, which describe how to use Google Analytics without requiring explicit consent.
-    is_functional: true
-  - title: Remember cookie preferences
-    description: This code saves the user cookie preferences in a cookie called 'consent-settings'.
+  - title: Google Analytics (functional)
+    description: This code gives us insight into the number of people that visit our website, where they are from and what they are clicking on.
     is_functional: true
