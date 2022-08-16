@@ -16,11 +16,6 @@ paginate     = 10
     # Enable sharing buttons, if you like
     enableSharingButtons = true
 
-    # Metadata mostly used in document's head
-    description = "My new homepage or blog"
-    keywords = "homepage, blog"
-    images = [""]
-
 [taxonomies]
     category = "blog"
     tag      = "tags"
