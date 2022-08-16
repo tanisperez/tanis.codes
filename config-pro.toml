@@ -1,8 +1,8 @@
-baseURL      = "https://tanis.codes"
-title        = "tanis.codes"
-languageCode = "en-us"
-paginate     = 10
-env          = "pro"
+baseURL         = "https://tanis.codes"
+title           = "tanis.codes"
+languageCode    = "en-us"
+paginate        = 10
+googleAnalytics = "G-ZFD81JVCQZ"
 
 [params]
     dateform        = "Aug 7, 2022"
