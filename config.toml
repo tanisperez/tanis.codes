@@ -16,11 +16,6 @@ paginate     = 10
     # Enable sharing buttons, if you like
     enableSharingButtons = true
 
-[taxonomies]
-    category = "blog"
-    tag      = "tags"
-    series   = "series"
-
 [languages]
     [languages.en]
         title = "tanis.codes"
