@@ -288,6 +288,7 @@ ol ol {
   flex: 1 auto;
   align-items: center;
   margin: 0;
+  padding: 0 10px;
 
   @media #{$media-size-phone} {
     margin-top: 0;
@@ -368,10 +369,6 @@ hr {
   margin: 10px auto;
 }
 
-.last-articles {
-  margin-top: 1rem;
-}
-
 .home-article {
   display: flex;
   flex-direction: row;
@@ -380,7 +377,11 @@ hr {
 }
 
 .home-article-image {
+  min-width: 120px;
   margin-right: 2rem;
+  @media #{$media-size-phone} {
+    margin-right: 1rem;
+  }
 }
 
 .home-article-content {
@@ -397,4 +398,5 @@ hr {
 .home-article-content h2{
   padding: 0;
   margin: 0;
+  text-align: left;
 }

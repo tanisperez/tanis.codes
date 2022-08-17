@@ -6,8 +6,7 @@
     <main aria-role="main">
         <div>
             <h1>Last articles</h1>
-
-            <div class="last-articles">
+            <div>
                 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "==" "posts") }}
                 {{ range $paginator.Pages }}
                 
