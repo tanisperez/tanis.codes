@@ -9,7 +9,7 @@ tags:
   - markdown
   - blog
 ---
-[Hugo](https://gohugo.io/) is one of the fastest *static site generator* for building websites writen in [Go](https://en.wikipedia.org/wiki/Go_(programming_language)). It is a tool which combines a bunch of files and turns them into HTML, CSS and JavaScript files.
+[Hugo](https://gohugo.io/) is one of the fastest *static site generator* for building websites written in [Go](https://en.wikipedia.org/wiki/Go_(programming_language)). It is a tool which combines a bunch of files and turns them into HTML, CSS and JavaScript files.
 
 The content for your site can be written in HTML, JavaScript or *markdown* files. It is very common to write blog posts or technical documentation using Hugo and markdown files.
 
