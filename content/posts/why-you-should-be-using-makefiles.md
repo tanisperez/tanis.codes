@@ -134,7 +134,7 @@ run-docker: build-docker
 		-p 18000:18000 \
 		-v /tmp/log/rekomind/rekomind-core-ws:/var/log/rekomind/rekomind-core-ws \
 		--rm \
-		rekomind/rekomind-admin-ws
+		rekomind/rekomind-core-ws
 
 dependency-tree:
 	mvn dependency:tree
