@@ -1,7 +1,7 @@
 ---
 title: "Why you should be using Makefiles?"
 date: 2022-08-19T17:06:00+02:00
-draft: true
+draft: false
 toc: false
 image: "/images/why-you-should-be-using-makefiles/logo.png"
 tags:
@@ -12,7 +12,7 @@ A **Makefile** is a text file which defines rules for building software using th
 
 
 ## Example
-A `Makefile` must be plain text and idented with tabs. If no `-f` option is used with `make`, it will look for the makefiles **GNUmakefile**, **makefile**, and **Makefile**, in that order. The most common name to use is **Makefile**.
+A `Makefile` must be plain text and indented with tabs. If no `-f` option is used with `make`, it will look for the makefiles **GNUmakefile**, **makefile**, and **Makefile**, in that order. The most common name to use is **Makefile**.
 
 ```bash
 hello:
@@ -36,7 +36,7 @@ example:
     echo "This is another rule"
 ```
 
-If we type again `make` it will output the same as before. We can invoke a specific rule like this:
+If we type again `make` it will output the same as before, but we can execute a specific rule like this:
 
 ```bash
 make hello
@@ -72,11 +72,11 @@ This is a very basic usage, you can learn everything about the Makefiles [here](
 
 ## Why we should use Makefiles?
 
-We have different building tools for every programming language and that is great, but I find it quite useful having a `Makefile` in every programming project as a shortcut.
+We have different building tools for every programming language and that is great, but I find it quite useful having a `Makefile` in every project as a shortcut.
 
 For example, [this blog](https://github.com/tanisperez/tanis.codes/blob/main/Makefile) has a `Makefile` with 2 rules:
 * **run**: It runs Hugo in development mode.
-* **build**: Minify the HTML, CSS and JavaScript for deploying in production.
+* **build**: Hugo will minify the HTML, CSS and JavaScript for deploying in production.
 
 ```bash
 run:
@@ -104,7 +104,7 @@ run-pro: build
 	npm run start
 ```
 
-When I work with some Java or Kotlin projects with `maven` I have a `Makefile` like this:
+When I work with some Java or Kotlin projects with `maven` I have the following `Makefile`:
 
 ```bash
 clean:
