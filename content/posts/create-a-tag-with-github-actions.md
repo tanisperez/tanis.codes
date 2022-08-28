@@ -57,7 +57,7 @@ jobs:
         uses: negz/create-tag@v1
         with:
           # Github Token
-          token: 'MY_GITHUB_ACTION'
+          token: 'MY_GITHUB_TOKEN'
           # Version (v1.0.0)
           version: 'v${{ github.event.inputs.version }}'
           # Tag message
