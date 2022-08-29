@@ -1,6 +1,7 @@
 ---
 title: "Create a git tag with GitHub Actions"
 date: 2022-08-28T16:12:00+02:00
+lastMod: 2022-08-29T08:32:00+02:00
 draft: false
 toc: false
 image: "/images/create-a-git-tag-with-github-actions/logo.png"
@@ -88,9 +89,49 @@ We have to give it a name, set the expiration policy and we will check the `repo
 
 **NOTE**: Be careful where you publish this token because anyone can access your repositories and take control of them.
 
-If your repository is private, you can put it as plain text in the `token` parameter of the `Create tag` step. The best option is to use `Actions secrets`, we will see them in a future article.
+If your repository is private, you can put it as plain text in the `token` parameter of the `Create tag` step. 
+
+## Create an action secret
+
+The best option is to use a function called `Actions secrets`, which allows us to define variables and store their content securely.
 
 ![Action secrets](/images/create-a-git-tag-with-github-actions/action-secrets.png#center)
+
+Using the `New repository secret` button, we will define a new variable called `GIT_TOKEN` with our real GitHub token as the value.
+
+![Add an action secret](/images/create-a-git-tag-with-github-actions/add-action-secret.png#center)
+
+After adding the action secret, we can access the value from the GitHub action using the variable `${{ secrets.GIT_TOKEN }}`.
+
+```yaml
+name: Create tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The tag version to be created based on the master branch'
+        default: '1.0.0'
+        required: true
+      description:
+        description: 'The tag description. For example: First release!'
+        default: 'First release!'
+        required: true
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create tag
+        uses: negz/create-tag@v1
+        with:
+          # Github Token
+          token: '${{ secrets.GIT_TOKEN }}'
+          # Version (v1.0.0)
+          version: 'v${{ github.event.inputs.version }}'
+          # Tag message
+          message: '${{ github.event.inputs.description }}'
+```
 
 ## Execute the GitHub Action
 
