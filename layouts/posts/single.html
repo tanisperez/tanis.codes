@@ -56,9 +56,7 @@
         {{ if .Lastmod }} 
           {{ if not (eq .Lastmod .Date )}}
             {{ if .Site.Params.dateFormat }}
-              ({{ i18n "lastModified" }}: {{ dateFormat .Site.Params.dateFormat .Lastmod.Local }})
-            {{ else }} 
-              ({{ i18n "lastModified" }}: {{ dateFormat "2006-01-02 15:04" .Lastmod.Local }})
+              ( Modified on: {{ dateFormat .Site.Params.dateFormat .Lastmod.Local }})
             {{ end }}
           {{ end }}
         {{ end }}
