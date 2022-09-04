@@ -9,10 +9,11 @@ tags:
   - github
   - github-actions
   - github-pages
+  - hugo
 ---
 GitHub Pages allows us to deploy and serve static websites for free. We need a GitHub Action to build our Hugo site and publish it on GitHub Pages.
 
-This is a example workflow action used in [tanis.codes](https://tanis.codes) to deploy this blog in GitHub Pages. You can checkout the last version from [here](https://github.com/tanisperez/tanis.codes/blob/main/.github/workflows/pages.yml).
+This is a example workflow action used in [tanis.codes](https://tanis.codes) to deploy this blog in GitHub Pages. You can check out the last version from [here](https://github.com/tanisperez/tanis.codes/blob/main/.github/workflows/pages.yml).
 
 ```yaml
 name: Deploy tanis.codes on GitHub Pages
@@ -98,6 +99,7 @@ Check out the most updated terms in [GitHub Pages usage limits](https://docs.git
 
 ## References
 
+* Build a custom blog with Hugo: https://tanis.codes/posts/build-a-custom-blog-with-hugo/
 * Hugo hosting on GitHub: https://gohugo.io/hosting-and-deployment/hosting-on-github/
 * About GitHub Pages: https://docs.github.com/es/pages/getting-started-with-github-pages/about-github-pages
 * GitHub Pages usage limits: https://docs.github.com/es/pages/getting-started-with-github-pages/about-github-pages#usage-limits
