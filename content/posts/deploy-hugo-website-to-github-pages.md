@@ -1,7 +1,7 @@
 ---
 title: "Deploy Hugo website to GitHub Pages"
-date: 2022-09-02T17:20:00+02:00
-draft: true
+date: 2022-09-04T12:22:00+02:00
+draft: false
 toc: false
 image: "/images/deploy-hugo-website-to-github-pages/logo.png"
 tags:
@@ -72,14 +72,32 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
 ```
-Explanation:...
-* Steps 
-* 
-*
 
+This workflow has 2 jobs that perform the following actions:
+* Check out the source code from the **main** branch.
+* Set up the last version of Hugo.
+* Build the blog using the command `hugo --minify`. In my case I have 2 `config.toml`, so for production environment I use the file `config-pro.toml`.
+* Deploy the `./public` folder with all the generated static files to GitHub Pages.
 
-# Advantages and limitations of GitHub Pages
+This workflow is executed on every commit or it can be executed manually from the GitHub Actions page.
+
+![Manual deploy from GitHub Pages](/images/deploy-hugo-website-to-github-pages/manual-deploy.png#center)
+
+Finally, you can access your website through the url `https://<username>.github.io/<repository>`. In my case, it will be the url `https://tanisperez.github.io/tanis.codes`.
+
+## Usage limits
+
+These are some usage limits for the free plan of GitHub Pages.
+* GitHub Pages source repositories have a recommended limit of 1 GB. For more information, see ["What is my disk quota?"](https://docs.github.com/es/articles/what-is-my-disk-quota/#file-and-repository-size-limitations)
+* Published GitHub Pages **sites may be no larger than 1 GB**.
+* GitHub Pages sites have a soft **bandwidth limit of 100 GB per month**.
+* GitHub Pages sites have a soft limit of 10 builds per hour. This limit does not apply if you build and publish your site with a custom GitHub Actions workflow.
+* In order to provide consistent quality of service for all GitHub Pages sites, rate limits may apply. These rate limits are not intended to interfere with legitimate uses of GitHub Pages. If your request triggers rate limiting, you will receive an appropriate response with an HTTP status code of 429, along with an informative HTML body.
+
+Check out the most updated terms in [GitHub Pages usage limits](https://docs.github.com/es/pages/getting-started-with-github-pages/about-github-pages#usage-limits).
 
 ## References
 
 * Hugo hosting on GitHub: https://gohugo.io/hosting-and-deployment/hosting-on-github/
+* About GitHub Pages: https://docs.github.com/es/pages/getting-started-with-github-pages/about-github-pages
+* GitHub Pages usage limits: https://docs.github.com/es/pages/getting-started-with-github-pages/about-github-pages#usage-limits
