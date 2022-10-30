@@ -70,7 +70,7 @@ Through the Powerlevel10k configuration wizard you can customize your theme.
 
 The utility `fzf` is an incredibly useful search tool. It's an interactive Unix filter for command-line that can be used with any list; files, command history, processes, hostnames, bookmarks, git commits, etc.
 
-You can install it using your favourite package manager from your Operative System.
+You can install it from your favourite package manager.
 
 ```bash
 sudo apt-get install fzf
