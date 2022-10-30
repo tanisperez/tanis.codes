@@ -1,6 +1,7 @@
 ---
 title: "Setup Oh My Zsh"
 date: 2022-08-14T13:33:49+02:00
+lastMod: 2022-10-30T17:59:00+02:00
 draft: false
 toc: false
 image: "/images/setup-oh-my-zsh/logo.png"
@@ -65,13 +66,43 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 Through the Powerlevel10k configuration wizard you can customize your theme.
 
+## fzf
+
+The utility `fzf` is an incredibly useful search tool. It's an interactive Unix filter for command-line that can be used with any list; files, command history, processes, hostnames, bookmarks, git commits, etc.
+
+You can install it using your favourite package manager from your Operative System.
+
+```bash
+sudo apt-get install fzf
+or
+brew install fzf
+```
+
+After the installation is done, we have to execute the fzf installer to set up our shell.
+
+```bash
+$(brew --prefix)/opt/fzf/install
+```
+
+This should add something like this to your `.zshrc`.
+
+```bash
+[[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
+```
+
+We can override the default fzf options:
+
+```bash
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+```
+
 ## Plugins
 
-Oh My Zsh comes bundled with a lot of plugins. You can check the list of the included plugins [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
+Oh My Zsh comes bundled with a bunch of plugins. You can check the list of the included plugins [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
 
 You can activate the plugins editing the file `~/.zshrc`. In my case, I use the following plugins:
 
-`plugins=(git colored-man-pages sudo zsh-autosuggestions)`
+`plugins=(git colored-man-pages sudo zsh-autosuggestions fzf)`
 
 ![Zsh plugins](/images/setup-oh-my-zsh/zsh-plugins.png#center)
 
@@ -79,6 +110,7 @@ You can activate the plugins editing the file `~/.zshrc`. In my case, I use the 
 * [colored-man-pages](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/colored-man-pages): This plugins adds colors to man pages.
 * [sudo](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo): Easily prefix your current or previous commands with `sudo` by pressing `esc` twice.
 * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md): It suggests commands as you type based on history and completions. This plugin requires a [manual installation](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md).
+* [fzf](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf): It enables fzf fuzzy auto-completion and key bindings.
 
 After enabling plugins in the `~/.zshrc` you must restart the zsh shell. You can restart your terminal application or using the command `exec zsh`.
 
@@ -89,3 +121,4 @@ After enabling plugins in the `~/.zshrc` you must restart the zsh shell. You can
 * Powerlevel10k theme: https://github.com/romkatv/powerlevel10k
 * List of plugins bundled with Oh My Zsh: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 * zsh-autosuggestions installation guide: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+* fzf github project: https://github.com/junegunn/fzf
