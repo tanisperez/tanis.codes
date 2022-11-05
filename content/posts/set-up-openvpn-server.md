@@ -1,9 +1,9 @@
 ---
 title: "Set up OpenVPN server"
 date: 2022-11-05T18:02:00+02:00
-draft: true
+draft: false
 toc: false
-image: "/images/setup-oh-my-zsh/logo.png"
+image: "/images/set-up-openvpn-server/logo.png"
 tags:
   - vpn
   - openvpn
