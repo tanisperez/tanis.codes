@@ -1,5 +1,5 @@
 ---
-title: "Setup OpenVPN server"
+title: "Set up OpenVPN server"
 date: 2022-11-05T18:02:00+02:00
 draft: true
 toc: false
@@ -25,7 +25,7 @@ wget https://git.io/vpn -O openvpn-install.sh && sudo bash openvpn-install.sh
 
 Firstly, it will ask us to select the IPv4 address. In my case, I will use my public ip address 82.X.X.X.
 
-![Select the network](/images/setup-openvpn-server/select-network.png#center)
+![Select the network](/images/set-up-openvpn-server/select-network.png#center)
 
 Then, we will configure the following options:
 * **OpenVPN protocol**. It's recommended to use the default UDP protocol.
@@ -33,11 +33,11 @@ Then, we will configure the following options:
 * **DNS server**. I recommend using the current system resolvers.
 * **A client name**.
 
-![Select the protocol and DNS server](/images/setup-openvpn-server/select-protocol-and-dns.png#center)
+![Select the protocol and DNS server](/images/set-up-openvpn-server/select-protocol-and-dns.png#center)
 
 Finally, the installation will be completed!
 
-![Installation completed](/images/setup-openvpn-server/installation-completed.png#center)
+![Installation completed](/images/set-up-openvpn-server/installation-completed.png#center)
 
 As you can see in the terminal, the output client configuration certificate is located in `/root/tanis.ovpn`. We will transfer this file to our client computer and we will use it to establish the connection with the OpenVPN server.
 
@@ -45,11 +45,11 @@ As you can see in the terminal, the output client configuration certificate is l
 
 To connect to our OpenVPN server we will download and install the client app from the [official web page](https://openvpn.net/vpn-client/). We have installation options for Windows, MacOS, Linux, Android and iOS.
 
-![Import the OpenVPN profile](/images/setup-openvpn-server/import-openvpn-profile.png#center)
+![Import the OpenVPN profile](/images/set-up-openvpn-server/import-openvpn-profile.png#center)
 
 We will drag the generated `ovpn` file in our OpenVPN server to the client app. Then, we will be able to connect to our server.
 
-![Connect to OpenVPN server](/images/setup-openvpn-server/connect-to-openvpn-server.png#center)
+![Connect to OpenVPN server](/images/set-up-openvpn-server/connect-to-openvpn-server.png#center)
 
 ## Add more clients
 
@@ -58,7 +58,7 @@ We can add more client from our OpenVPN server if we run the script again. It wi
 * Revoke an existing client.
 * Uninstall OpenVPN.
 
-![Add more clients](/images/setup-openvpn-server/add-more-clients.png#center)
+![Add more clients](/images/set-up-openvpn-server/add-more-clients.png#center)
 
 ## Remove traffic routing
 
