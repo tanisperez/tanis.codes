@@ -1,7 +1,7 @@
 ---
-title: "Setup Oh My Zsh"
+title: "Set up Oh My Zsh"
 date: 2022-08-14T13:33:49+02:00
-lastMod: 2022-10-30T17:59:00+02:00
+lastMod: 2022-11-07T20:48:00+01:00
 draft: false
 toc: false
 image: "/images/setup-oh-my-zsh/logo.png"
