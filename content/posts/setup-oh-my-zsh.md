@@ -5,6 +5,7 @@ lastMod: 2022-11-07T20:48:00+01:00
 draft: false
 toc: false
 image: "/images/setup-oh-my-zsh/logo.png"
+description: "The Z shell (Zsh) is an Unix shell that can be used as an interactive login shell and as a command interpreter for shell scripting."
 tags:
   - zsh
   - terminal
