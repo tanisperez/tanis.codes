@@ -5,6 +5,7 @@ lastMod: 2022-08-29T08:32:00+02:00
 draft: false
 toc: false
 image: "/images/create-a-git-tag-with-github-actions/logo.png"
+description: "GitHub Actions allow us to automate, customize and execute software development workflows right into our repository."
 tags:
   - git
   - github
