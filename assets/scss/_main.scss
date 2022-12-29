@@ -379,6 +379,9 @@ hr {
 .home-article-image {
   min-width: 120px;
   margin-right: 2rem;
+  display: flex;
+  align-items: center;
+
   @media #{$media-size-phone} {
     margin-right: 1rem;
   }
