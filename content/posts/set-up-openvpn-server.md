@@ -4,6 +4,7 @@ date: 2022-11-05T18:02:00+02:00
 draft: false
 toc: false
 image: "/images/set-up-openvpn-server/logo.png"
+description: "OpenVPN is a virtual private network VPN system that creates secure point-to-point or site-to-site connections to access remote services."
 tags:
   - vpn
   - openvpn
