@@ -4,6 +4,7 @@ date: 2022-09-04T12:22:00+02:00
 draft: false
 toc: false
 image: "/images/deploy-hugo-website-to-github-pages/logo.png"
+description: "GitHub Pages allows us to deploy and serve static websites for free. We need a GitHub Action to build our Hugo site and publish it on GitHub Pages."
 tags:
   - git
   - github
