@@ -3,7 +3,7 @@ title: "How to boot a Raspberry Pi 4 from SSD"
 date: 2022-12-29T18:08:00+01:00
 draft: true
 toc: false
-image: "/images/how-to-boot-raspberry-pi-4-from-ssd/raspberry-pi-4.png"
+image: "/images/how-to-boot-raspberry-pi-4-from-ssd/logo.png"
 tags:
   - raspberry-pi
   - arm
