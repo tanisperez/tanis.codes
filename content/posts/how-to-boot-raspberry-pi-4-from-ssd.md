@@ -1,7 +1,7 @@
 ---
 title: "How to boot a Raspberry Pi 4 from a SSD"
 date: 2023-01-09T08:29:00+01:00
-draft: true
+draft: false
 toc: false
 image: "/images/how-to-boot-raspberry-pi-4-from-ssd/logo.png"
 description: "Booting a Raspberry Pi 4 from an USB SSD is a great idea to improve the performance and reliability of our little Pi computer."
