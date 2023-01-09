@@ -1,10 +1,10 @@
 ---
 title: "How to boot a Raspberry Pi 4 from a SSD"
-date: 2022-12-29T18:08:00+01:00
+date: 2023-01-09T08:29:00+01:00
 draft: true
 toc: false
 image: "/images/how-to-boot-raspberry-pi-4-from-ssd/logo.png"
-description: ""
+description: "Booting a Raspberry Pi 4 from an USB SSD is a great idea to improve the performance and reliability of our little Pi computer."
 tags:
   - raspberry-pi
   - arm
@@ -59,13 +59,13 @@ Now, you can connect the SSD to your Raspberry Pi 4 using an USB to SATA adapter
 
 ## Update the Raspberry Pi firmware to boot from USB
 
-New Raspberries 4 come with the firmware updated to be able to boot from an USB drive. If you followed all the steps described in this article and your Raspberry Pi 4 is not able to boot from an USB drive, you will need to upgrade the firmware.
+New Raspberries 4 come with updated firmware to be able to boot from an USB drive. If you have followed all the steps in this article and your Raspberry Pi 4 cannot boot from a USB drive, you will need to update the firmware.
 
-You will need a MicroSD card and take a few more steps. First of all, we will install a compatible Operating System into the MicroSD. The easy choice is **Raspberry Pi OS** or **Ubuntu**.
+You will need a MicroSD card and take a few more steps. First of all, we will install a compatible operating system on the MicroSD. The easy choice is **Raspberry Pi OS** or **Ubuntu**.
 
 Then, when the installation is done and the Raspberry Pi 4 boots from the MicroSD card, we will use a tool called **rpi-eeprom-update**.
 
-If you chose Ubuntu, it is possible that you need to install a package called `rpi-eeprom`.
+If you chose Ubuntu, you may need to install a package called `rpi-eeprom`.
 
 ```bash
 sudo apt-get update
@@ -79,22 +79,22 @@ sudo rpi-eeprom-update -a
 sudo reboot
 ```
 
-After rebooting our Raspberry Pi 4, we can shut it down and try to boot an Operating System from an USB drive. Be sure to remove the MicroSD card, because it is the default boot order.
+After rebooting the Raspberry Pi 4, we can turn it off and try to boot an operating system from an USB drive. Be sure to remove the MicroSD card as it is the default boot order.
 
 ## Change the boot order
 
-With the package `rpi-eeprom` we are able to change the boot order of our Rapsberry Pi 4. We will use the command `rpi-eeprom-config`.
+With the `rpi-eeprom` package it is possible to change the boot order of our Raspberry Pi 4. We will use the command `rpi-eeprom-config`.
 
 ```bash
 sudo rpi-eeprom-config
 ```
 
 Take a look at the **BOOT_ORDER** value. The default code is `0xf41` and it is read from right to left to determine the boot order.
-* 1. Check if there is a MicroSD card connected and boot from it.
-* 2. Check if there is an USB drive connected and boot from it.
-* 3. Start again.
+1. Check if there is a MicroSD card connected and boot from it.
+2. Check if there is an USB drive connected and boot from it.
+3. Start checking again.
 
-If you want to modify the boot order, you can change the boot configuration using this command.
+If you want to modify the boot order, you can change the boot configuration using the following command.
 
 ```bash
 sudo -E rpi-eeprom-config --edit
