@@ -10,7 +10,7 @@ tags:
   - markdown
   - google-analytics
 ---
-In progress...
+In progress..
 
 ## References
 
