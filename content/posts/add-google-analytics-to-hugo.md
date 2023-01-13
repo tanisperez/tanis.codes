@@ -12,8 +12,6 @@ tags:
 ---
 In progress...
 
-Google Analytics allows us to monitor...
-
 ## References
 
 * Oh My Zsh official page: https://ohmyz.sh/
