@@ -12,9 +12,6 @@ paginate        = 10
     dateformNumTime = "2022-08-07 21:50"
     dateFormat      = "02 Jan 06 15:04 MST"
 
-    # Set disableReadOtherPosts to true in order to hide the links to other posts.
-    disableReadOtherPosts = false
-
     # Enable sharing buttons, if you like
     enableSharingButtons = true
 
@@ -23,7 +20,6 @@ paginate        = 10
         title = "tanis.codes"
         subtitle = "Backend, Frontend, DevOps, Systems, Performance"
         copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
-        readOtherPosts = "Read other posts"
 
     [languages.en.params.logo]
         logoText = "tanis.codes"
