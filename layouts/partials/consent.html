@@ -1,14 +1,14 @@
 <style>
-    #consent-notice {padding: 0.5rem; display: none; text-align: center; position: fixed; bottom: 0; width: 100%; background: #222; color: rgba(255,255,255,0.8);}
+    #consent-notice {padding: 0.5rem; display: none; text-align: center; position: fixed; bottom: 0; width: 100%; background: #1b1c1d; color: rgba(255,255,255,0.8);}
     #consent-notice span {margin-right: 1rem;}
-    #consent-notice button {cursor: pointer; display: inline-block; width: auto;}
+    #consent-notice button {cursor: pointer; display: inline-block; width: auto; background: #232425;}
     #consent-notice span a {color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.5);}
     #consent-notice button.btn {margin-left: 0.5rem;}
     #consent-notice button.btn.manage-consent {background: rgba(255,255,255,0.1); font-weight: normal;}
     
     #consent-overlay {position: fixed; left: 0; top: 0; width: 100%; height: 100vh; display: none; background: rgba(0,0,0,0.75); z-index: 999999; overflow: auto; cursor: pointer;}
     #consent-overlay.active {display: flex;}
-    #consent-overlay > div {background: white; width: 100%; max-width: 30rem; padding: 1.75rem; margin: auto; cursor: initial;}
+    #consent-overlay > div {background: #232425; width: 100%; max-width: 30rem; padding: 1.75rem; margin: auto; cursor: initial;}
     #consent-overlay > div > div {display: flex; align-items: flex-start; margin-bottom: 0.5rem;}
     #consent-overlay > div > div:last-child {margin: 0; justify-content: center;}
     #consent-overlay h3 {padding-top: 0; margin: 0;}
@@ -98,12 +98,11 @@
 
     function loadConsentScripts(consentValue) {
         scripts.forEach(function(value,key){
-            //console.log('script'+key+' is set to ' +consentValue[key]+' and is file '+value);
             if(consentValue[key]=="1") {
-                var s = document.createElement('script');
-                s.type = 'text/javascript';
-                s.src = value;
-                document.body.appendChild(s);
+                var form = document.createElement('script');
+                form.type = 'text/javascript';
+                form.src = value;
+                document.body.appendChild(form);
             }
         });
     }
