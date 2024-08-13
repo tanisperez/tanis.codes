@@ -10,20 +10,29 @@
         height: 44px;
     }
 
-    &__mark {
-        margin-right: 5px;
+    &__home {
+        color: $light-blue;
     }
 
-    &__text {
-        font-size: 1.125rem;
+    &__dev {
+        color: $dark-blue;
+    }
+
+    &__folder {
+        color: $light-blue;
+    }
+
+    &__branch, &__terminal_separator {
+        color: $green-terminal;
+        margin-left: 10px;
     }
 
     &__cursor {
         display: inline-block;
         width: 10px;
         height: 1rem;
-        background: $main-color;
-        margin-left: 5px;
+        background: #C7C7C7;
+        margin-left: 10px;
         border-radius: 1px;
         animation: cursor 1s infinite;
     }
