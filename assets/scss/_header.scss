@@ -29,22 +29,3 @@
         max-width: 100%;
     }
 }
-
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    cursor: pointer;
-}
-
-.theme-toggler {
-    fill: currentColor;
-}
-
-.not-selectable {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
