@@ -24,7 +24,7 @@
 
     &__branch, &__terminal_separator {
         color: $green-terminal;
-        margin-left: 0.6rem;
+        margin-left: 0.5rem;
     }
 
     &__cursor {
@@ -32,7 +32,7 @@
         width: 8px;
         height: 1rem;
         background: #C7C7C7;
-        margin-left: 0.6rem;
+        margin-left: 0.5rem;
         border-radius: 1px;
         animation: cursor 1s infinite;
     }
