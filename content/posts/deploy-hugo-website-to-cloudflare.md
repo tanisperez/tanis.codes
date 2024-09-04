@@ -107,6 +107,8 @@ Each commit will trigger an automatic build process on Cloudflare.
 
 ## Configure a custom domain for your website
 
+Once completed the preivous steps, we will configure 
+
 Our project is successfully deployed globally, we could access our website through the Cloudflare Pages provided URL. In my case, the URL is `tanis-codes.pages.dev`.
 
 ![Configure custom domain](/images/deploy-hugo-website-to-cloudflare/configure-custom-domain.png)
