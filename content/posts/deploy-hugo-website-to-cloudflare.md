@@ -27,19 +27,31 @@ Review the **latest limits for Cloudflare Pages** [here](https://developers.clou
 
 First, we need to purchase or rent a domain name for our site. I highly recommend using [Namecheap](https://www.namecheap.com/) due to their affordable prices and excellent customer support (note: I have no affiliation with them).
 
-Next, we'll create a free account on [Cloudflare](https://cloudflare.com/).
+Next, we will create a free account on [Cloudflare](https://cloudflare.com/).
 
 ## Creating a website on Cloudflare
 
-In the section `Websites` we will click on `+ Add domain` button.
+In the `Websites` section, click the `+ Add domain` button. Enter your domain name, then click `Continue`.
 
 ![Add your website or application to Cloudflare](/images/deploy-hugo-website-to-cloudflare/add-site.png)
 
+Next, select the free plan and click `Continue`.
+
 ![Select free plan](/images/deploy-hugo-website-to-cloudflare/select-free-plan.png)
+
+Your website will now be in the `Pending Nameserver Update` state.
 
 ![Pending nameserver update](/images/deploy-hugo-website-to-cloudflare/pending-nameserver-update.png)
 
+Cloudflare assigns unique nameservers to each website. In my case, the nameservers are `coraline.ns.cloudflare.com` and `kareem.ns.cloudflare.com`.
+
+The next step is to configure these nameservers with your DNS provider, where you purchased or rented your domain name.
+
 ![Update your nameservers](/images/deploy-hugo-website-to-cloudflare/update-your-nameservers.png)
+
+If you purchased your domain through a different DNS provider, refer to the instructions from both your provider and Cloudflare. In this guide, we'll be following the steps for Namecheap.
+
+In the `Domain List` sections, select your domain and navigate to `Nameservers`. Change the setting to `Custom DNS`, then enter the Cloudflare nameservers assigned to you.
 
 ![Configure custom DNS on namecheap](/images/deploy-hugo-website-to-cloudflare/namecheap-custom-dns.png)
 
