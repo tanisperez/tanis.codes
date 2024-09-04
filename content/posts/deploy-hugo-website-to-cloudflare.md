@@ -11,11 +11,23 @@ tags:
   - hugo
 ---
 
-Cloudflare allows us to deploy and serve static websites for free. We need to configure our GitHub or GitLab project in Cloudflare Pages.
+Cloudflare is one of the leading [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network) providers on the Internet. In addition to its CDN services, Cloudflare offers a comprehensive suite of solutions, including cloud cybersecurity, DDoS mitigation, Wide Area Network (WAN) services, and Domain Name System (DNS) management.
 
-Firstly, we need to buy or rent a DNS for our site. I strongly recommend you [namecheap](https://www.namecheap.com/) because of the low prices and great support (I do not have any kind of deal with them).
+Their [free plan](https://www.cloudflare.com/plans/) offers the following features:
+* **Unlimited bandwidth for static files with low latency**.
+* **Unlimited DDoS protection**.
+* **Universal SSL Certificate**. 
+* Intuitive dashboard with detailed insights and analytics.
+* 500 build minutes per month, with a maximum timeout of 20 minutes per build.
+* Support for up to 100 custom domains.
+* Projects can contain up to 20,000 files.
+* A maximum file size of 25 MiB per asset for Cloudflare Pages sites.
 
-Then, we will create a free account on [Cloudflare](https://cloudflare.com/).
+Review the **latest limits for Cloudflare Pages** [here](https://developers.cloudflare.com/pages/platform/limits/).
+
+First, we need to purchase or rent a domain name for our site. I highly recommend using [Namecheap](https://www.namecheap.com/) due to their affordable prices and excellent customer support (note: I have no affiliation with them).
+
+Next, we'll create a free account on [Cloudflare](https://cloudflare.com/).
 
 ## Creating a website on Cloudflare
 
@@ -89,5 +101,7 @@ sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
 
 
 ## References
+
+* Cloudflare Pages limits: https://developers.cloudflare.com/pages/platform/limits/
 * Namecheap guide: https://www.namecheap.com/support/knowledgebase/article.aspx/9607/2210/how-to-set-up-dns-records-for-your-domain-in-a-cloudflare-account/
 * Cloudflare nameservers: https://developers.cloudflare.com/dns/nameservers
