@@ -51,23 +51,27 @@ The next step is to configure these nameservers with your DNS provider, where yo
 
 If you purchased your domain through a different DNS provider, refer to the instructions from both your provider and Cloudflare. In this guide, we'll be following the steps for Namecheap.
 
-In the `Domain List` sections, select your domain and navigate to `Nameservers`. Change the setting to `Custom DNS`, then enter the Cloudflare nameservers assigned to you.
+In the `Domain List` sections, select your domain and navigate to `Nameservers`. Change the setting to `Custom DNS`, then enter the Cloudflare nameservers assigned to you. 
+
+Do not forget to click on the ✅ button to save the changes.
 
 ![Configure custom DNS on namecheap](/images/deploy-hugo-website-to-cloudflare/namecheap-custom-dns.png)
 
+Cloudflare will periodically check for nameserver updates, but it could be forced by clicking `Check nameservers now`.
+
 ![Check nameservers now](/images/deploy-hugo-website-to-cloudflare/check-nameservers-now.png)
 
-After clicking the button `Check nameservers now`, it will display the following message.
+Once triggered, the following message will be displayed:
 
 ![Checking nameservers](/images/deploy-hugo-website-to-cloudflare/checking-nameservers.png)
 
-According to Cloudflare, it could take a few hours for an update. In my experience, I did this process twice and it took 15 minutes.
+According to Cloudflare, it may take a few hours for the update to complete. However, based on my experience, it usually takes around 15 minutes.
 
-While you wait for the nameserver update, you can check the default DNS records.
+While waiting for the nameserver update, you can review the default DNS records, though no action is required at this point.
 
 ![Default DNS records](/images/deploy-hugo-website-to-cloudflare/default-dns-records.png)
 
-After a few minutes, our DNS setup will be ready.
+After a short while, your website and DNS configuration will be ready.
 
 ![DNS setup is ready](/images/deploy-hugo-website-to-cloudflare/dns-ready.png)
 
