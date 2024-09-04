@@ -4,7 +4,7 @@ date: 2024-08-27T14:09:14+01:00
 draft: true
 toc: false
 image: "/images/deploy-hugo-website-to-cloudflare/logo.png"
-description: "Cloudflare allow us to deploy and serve static websites for free using a GitHub repository. Each commit will trigger an automatic build process on Cloudflare."
+description: "Cloudflare allow us to deploy and serve static websites for free using a GitHub or GitLab repository. Each commit will trigger an automatic build process on Cloudflare."
 tags:
   - git
   - cloudflare
@@ -75,17 +75,33 @@ After a short while, your website and DNS configuration will be ready.
 
 ![DNS setup is ready](/images/deploy-hugo-website-to-cloudflare/dns-ready.png)
 
-## Manage workers
+## Configuring the pipeline and building the project
 
-After having our DNS setup complete, we will have to create our static Cloudflare Page. Under the section `Workers & Pages` we will click on the button `Manager workers`.
+Once the DNS configuration complete, the next step is to create your static Cloudflare Page. In the `Workers & Pages` section, click the `Manager workers` button.
 
 ![Workers routes](/images/deploy-hugo-website-to-cloudflare/workers-routes.png)
 
+Next, click `Connect to Git` button to import an existing Git repository from GitHub or GitLab.
+
 ![Add page worker](/images/deploy-hugo-website-to-cloudflare/add-page-worker.png)
+
+Select the account and the repository to be built and deployed on Cloudflare Pages.
 
 ![Select your repository](/images/deploy-hugo-website-to-cloudflare/select-your-repository.png)
 
+Finally, choose the Framework preset and enter the build command. In my case, this blog is made with Hugo and this is the build command for production.
+
+```bash
+hugo --minify --config config-pro.toml
+```
+
 ![Build settings](/images/deploy-hugo-website-to-cloudflare/build-settings.png)
+
+Once completed, your website will be deployed globally!
+
+At this point, Cloudflare will provide a Cloudflare Pages URL to access your project. In my case, the URL will be `tanis-codes.pages.dev`. 
+
+Each commit will trigger an automatic build process on Cloudflare.
 
 ![Project successfully deployed](/images/deploy-hugo-website-to-cloudflare/project-deployed.png)
 
