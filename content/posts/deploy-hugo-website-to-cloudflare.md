@@ -1,7 +1,7 @@
 ---
 title: "Deploy a Hugo website to Cloudflare"
-date: 2024-08-27T14:09:14+01:00
-draft: true
+date: 2024-09-08T14:51:14+01:00
+draft: false
 toc: false
 image: "/images/deploy-hugo-website-to-cloudflare/logo.png"
 description: "Cloudflare allow us to deploy and serve static websites for free using a GitHub or GitLab repository. Each commit will trigger an automatic build process on Cloudflare."
@@ -133,12 +133,19 @@ sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
 
 ![Custom DNS active](/images/deploy-hugo-website-to-cloudflare/custom-dns-active.png)
 
-## Add www DNS record
+## Add the www DNS record
+
+For SEO purposes, it's beneficial to make the website accessible with `www.` before the domain. This can be configured in the `DNS > Records` section.
+
+In this section, add a new `CNAME` record with `www` as the name and `tanis-codes.pages.dev` as the target. Set the proxy status to **DNS only**. This ensures that requests are routed to Render, allowing them to verify the domain and issue a certificate.
+
+Finally, click the `Save` button.
 
 ![Add www DNS record](/images/deploy-hugo-website-to-cloudflare/add-www-record.png)
 
-![DNS management records](/images/deploy-hugo-website-to-cloudflare/dns-management-records.png)
+The DNS record will be added, but it may take some time for the changes to propagate globally. You might need to flush your local DNS cache to see the updates.
 
+![DNS management records](/images/deploy-hugo-website-to-cloudflare/dns-management-records.png)
 
 ## References
 
