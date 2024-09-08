@@ -107,13 +107,19 @@ Each commit will trigger an automatic build process on Cloudflare.
 
 ## Configure a custom domain for your website
 
-Once completed the preivous steps, we will configure 
+After completing the previous steps, we will configure the purchased DNS to access our website. To do this, navigate to the `Workers & Pages` section, select your page, and go to the `Custom Domains` tab.
 
-Our project is successfully deployed globally, we could access our website through the Cloudflare Pages provided URL. In my case, the URL is `tanis-codes.pages.dev`.
+Next, we will add our custom domain. In this instance, the domain is `tanis.codes`. Once the domain is entered, click the `Continue` button to proceed.
 
 ![Configure custom domain](/images/deploy-hugo-website-to-cloudflare/configure-custom-domain.png)
 
+Cloudflare will add a new `CNAME` DNS record, ensuring that the `tanis.codes` domain resolves to `tanis-codes.pages.dev`. Next, click the `Activate domain` button.
+
+Once the update is complete, visitors will be able to access the website by navigating to `https://tanis.codes`.
+
 ![Confirm new DNS record](/images/deploy-hugo-website-to-cloudflare/confirm-new-dns-record.png)
+
+The new `CNAME` DNS record is being set, and this process may take some time. According to Cloudflare, it can take up to 48 hours for DNS records to fully update. However, in my experience, it typically completes within a few minutes.
 
 ![Verifying custom domain](/images/deploy-hugo-website-to-cloudflare/verifying-custom-domain.png)
 
