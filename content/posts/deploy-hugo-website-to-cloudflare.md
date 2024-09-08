@@ -123,15 +123,15 @@ The new `CNAME` DNS record is being set, and this process may take some time. Ac
 
 ![Verifying custom domain](/images/deploy-hugo-website-to-cloudflare/verifying-custom-domain.png)
 
-![Custom DNS active](/images/deploy-hugo-website-to-cloudflare/custom-dns-active.png)
+Our site is now ready! To ensure you can access the website, you may need to flush your local DNS cache.
 
-Our site is ready! We will need to flush our local DNS records to be able to reach our website.
-
-On MacOS this could be done by typing the following command on the terminal.
+On macOS, this can be done by entering the following command in the terminal.
 
 ```bash
 sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
 ```
+
+![Custom DNS active](/images/deploy-hugo-website-to-cloudflare/custom-dns-active.png)
 
 ## Add www DNS record
 
