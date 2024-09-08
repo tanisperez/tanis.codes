@@ -51,13 +51,13 @@ The next step is to configure these nameservers with your DNS provider, where yo
 
 If you purchased your domain through a different DNS provider, refer to the instructions from both your provider and Cloudflare. In this guide, we'll be following the steps for Namecheap.
 
-In the `Domain List` sections, select your domain and navigate to `Nameservers`. Change the setting to `Custom DNS`, then enter the Cloudflare nameservers assigned to you. 
+In the `Domain List` section, select your domain and navigate to `Nameservers`. Change the setting to `Custom DNS`, then enter the Cloudflare nameservers assigned to you. 
 
 Do not forget to click on the ✅ button to save the changes.
 
 ![Configure custom DNS on namecheap](/images/deploy-hugo-website-to-cloudflare/namecheap-custom-dns.png)
 
-Cloudflare will periodically check for nameserver updates, but it could be forced by clicking `Check nameservers now`.
+Cloudflare will periodically check for nameserver updates, but it may be forced by clicking `Check nameservers now`.
 
 ![Check nameservers now](/images/deploy-hugo-website-to-cloudflare/check-nameservers-now.png)
 
