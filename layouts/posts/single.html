@@ -77,9 +77,14 @@
     </div>
 
     {{- if .Site.Params.EnableSharingButtons }}
-      <hr />
-      <div class="sharing-buttons">
-        {{ partial "sharing-buttons.html" . }}
+      <div class="pagination">
+        <div class="pagination__title">
+            <span class="pagination__title-h">Share this post</span>
+            <hr />
+        </div>
+        <div class="sharing-buttons">
+          {{ partial "sharing-buttons.html" . }}
+        </div>
       </div>
     {{- end }}
 
