@@ -57,17 +57,15 @@
       {{- end }}
     </div>
 
-    {{- if .Site.Params.EnableSharingButtons }}
-      <div class="pagination">
-        <div class="pagination__title">
-            <span class="pagination__title-h">Share this post</span>
-            <hr />
-        </div>
-        <div class="sharing-buttons">
-          {{ partial "sharing-buttons.html" . }}
-        </div>
+    <div class="pagination">
+      <div class="pagination__title">
+          <span class="pagination__title-h">Share this post</span>
+          <hr />
       </div>
-    {{- end }}
+      <div class="sharing-buttons">
+        {{ partial "sharing-buttons.html" . }}
+      </div>
+    </div>
 
     {{ partial "pagination-single.html" . }}
 
