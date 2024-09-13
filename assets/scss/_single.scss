@@ -21,13 +21,24 @@
     }
 
     &-tags {
-        display: block;
-        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 1rem;
+        column-gap: 1rem;
+
         font-size: 1rem;
-        opacity: 0.5;
+
+        span {
+            padding: 0.5rem 1rem;
+            background-color: $dark-background-secondary;
+            border-radius: 8px;
+        }
 
         a {
             text-decoration: none;
+            font-weight: bold;
         }
     }
 
