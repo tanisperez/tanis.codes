@@ -44,17 +44,9 @@
         {{ partial "categories.html" . }}
     </div>
 
-    <div class="pagination">
-        <div class="pagination__title">
-            <span class="pagination__title-h">Share this post</span>
-            <hr />
-        </div>
-        <div class="sharing-buttons">
-            {{ partial "sharing-buttons.html" . }}
-        </div>
-    </div>
+    {{ partial "sharing-buttons.html" . }}
 
     {{ partial "pagination-single.html" . }}
-    
+
 </main>
 {{ end }}
