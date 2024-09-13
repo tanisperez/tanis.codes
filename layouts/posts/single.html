@@ -3,17 +3,7 @@
     <article>
 
       <h1 class="post-title">{{ .Title | markdownify }}</h1>
-      <span>
-      {{ .Date.Month }} {{ .Date.Day }}, {{ .Date.Year }}
-
-      {{ if .Lastmod }} 
-        {{ if not (eq .Lastmod .Date )}}
-          {{ if .Site.Params.dateFormat }}
-            (Modified on: {{ .Lastmod.Month }} {{ .Lastmod.Day }}, {{ .Lastmod.Year }})
-          {{ end }}
-        {{ end }}
-      {{ end }}
-      </span>
+      <span>Last updated on {{ .Lastmod.Month }} {{ .Lastmod.Day }}, {{ .Lastmod.Year }}</span>
 
       {{ if .Params.Cover }}
         <figure class="post-cover">
