@@ -12,9 +12,6 @@ paginate        = 10
     dateformNumTime = "2022-08-07 21:50"
     dateFormat      = "02 Jan 06 15:04 MST"
 
-    # Enable sharing buttons, if you like
-    enableSharingButtons = true
-
 [languages]
     [languages.en]
         title = "tanis.codes"
