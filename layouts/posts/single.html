@@ -55,11 +55,6 @@
     </div>
 
     {{ partial "pagination-single.html" . }}
-
-    {{ if .Site.Params.Commento.Url }}
-    <script defer src={{ .Site.Params.Commento.Url }}></script>
-    <div id="commento"></div>
-    {{ end }}
-
+    
 </main>
 {{ end }}
