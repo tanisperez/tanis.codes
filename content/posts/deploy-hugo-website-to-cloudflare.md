@@ -1,6 +1,7 @@
 ---
 title: "Deploy a Hugo website to Cloudflare"
 date: 2024-09-08T14:51:14+01:00
+lastMod: 2024-14-09T15:44:17+01:00
 draft: false
 toc: false
 image: "/images/deploy-hugo-website-to-cloudflare/logo.png"
@@ -135,17 +136,37 @@ sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
 
 ## Add the www DNS record
 
-For SEO purposes, it's beneficial to make the website accessible with `www.` before the domain. This can be configured in the `DNS > Records` section.
+For SEO purposes, it is beneficial to configure the website to be accessible with the `www.` prefix before the domain. This configuration can be made in the `Workers Routes > Manage Workers` section.
 
-In this section, add a new `CNAME` record with `www` as the name and `tanis-codes.pages.dev` as the target. Set the proxy status to **DNS only**. This ensures that requests are routed to Render, allowing them to verify the domain and issue a certificate.
+![Workers routes](/images/deploy-hugo-website-to-cloudflare/workers-routes.png)
 
-Finally, click the `Save` button.
+At this stage, our production site responds to the DNS records `tanis-codes.pages.dev` and `tanis.codes`. Next, click on the title of the page.
 
-![Add www DNS record](/images/deploy-hugo-website-to-cloudflare/add-www-record.png)
+![Workers and pages](/images/deploy-hugo-website-to-cloudflare/workers-and-pages.png)
 
-The DNS record will be added, but it may take some time for the changes to propagate globally. You might need to flush your local DNS cache to see the updates.
+In the `Deployments` tab, the details of our page and the configured domains are displayed. Next, navigate to the `Custom domains` tab.
 
-![DNS management records](/images/deploy-hugo-website-to-cloudflare/dns-management-records.png)
+![Production page](/images/deploy-hugo-website-to-cloudflare/production-page.png)
+
+Click on the `Set up a custom domain` button.
+
+![Custom domains](/images/deploy-hugo-website-to-cloudflare/production-page-custom-domains.png)
+
+Enter the domain with the `www.` prefix, then click on the `Continue` button.
+
+![Set up a custom domain](/images/deploy-hugo-website-to-cloudflare/set-up-www-custom-domain.png)
+
+You will be prompted to confirm the new DNS record to correctly redirect the page with the `www.` prefix.
+
+![Confirm new DNS record](/images/deploy-hugo-website-to-cloudflare/confirm-www-dns-record.png)
+
+The new custom domain will then begin initializing. This process may take a few minutes to complete.
+
+![Initializing www page](/images/deploy-hugo-website-to-cloudflare/initializing-www-page.png)
+
+Once completed, the page will be successfully configured and accessible with the `www.` prefix.
+
+![Page is ready](/images/deploy-hugo-website-to-cloudflare/www-page-active.png)
 
 ## References
 
