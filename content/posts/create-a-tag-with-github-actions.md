@@ -1,7 +1,6 @@
 ---
 title: "Create a git tag with GitHub Actions"
 date: 2022-08-28T16:12:00+02:00
-lastMod: 2022-08-29T08:32:00+02:00
 draft: false
 toc: false
 image: "/images/create-a-git-tag-with-github-actions/logo.png"

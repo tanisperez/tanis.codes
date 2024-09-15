@@ -1,7 +1,6 @@
 ---
 title: "Deploy a Hugo website to Cloudflare"
-date: 2024-09-08T14:51:14+01:00
-lastMod: 2024-14-09T15:44:17+01:00
+date: 2024-09-08T14:51:14+02:00
 draft: false
 toc: false
 image: "/images/deploy-hugo-website-to-cloudflare/logo.png"
