@@ -373,41 +373,51 @@ hr {
     margin: 10px auto;
 }
 
-.home-article {
-    display: flex;
-    flex-direction: row;
-    text-decoration: none;
-    margin: 1.25rem 0;
-}
-
-.home-article-image {
-    min-width: 120px;
-    margin-right: 2rem;
-    display: flex;
-    align-items: center;
-
-    @media #{$media-size-phone} {
-        margin-right: 1rem;
-    }
-}
-
-.home-article-image img {
-    border-radius: 5px;
-}
-
-.home-article-content {
+.home {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
+    align-items: center;
 
-.home-article-content span {
-    text-align: left;
-    font-size: 1rem;
-}
+    &-articles {
+        margin-bottom: 2rem;
+    }
 
-.home-article-content h2 {
-    padding: 0;
-    margin: 0;
-    text-align: left;
+    &-article {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        margin: 1.25rem 0;
+    }
+    
+    &-article-image {
+        min-width: 120px;
+        margin-right: 2rem;
+        display: flex;
+        align-items: center;
+    
+        @media #{$media-size-phone} {
+            margin-right: 1rem;
+        }
+    }
+    
+    &-article-image img {
+        border-radius: 5px;
+    }
+    
+    &-article-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    &-article-content span {
+        text-align: left;
+        font-size: 1rem;
+    }
+    
+    &-article-content h2 {
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
 }

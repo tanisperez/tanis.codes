@@ -3,30 +3,34 @@
 {{ end }}
 
 {{ define "main" }}
-    <main>
-        <div>
-            <h1>Last articles</h1>
-            <div>
-                {{ $paginator := .Paginate (where .Site.RegularPages "Type" "==" "posts") }}
-                {{ range $paginator.Pages }}
-                
-                <a class="home-article" href="{{.Permalink}}">
-                    <div class="home-article-image">
-                        <img src="{{ with .Params.image }}{{ . }}{{ end }}" decoding="async" width="120" height="70" alt="{{ .Title }}"/>
-                    </div>
-                    <div class="home-article-content">
-                        <h2>{{ .Title }}</h2>
-                        <span>{{ .Date.Month }} {{ .Date.Day }}, {{ .Date.Year }}</span>
-                    </div>
-                </a>
-                {{ end }}
-            </div>
-
-            {{- with .Site.Params.social }}
-                <div>
-                    {{ partial "social-icons.html" . }}
+    <main class="home">
+        <h1>Last articles</h1>
+        <div class="home-articles">
+            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "==" "posts") }}
+            {{ range $paginator.Pages }}
+            
+            <a class="home-article" href="{{.Permalink}}">
+                <div class="home-article-image">
+                    <img src="{{ with .Params.image }}{{ . }}{{ end }}" decoding="async" width="120" height="70" alt="{{ .Title }}"/>
                 </div>
-            {{- end }}
+                <div class="home-article-content">
+                    <h2>{{ .Title }}</h2>
+                    <span>{{ .Date.Month }} {{ .Date.Day }}, {{ .Date.Year }}</span>
+                </div>
+            </a>
+            {{ end }}
         </div>
+
+        <span class="button">
+            <a href="/posts">
+                <span class="button__text">View older posts</span>
+            </a>
+        </span>
+
+        {{- with .Site.Params.social }}
+            <div>
+                {{ partial "social-icons.html" . }}
+            </div>
+        {{- end }}
     </main>
 {{ end }}
