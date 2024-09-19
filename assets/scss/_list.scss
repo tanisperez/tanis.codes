@@ -47,6 +47,7 @@
             padding-top: 6px;
             margin-right: 1.8em;
             font-size: 1.6em;
+            font-weight: bold;
             @include dimmed;
 
             @media #{$media-size-tablet} {
