@@ -26,6 +26,10 @@
         font-size: 1rem;
         list-style: none;
 
+        &:last-of-type {
+            padding-right: 0;
+        }
+
         li {
             margin: 0 12px;
         }
