@@ -38,4 +38,9 @@
         white-space: nowrap;
         overflow: hidden;
     }
+
+    :hover {
+        background-color: $dark-color-hover;
+        border-radius: 8px;
+    }
 }
