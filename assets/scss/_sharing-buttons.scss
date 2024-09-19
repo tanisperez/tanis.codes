@@ -20,6 +20,10 @@
         font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     }
 
+    .resp-sharing-button:hover {
+        background-color: $dark-color-hover;
+    }
+
     .resp-sharing-button__icon svg {
         width: 1.5em;
         height: 1.5em;
