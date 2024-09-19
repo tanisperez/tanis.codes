@@ -2,8 +2,11 @@
     width: 100%;
     max-width: 800px;
     text-align: left;
-    padding: 20px;
-    margin: 20px auto;
+    padding: 0 20px;
+
+    h1 {
+        text-align: center;
+    }
 
     @media #{$media-size-tablet} {
         max-width: 660px;
