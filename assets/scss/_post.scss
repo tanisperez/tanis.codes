@@ -79,6 +79,12 @@
             padding: 0.5rem 1rem;
             background-color: $dark-background-secondary;
             border-radius: 8px;
+            cursor: pointer;
+        }
+
+        span:hover {
+            background-color: $dark-color-hover;
+            border-radius: 8px;
         }
 
         a {
