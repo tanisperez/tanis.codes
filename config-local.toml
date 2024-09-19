@@ -23,6 +23,6 @@ enableGitInfo   = true
         logoHomeLink = "/"
 
     [[menu.main]]
-        identifier = "blog"
-        name       = "Blog"
+        identifier = "posts"
+        name       = "Posts"
         url        = "/posts"
