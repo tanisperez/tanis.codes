@@ -200,6 +200,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .button {
+            min-width: 0;
+        }
     }
 
     .next .button__icon {
