@@ -10,13 +10,22 @@
         flex-direction: row;
         justify-content: center;
         margin-bottom: 10px;
+        gap: 10px;
     }
 
     &-social-icon {
         border-radius: 5px;
         transition: 25ms ease-out;
-        padding: 0.5em 0.75em;
+        padding: 0.5rem;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            width: 24px;
+            height: 24px;
+        }
     }
 
     &-social-icon:hover {
