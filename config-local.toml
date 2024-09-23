@@ -4,6 +4,9 @@ languageCode    = "en-us"
 paginate        = 10
 enableGitInfo   = true
 
+[outputs]
+    home = ["HTML", "RSS", "SearchIndex"]
+
 [params]
     env             = "local"
 
