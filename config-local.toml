@@ -33,6 +33,11 @@ enableGitInfo   = true
         url = "https://x.com/TanisCodes"
         weight = 30
 
+    [[params.social]]
+        name = "rss"
+        url = "/posts/index.xml"
+        weight = 30
+
 [languages]
     [languages.en]
         title = "tanis.codes"
