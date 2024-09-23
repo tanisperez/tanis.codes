@@ -1,0 +1,14 @@
+[
+    {{ $post := where site.RegularPages "Type" "posts" }}
+    {{ range $index, $page :=  $post }}
+        {{ if not $page.Params.draft }}
+            {{ if $index }},{{ end }}
+            {
+                "url": {{ $page.RelPermalink | jsonify }},
+                "title": {{ $page.Title | jsonify}},
+                "tags": {{ $page.Params.Tags | jsonify }},
+                "description": {{ $page.Params.Description | jsonify }}
+            }
+        {{ end }} 
+    {{ end }}
+]
