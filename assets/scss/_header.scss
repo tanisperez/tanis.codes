@@ -28,6 +28,11 @@
         width: 800px;
         max-width: 100%;
     }
+
+    &-search {
+        width: 18px;
+        height: 18px;
+    }
 }
 
 @media #{$media-size-phone} {
