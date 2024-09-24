@@ -10,7 +10,7 @@
         background: $dark-background-header;
     }
     
-    &__right {
+    &-right {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -20,7 +20,7 @@
         }
     }
 
-    &__inner {
+    &-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
