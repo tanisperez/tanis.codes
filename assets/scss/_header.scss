@@ -28,6 +28,14 @@
     &-search {
         width: 18px;
         height: 18px;
+        cursor: pointer;
+        transition-property: color;
+        transition-timing-function: cubic-bezier(.4,0,.2,1);
+        transition-duration: 200ms;
+
+        &:hover {
+            color: $dark-color-menu-hover;
+        }
     }
 }
 
