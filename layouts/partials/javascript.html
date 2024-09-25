@@ -5,7 +5,8 @@
 {{ $assets.Add "js" (slice $menu $search) }}
 
 {{ $prism := resources.Get "js/prism.js" }}
-{{ $assets.Add "js" (slice $prism) }}
+{{ $fuse := resources.Get "js/libs/fuse.min.js" }}
+{{ $assets.Add "js" (slice $prism $fuse) }}
 
 {{ $bundle := $assets.Get "js" | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>
