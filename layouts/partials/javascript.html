@@ -1,7 +1,14 @@
+{{ $assets := newScratch }}
+
 {{ $menu := resources.Get "js/menu.js" }}
+{{ $search := resources.Get "js/search.js" }}
+{{ $assets.Add "js" (slice $menu $search) }}
+
 {{ $prism := resources.Get "js/prism.js" }}
-{{ $secureJS := slice $menu $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
-<script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
+{{ $assets.Add "js" (slice $prism) }}
+
+{{ $bundle := $assets.Get "js" | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>
 
 {{ if eq .Site.Params.Env "pro"}}
     <!-- Google tag (gtag.js) -->
