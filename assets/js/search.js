@@ -1,14 +1,23 @@
 var fuse;
 var indexed = false;
+var searchVisible = false;
 
 const searchButton = document.getElementById("search-article");
+const searchWrapper = document.getElementById("search-wrapper");
+const input = document.getElementById("search-query");
+
 searchButton.addEventListener("click", displaySearch);
 
 function displaySearch() {
     if (!indexed) {
         buildIndex();
     }
-    alert(JSON.stringify(fuse));
+    if (!searchVisible) {
+        document.body.style.overflow = "hidden";
+        searchWrapper.style.visibility = "visible";
+        input.focus();
+        searchVisible = true;
+    }
 }
 
 function buildIndex() {
@@ -40,4 +49,15 @@ function fetchJSON(path, callback) {
     };
     httpRequest.open("GET", path);
     httpRequest.send();
+}
+
+function hideSearch() {
+    if (searchVisible) {
+        document.body.style.overflow = "visible";
+        searchWrapper.style.visibility = "hidden";
+        input.value = "";
+        output.innerHTML = "";
+        document.activeElement.blur();
+        searchVisible = false;
+    }
 }
