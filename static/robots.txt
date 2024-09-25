@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /index.json
 
 Sitemap: https://tanis.codes/sitemap.xml
