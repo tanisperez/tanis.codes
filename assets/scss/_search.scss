@@ -10,7 +10,7 @@
     cursor: default;
     background-color: rgba(24, 24, 27, .5);
     backdrop-filter: blur(4px);
-    padding: 1rem;
+    padding: 12vh;
 
     @media #{$media-size-phone} {
         padding: 1.5rem;
