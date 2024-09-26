@@ -57,6 +57,22 @@
                 justify-content: center;
                 color: rgba(161, 161, 170, 1);
             }
+
+            #search-query {
+                margin-left: .25rem;
+                margin-right: .25rem;
+                display: flex;
+                height: 3rem;
+                flex: auto;
+                appearance: none;
+                background-color: transparent;
+
+                &:focus {
+                    outline-color: transparent;
+                    outline-width: 2px;
+                    outline-style: dotted;
+                }
+            }
         }
     }
 }
