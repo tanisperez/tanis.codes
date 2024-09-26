@@ -66,6 +66,13 @@
                 flex: auto;
                 appearance: none;
                 background-color: transparent;
+                box-sizing: border-box;
+                border-width: 0;
+                border-style: solid;
+                border-color: initial;
+                color: #FFF;
+                font-size: 18px;
+                line-height: 28px;
 
                 &:focus {
                     outline-color: transparent;
