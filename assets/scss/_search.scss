@@ -48,6 +48,15 @@
             min-width: 0;
             flex: auto;
             align-items: center;
+            
+            .search-icon {
+                display: flex;
+                height: 2rem;
+                width: 2rem;
+                align-items: center;
+                justify-content: center;
+                color: rgba(161, 161, 170, 1);
+            }
         }
     }
 }
