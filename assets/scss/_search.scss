@@ -128,14 +128,14 @@
             background-color: rgba(63, 63, 70, 1);
 
             &:focus {
-                background-color: rgba(76, 29, 149, 1);
+                background-color: $dark-color-menu-hover;
                 outline-color: transparent;
                 outline-width: 2px;
                 outline-style: dotted;
             }
 
             &:hover {
-                background-color: rgba(76, 29, 149, 1);
+                background-color: $dark-color-menu-hover;
             }
         }
     }
