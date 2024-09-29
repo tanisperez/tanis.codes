@@ -133,13 +133,16 @@ function executeQuery(term) {
     var results = fuse.search(term);
     var resultsHTML = "";
 
+    var dateFormatter = Intl.DateTimeFormat("en-US", {  year: "numeric", month: "long", day: "numeric"});
+
     if (results.length > 0) {
         resultsHTML = results.map(function (value, key) {
+            var modDate = new Date(value.item.modificationDate);
             return '<li>' +
                 '<a href="' + value.item.url + '" tabindex="0">' +
                     '<div class="result-detail">' +
                         '<div class="result-detail-title">' + value.item.title + '</div>' +
-                        '<div class="result-detail-mod-date">' + value.item.modificationDate + '</div>' +
+                        '<div class="result-detail-mod-date">Last updated on ' + dateFormatter.format(modDate) + '</div>' +
                         '<div class="result-detail-description">' + value.item.description + '</div>' +
                     '</div>' +
                     '<div class="result-detail-arrow">&rarr;</div>' +
