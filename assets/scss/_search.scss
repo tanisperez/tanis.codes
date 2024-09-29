@@ -66,6 +66,20 @@
     align-items: center;
     justify-content: center;
     color: rgba(161, 161, 170, 1);
+
+    span {
+        vertical-align: text-bottom;
+        padding-left: .25rem;
+        padding-right: .25rem;
+        display: inline-block;
+        position: relative;
+
+        svg {
+            height: 1em;
+            width: 1em;
+            display: block;
+        }
+    }
 }
 
 #search-query {
