@@ -96,6 +96,7 @@ function buildIndex() {
             includeMatches: true,
             keys: [
                 { name: "title", weight: 0.8 },
+                { name: "tags", weight: 0.4},
                 { name: "description", weight: 0.2 }
             ],
         };
