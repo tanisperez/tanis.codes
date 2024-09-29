@@ -2,14 +2,26 @@ var fuse;
 var indexed = false;
 var searchVisible = false;
 
+var modal = document.getElementById("search-modal");
 var searchButton = document.getElementById("search-article");
 var searchWrapper = document.getElementById("search-wrapper");
 var hideButton = document.getElementById("close-search-button");
 var input = document.getElementById("search-query");
 var output = document.getElementById("search-results");
 
-
+modal.addEventListener("click", function (event) {
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    return false;
+});
 searchButton.addEventListener("click", displaySearch);
+
+searchWrapper.addEventListener("click", function(event) {
+    hideSearch();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    return false;
+});
 hideButton.addEventListener("click", hideSearch);
 
 function displaySearch() {
@@ -56,12 +68,12 @@ function fetchJSON(path, callback) {
 }
 
 function hideSearch() {
-    //if (searchVisible) {
+    if (searchVisible) {
         document.body.style.overflow = "visible";
         searchWrapper.style.visibility = "hidden";
         input.value = "";
         output.innerHTML = "";
         document.activeElement.blur();
         searchVisible = false;
-    //}
+    }
 }
