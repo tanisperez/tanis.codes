@@ -9,6 +9,9 @@ var hideButton = document.getElementById("close-search-button");
 var input = document.getElementById("search-query");
 var output = document.getElementById("search-results");
 
+var first = output.firstChild;
+var last = output.lastChild;
+
 modal.addEventListener("click", function (event) {
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -23,6 +26,10 @@ searchWrapper.addEventListener("click", function(event) {
     return false;
 });
 hideButton.addEventListener("click", hideSearch);
+
+input.onkeyup = function (event) {
+    executeQuery(this.value);
+};
 
 function displaySearch() {
     if (!indexed) {
@@ -75,5 +82,37 @@ function hideSearch() {
         output.innerHTML = "";
         document.activeElement.blur();
         searchVisible = false;
+    }
+}
+
+function executeQuery(term) {
+    var results = fuse.search(term);
+    var resultsHTML = "";
+
+    if (results.length > 0) {
+        // prettier-ignore
+        resultsHTML = results.map(function (value, key) {
+            return `<li>
+            <a href="${value.item.url}" tabindex="0">
+                <div class="grow">
+                <div class="-mb-1 text-lg font-bold">${value.item.title}</div>
+                <div class="text-sm text-neutral-500 dark:text-neutral-400">${value.item.modificationDate}</div>
+                <div class="text-sm italic">${value.item.description}</div>
+                </div>
+                <div class="ml-2 ltr:block rtl:hidden text-neutral-500">&rarr;</div>
+                <div class="mr-2 ltr:hidden rtl:block text-neutral-500">&larr;</div>
+            </a>
+            </li>`;
+        }).join("");
+        hasResults = true;
+    } else {
+        resultsHTML = "";
+        hasResults = false;
+    }
+
+    output.innerHTML = resultsHTML;
+    if (results.length > 0) {
+        first = output.firstChild.firstElementChild;
+        last = output.lastChild.firstElementChild;
     }
 }

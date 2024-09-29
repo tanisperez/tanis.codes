@@ -109,6 +109,35 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    li {
+        margin-bottom: .5rem;
+
+        a {
+            display: flex;
+            align-items: center;
+
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            padding-left: .75rem;
+            padding-right: .75rem;
+
+            border-radius: .375rem;
+            appearance: none;
+            background-color: rgba(63, 63, 70, 1);
+
+            &:focus {
+                background-color: rgba(76, 29, 149, 1);
+                outline-color: transparent;
+                outline-width: 2px;
+                outline-style: dotted;
+            }
+
+            &:hover {
+                background-color: rgba(76, 29, 149, 1);
+            }
+        }
+    }
 }
 
 #close-search-button {
