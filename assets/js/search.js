@@ -4,9 +4,13 @@ var searchVisible = false;
 
 var searchButton = document.getElementById("search-article");
 var searchWrapper = document.getElementById("search-wrapper");
+var hideButton = document.getElementById("close-search-button");
 var input = document.getElementById("search-query");
+var output = document.getElementById("search-results");
+
 
 searchButton.addEventListener("click", displaySearch);
+hideButton.addEventListener("click", hideSearch);
 
 function displaySearch() {
     if (!indexed) {
@@ -52,12 +56,12 @@ function fetchJSON(path, callback) {
 }
 
 function hideSearch() {
-    if (searchVisible) {
+    //if (searchVisible) {
         document.body.style.overflow = "visible";
         searchWrapper.style.visibility = "hidden";
         input.value = "";
         output.innerHTML = "";
         document.activeElement.blur();
         searchVisible = false;
-    }
+    //}
 }
