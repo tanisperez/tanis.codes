@@ -6,6 +6,7 @@
             {
                 "url": {{ $page.RelPermalink | jsonify }},
                 "title": {{ $page.Title | jsonify}},
+                "modificationDate": {{ $page.Lastmod | jsonify }},
                 "tags": {{ $page.Params.Tags | jsonify }},
                 "description": {{ $page.Params.Description | jsonify }}
             }
