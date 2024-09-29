@@ -3,3 +3,6 @@ run:
 
 build:
 	hugo --minify --config config-pro.toml
+
+clean:
+	rm -Rf public/

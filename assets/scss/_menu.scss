@@ -16,13 +16,13 @@
         display: none;
     }
 
-    &__inner {
+    &-inner {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         max-width: 100%;
         margin: 0 auto;
-        padding: 0 15px;
+        padding: 0;
         font-size: 1rem;
         list-style: none;
 
@@ -64,6 +64,7 @@
         margin-right: 15px;
         text-decoration: none;
         font-weight: bold;
+        font-size: 18px;
 
         &:hover {
             text-decoration: underline;

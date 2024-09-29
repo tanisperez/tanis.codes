@@ -10,23 +10,32 @@
         background: $dark-background-header;
     }
     
-    &__right {
+    &-right {
         display: flex;
         flex-direction: row;
         align-items: center;
-
-        @media #{$media-size-phone} {
-            flex-direction: row-reverse;
-        }
     }
 
-    &__inner {
+    &-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin: 0 auto;
         width: 800px;
         max-width: 100%;
+    }
+
+    &-search {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        transition-property: color;
+        transition-timing-function: cubic-bezier(.4,0,.2,1);
+        transition-duration: 200ms;
+
+        &:hover {
+            color: $dark-color-menu-hover;
+        }
     }
 }
 
