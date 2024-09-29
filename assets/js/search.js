@@ -81,6 +81,7 @@ function displaySearch() {
     if (!searchVisible) {
         document.body.style.overflow = "hidden";
         searchWrapper.style.visibility = "visible";
+        input.value = "";
         input.focus();
         searchVisible = true;
     }
