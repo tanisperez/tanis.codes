@@ -2,9 +2,9 @@ var fuse;
 var indexed = false;
 var searchVisible = false;
 
-const searchButton = document.getElementById("search-article");
-const searchWrapper = document.getElementById("search-wrapper");
-const input = document.getElementById("search-query");
+var searchButton = document.getElementById("search-article");
+var searchWrapper = document.getElementById("search-wrapper");
+var input = document.getElementById("search-query");
 
 searchButton.addEventListener("click", displaySearch);
 
