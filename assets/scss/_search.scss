@@ -150,3 +150,10 @@
         }
     }
 }
+
+#search-query::-webkit-search-cancel-button,
+#search-query::-webkit-search-decoration,
+#search-query::-webkit-search-results-button,
+#search-query::-webkit-search-results-decoration {
+    display: none;
+}
