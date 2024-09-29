@@ -116,6 +116,7 @@
         a {
             display: flex;
             align-items: center;
+            text-decoration: none;
 
             padding-top: .5rem;
             padding-bottom: .5rem;
@@ -138,6 +139,35 @@
             }
         }
     }
+}
+
+.result-detail {
+    flex-grow: 1;
+}
+
+.result-detail-title {
+    margin-bottom: -.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+}
+
+.result-detail-mod-date {
+    color: rgba(161, 161, 170, 1);
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.result-detail-description {
+    font-style: italic;
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.result-detail-arrow {
+    display: block;
+    color: rgba(113, 113, 122, 1);
+    margin-left: .5rem;
 }
 
 #close-search-button {

@@ -94,13 +94,12 @@ function executeQuery(term) {
         resultsHTML = results.map(function (value, key) {
             return `<li>
             <a href="${value.item.url}" tabindex="0">
-                <div class="grow">
-                <div class="-mb-1 text-lg font-bold">${value.item.title}</div>
-                <div class="text-sm text-neutral-500 dark:text-neutral-400">${value.item.modificationDate}</div>
-                <div class="text-sm italic">${value.item.description}</div>
+                <div class="result-detail">
+                    <div class="result-detail-title">${value.item.title}</div>
+                    <div class="result-detail-mod-date">${value.item.modificationDate}</div>
+                    <div class="result-detail-description">${value.item.description}</div>
                 </div>
-                <div class="ml-2 ltr:block rtl:hidden text-neutral-500">&rarr;</div>
-                <div class="mr-2 ltr:hidden rtl:block text-neutral-500">&larr;</div>
+                <div class="result-detail-arrow">&rarr;</div>
             </a>
             </li>`;
         }).join("");
