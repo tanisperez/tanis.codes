@@ -143,10 +143,11 @@
 
 .result-detail {
     flex-grow: 1;
+    text-align: left;
 }
 
 .result-detail-title {
-    color: $dark-color;
+    color: $white;
     margin-bottom: -.25rem;
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -154,13 +155,14 @@
 }
 
 .result-detail-mod-date {
-    color: rgba(161, 161, 170, 1);
+    color: $dark-color;
     font-size: .875rem;
     line-height: 1.25rem;
+    margin-bottom: 10px;
 }
 
 .result-detail-description {
-    font-style: italic;
+    color: $white;
     font-size: .875rem;
     line-height: 1.25rem;
 }
