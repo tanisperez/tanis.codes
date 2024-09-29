@@ -90,18 +90,17 @@ function executeQuery(term) {
     var resultsHTML = "";
 
     if (results.length > 0) {
-        // prettier-ignore
         resultsHTML = results.map(function (value, key) {
-            return `<li>
-            <a href="${value.item.url}" tabindex="0">
-                <div class="result-detail">
-                    <div class="result-detail-title">${value.item.title}</div>
-                    <div class="result-detail-mod-date">${value.item.modificationDate}</div>
-                    <div class="result-detail-description">${value.item.description}</div>
-                </div>
-                <div class="result-detail-arrow">&rarr;</div>
-            </a>
-            </li>`;
+            return '<li>' +
+                '<a href="' + value.item.url + '" tabindex="0">' +
+                    '<div class="result-detail">' +
+                        '<div class="result-detail-title">' + value.item.title + '</div>' +
+                        '<div class="result-detail-mod-date">' + value.item.modificationDate + '</div>' +
+                        '<div class="result-detail-description">' + value.item.description + '</div>' +
+                    '</div>' +
+                    '<div class="result-detail-arrow">&rarr;</div>' +
+                '</a>' +
+                '</li>';
         }).join("");
         hasResults = true;
     } else {
