@@ -31,6 +31,49 @@ input.onkeyup = function (event) {
     executeQuery(this.value);
 };
 
+document.addEventListener("keydown", function (event) {
+    // Forward slash to open search wrapper
+    if (event.key == "/") {
+        if (!searchVisible) {
+            event.preventDefault();
+            displaySearch();
+        }
+    }
+
+    // Esc to close search wrapper
+    if (event.key == "Escape") {
+        hideSearch();
+    }
+
+    // Down arrow to move down results list
+    if (event.key == "ArrowDown") {
+        if (searchVisible && hasResults) {
+            event.preventDefault();
+            if (document.activeElement == input) {
+                first.focus();
+            } else if (document.activeElement == last) {
+                last.focus();
+            } else {
+                document.activeElement.parentElement.nextSibling.firstElementChild.focus();
+            }
+        }
+    }
+
+    // Up arrow to move up results list
+    if (event.key == "ArrowUp") {
+        if (searchVisible && hasResults) {
+            event.preventDefault();
+            if (document.activeElement == input) {
+                input.focus();
+            } else if (document.activeElement == first) {
+                input.focus();
+            } else {
+                document.activeElement.parentElement.previousSibling.firstElementChild.focus();
+            }
+        }
+    }
+});
+
 function displaySearch() {
     if (!indexed) {
         buildIndex();
