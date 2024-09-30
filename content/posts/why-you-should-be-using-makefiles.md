@@ -60,7 +60,7 @@ Consider this simple example of a "Hello, World!" program:
 
 ```bash
 hello:
-    echo "Hello World!"
+	echo "Hello World!"
 ```
 When you type `make`, the output will be:
 
@@ -75,10 +75,10 @@ When you execute `make` without any arguments, it will invoke the first rule def
 
 ```bash
 hello:
-    echo "Hello World!"
+	echo "Hello World!"
 
 example:
-    echo "This is another rule"
+	echo "This is another rule"
 ```
 
 If we run the `make` command again, the output will remain the same as before. However, we can execute a specific rule using the following command:
@@ -97,10 +97,10 @@ We can sequence the execution of rules as follows:
 
 ```bash
 hello:
-    echo "Hello World!"
+	echo "Hello World!"
 
 example: hello
-    echo "This is another rule"
+	echo "This is another rule"
 ```
 
 In this case, when the `make example` command is run, it will first execute the `hello` rule, followed by the `example` rule.
@@ -139,7 +139,7 @@ Rather than typing `hugo --config config-local.toml server -D` each time I wish 
 
 In JavaScript projects, it is common to use `npm` as a dependency management and build tool. I typically maintain a `Makefile` structured as follows:
 
-```bash
+```makefile
 test:
 	npm test
 
