@@ -135,9 +135,9 @@ clean:
 	rm -Rf public/
 ```
 
-Instead of typing `hugo --config config-local.toml server -D` every time I want to run this blog in my computer, I just type `make run`.
+Rather than typing `hugo --config config-local.toml server -D` each time I wish to run this blog on my computer, I simply enter `make run`.
 
-For React projects it is common to use `npm` as dependency managment and building tool. I usually have a `Makefile` like this:
+In JavaScript projects, it is common to use `npm` as a dependency management and build tool. I typically maintain a `Makefile` structured as follows:
 
 ```bash
 test:
@@ -153,7 +153,7 @@ run-pro: build
 	npm run start
 ```
 
-When I work with some Java or Kotlin projects with `maven` I have the following `Makefile`:
+When working on Java or Kotlin projects using `Maven`, I have the following `Makefile`:
 
 ```bash
 clean:
