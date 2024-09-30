@@ -9,75 +9,120 @@ tags:
   - makefile
   - build tools
 ---
-A **Makefile** is a text file which defines rules for building software using the [make](https://en.wikipedia.org/wiki/Make_(software)) program. The original purpose of the `make` program was for building applications written in C or C++, but you can use it for everything you want.
+A **Makefile** is a text file which defines rules for building software using the [make](https://en.wikipedia.org/wiki/Make_(software)) program. Originally designed for applications written in C or C++, `make` can be used for a wide variety of programming tasks.
 
+## Syntax
 
-## Example
-A `Makefile` must be plain text and indented with tabs. If no `-f` option is used with `make`, it will look for the makefiles **GNUmakefile**, **makefile**, and **Makefile**, in that order. The most common name to use is **Makefile**.
+A `Makefile` must be plain text and use tabs for indentation. If the `-f` option is not specified when running `make`, it will search for the following makefiles in this order:
+
+1. **GNUmakefile**
+2. **makefile**
+3. **Makefile**
+
+The most commonly used name is **Makefile**.
+
+The Makefile language is partially declarative, where end conditions are specified but the order of actions is not.
+
+Makefiles can include the following constructs:
+
+- **Explicit Rule**: Defines when and how to update a target by listing its prerequisites (dependent targets) and the commands that execute the update, known as the recipe.
+- **Implicit Rule**: Specifies how to remake a class of files based on their names, detailing the dependencies and the update recipe for targets with similar names.
+- **Variable Definition**: Associates a text value with a name, allowing that value to be substituted into the Makefile at a later point.
+- **Directive**: An instruction that performs special actions, such as including another Makefile.
+- **Comment**: Any line that begins with `#`, which is ignored by `make` and used for explanatory notes.
+
+## Rules
+
+Each rule begins with a dependency line, which comprises the rule's target name followed by a colon `:`. This line may also include an optional list of prerequisites, or targets upon which the rule's target depends.
+
+### Basic rule syntax
 
 ```bash
-hello:
-    echo "Hello World!"
+target [target ...]: [component ...]
+Tab ↹[command 1]
+	   .
+	   .
+	   .
+Tab ↹[command n]
 ```
 
-If we type `make` it will output the following:
+### Make command syntax
+
+The basic syntax for the `make` program is as follows:
+
+```bash
+make [-f makefile] [options] [targets]
+```
+
+### "Hello, World!" example
+
+Consider this simple example of a "Hello, World!" program:
+
+```bash
+first:
+	echo "Hello World!"
+```
+When you type `make`, the output will be:
 
 ```bash
 echo "Hello World!"
 Hello World!
 ```
 
-Executing `make` without arguments will execute the first rule defined in the `Makefile`. We are going to add another rule:
+### Chaining rules in the Makefile
+
+When you execute `make` without any arguments, it will invoke the first rule defined in the **Makefile**. To illustrate, let us define an additional rule:
 
 ```bash
-hello:
-    echo "Hello World!"
+first:
+	echo "Hello World!"
 
-example:
-    echo "This is another rule"
+second:
+	echo "This is another rule"
 ```
 
-If we type again `make` it will output the same as before, but we can execute a specific rule like this:
+If we run the `make` command again, the output will remain the same as before. However, we can execute a specific rule using the following command:
 
 ```bash
 make hello
 echo "Hello World!"
 Hello World!
 
-make example
+make second
 echo "This is another rule"
 This is another rule
 ```
 
-We can chain rules execution like this:
+We can chain the execution of rules as follows:
 
 ```bash
-hello:
-    echo "Hello World!"
+first:
+	echo "Hello World!"
 
-example: hello
-    echo "This is another rule"
+second: first
+	echo "This is another rule"
 ```
 
-When we type the command `make example` it will execute the `hello` rule first and then the rule itself.
+In this case, when the `make second` command is run, it will first execute the `first` rule, followed by the `second` rule.
 
 ```bash
-make example
+make second
 echo "Hello World!"
 Hello World!
 echo "This is another rule"
 This is another rule
 ```
 
-This is a very basic usage, you can learn everything about the Makefiles [here](https://makefiletutorial.com/).
+This is a very basic demonstration. For a more detailed guide on Makefiles, please refer to [this resource](https://makefiletutorial.com).
 
-## Why we should use Makefiles?
+## The importance of using Makefiles
 
 We have different building tools for every programming language and that is great, but I find it quite useful having a `Makefile` in every project as a shortcut.
 
-For example, [this blog](https://github.com/tanisperez/tanis.codes/blob/main/Makefile) has a `Makefile` with 2 rules:
-* **run**: It runs Hugo in development mode.
-* **build**: Hugo will minify the HTML, CSS and JavaScript for deploying in production.
+For instance, [this blog](https://github.com/tanisperez/tanis.codes/blob/main/Makefile) has a `Makefile` with three rules:
+* **run**: This rule starts Hugo in development mode.
+* **build**: This rule minifies the HTML, CSS, and JavaScript for production deployment.
+* **clean**: This rule removes the `public` folder containing generated files.
 
 ```bash
 run:
@@ -85,13 +130,16 @@ run:
 
 build:
 	hugo --minify --config config-pro.toml
+
+clean:
+	rm -Rf public/
 ```
 
-Instead of typing `hugo --config config-local.toml server -D` every time I want to run this blog in my computer, I just type `make run`.
+Rather than typing `hugo --config config-local.toml server -D` each time I wish to run this blog on my computer, I simply enter `make run`.
 
-For React projects it is common to use `npm` as dependency managment and building tool. I usually have a `Makefile` like this:
+In JavaScript projects, it is common to use `npm` as a dependency management and build tool. I typically maintain a `Makefile` structured as follows:
 
-```bash
+```makefile
 test:
 	npm test
 
@@ -105,7 +153,7 @@ run-pro: build
 	npm run start
 ```
 
-When I work with some Java or Kotlin projects with `maven` I have the following `Makefile`:
+When working on Java or Kotlin projects using `Maven`, I have the following `Makefile`:
 
 ```bash
 clean:
@@ -146,7 +194,7 @@ dependency-check:
 
 ## Conclusion
 
-Makefiles are useful when you work with a lot of different projects and you do not remember how to build it or run a specific task. If you have a `Makefile` you can check it quickly and get the work done.
+Makefiles are helpful when working on multiple projects and you can't always remember how to build or run specific tasks. With a Makefile, you can quickly check the steps and get things done more efficiently.
 
 ## References
 
