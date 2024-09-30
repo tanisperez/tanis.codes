@@ -59,7 +59,7 @@ make [-f makefile] [options] [targets]
 Consider this simple example of a "Hello, World!" program:
 
 ```bash
-hello:
+first:
 	echo "Hello World!"
 ```
 When you type `make`, the output will be:
@@ -74,10 +74,10 @@ Hello World!
 When you execute `make` without any arguments, it will invoke the first rule defined in the **Makefile**. To illustrate, let us define an additional rule:
 
 ```bash
-hello:
+first:
 	echo "Hello World!"
 
-example:
+second:
 	echo "This is another rule"
 ```
 
@@ -88,25 +88,25 @@ make hello
 echo "Hello World!"
 Hello World!
 
-make example
+make second
 echo "This is another rule"
 This is another rule
 ```
 
-We can sequence the execution of rules as follows:
+We can chain the execution of rules as follows:
 
 ```bash
-hello:
+first:
 	echo "Hello World!"
 
-example: hello
+second: first
 	echo "This is another rule"
 ```
 
-In this case, when the `make example` command is run, it will first execute the `hello` rule, followed by the `example` rule.
+In this case, when the `make second` command is run, it will first execute the `first` rule, followed by the `second` rule.
 
 ```bash
-make example
+make second
 echo "Hello World!"
 Hello World!
 echo "This is another rule"
