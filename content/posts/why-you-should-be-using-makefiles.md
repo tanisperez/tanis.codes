@@ -9,25 +9,69 @@ tags:
   - makefile
   - build tools
 ---
-A **Makefile** is a text file which defines rules for building software using the [make](https://en.wikipedia.org/wiki/Make_(software)) program. The original purpose of the `make` program was for building applications written in C or C++, but you can use it for everything you want.
+A **Makefile** is a text file which defines rules for building software using the [make](https://en.wikipedia.org/wiki/Make_(software)) program. Originally designed for applications written in C or C++, `make` can be used for a wide variety of programming tasks.
 
+## Syntax
 
-## Example
-A `Makefile` must be plain text and indented with tabs. If no `-f` option is used with `make`, it will look for the makefiles **GNUmakefile**, **makefile**, and **Makefile**, in that order. The most common name to use is **Makefile**.
+A `Makefile` must be plain text and use tabs for indentation. If the `-f` option is not specified when running `make`, it will search for the following makefiles in this order:
+
+1. **GNUmakefile**
+2. **makefile**
+3. **Makefile**
+
+The most commonly used name is **Makefile**.
+
+The Makefile language is partially declarative, where end conditions are specified but the order of actions is not.
+
+Makefiles can include the following constructs:
+
+- **Explicit Rule**: Defines when and how to update a target by listing its prerequisites (dependent targets) and the commands that execute the update, known as the recipe.
+- **Implicit Rule**: Specifies how to remake a class of files based on their names, detailing the dependencies and the update recipe for targets with similar names.
+- **Variable Definition**: Associates a text value with a name, allowing that value to be substituted into the Makefile at a later point.
+- **Directive**: An instruction that performs special actions, such as including another Makefile.
+- **Comment**: Any line that begins with `#`, which is ignored by `make` and used for explanatory notes.
+
+## Rules
+
+Each rule begins with a dependency line, which comprises the rule's target name followed by a colon `:`. This line may also include an optional list of prerequisites, or targets upon which the rule's target depends.
+
+### Basic rule syntax
+
+```bash
+target [target ...]: [component ...]
+Tab ↹[command 1]
+	   .
+	   .
+	   .
+Tab ↹[command n]
+```
+
+### Make command syntax
+
+The basic syntax for the `make` program is as follows:
+
+```bash
+make [-f makefile] [options] [targets]
+```
+
+### "Hello, World!" example
+
+Consider this simple example of a "Hello, World!" program:
 
 ```bash
 hello:
     echo "Hello World!"
 ```
-
-If we type `make` it will output the following:
+When you type `make`, the output will be:
 
 ```bash
 echo "Hello World!"
 Hello World!
 ```
 
-Executing `make` without arguments will execute the first rule defined in the `Makefile`. We are going to add another rule:
+### Chaining rules in the Makefile
+
+When you execute `make` without any arguments, it will invoke the first rule defined in the **Makefile**. To illustrate, let us define an additional rule:
 
 ```bash
 hello:
@@ -37,7 +81,7 @@ example:
     echo "This is another rule"
 ```
 
-If we type again `make` it will output the same as before, but we can execute a specific rule like this:
+If we run the `make` command again, the output will remain the same as before. However, we can execute a specific rule using the following command:
 
 ```bash
 make hello
@@ -49,7 +93,7 @@ echo "This is another rule"
 This is another rule
 ```
 
-We can chain rules execution like this:
+We can sequence the execution of rules as follows:
 
 ```bash
 hello:
@@ -59,7 +103,7 @@ example: hello
     echo "This is another rule"
 ```
 
-When we type the command `make example` it will execute the `hello` rule first and then the rule itself.
+In this case, when the `make example` command is run, it will first execute the `hello` rule, followed by the `example` rule.
 
 ```bash
 make example
@@ -69,7 +113,7 @@ echo "This is another rule"
 This is another rule
 ```
 
-This is a very basic usage, you can learn everything about the Makefiles [here](https://makefiletutorial.com/).
+This is a very basic demonstration. For a more detailed guide on Makefiles, please refer to [this resource](https://makefiletutorial).
 
 ## Why we should use Makefiles?
 
