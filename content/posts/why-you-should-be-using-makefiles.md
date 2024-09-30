@@ -190,7 +190,7 @@ dependency-check:
 
 ## Conclusion
 
-Makefiles are useful when you work with a lot of different projects and you do not remember how to build it or run a specific task. If you have a `Makefile` you can check it quickly and get the work done.
+Makefiles are helpful when working on multiple projects and you can't always remember how to build or run specific tasks. With a Makefile, you can quickly check the steps and get things done more efficiently.
 
 ## References
 
