@@ -115,13 +115,14 @@ This is another rule
 
 This is a very basic demonstration. For a more detailed guide on Makefiles, please refer to [this resource](https://makefiletutorial.com).
 
-## Why we should use Makefiles?
+## The importance of using Makefiles
 
 We have different building tools for every programming language and that is great, but I find it quite useful having a `Makefile` in every project as a shortcut.
 
-For example, [this blog](https://github.com/tanisperez/tanis.codes/blob/main/Makefile) has a `Makefile` with 2 rules:
-* **run**: It runs Hugo in development mode.
-* **build**: Hugo will minify the HTML, CSS and JavaScript for deploying in production.
+For instance, [this blog](https://github.com/tanisperez/tanis.codes/blob/main/Makefile) has a `Makefile` with three rules:
+* **run**: This rule starts Hugo in development mode.
+* **build**: This rule minifies the HTML, CSS, and JavaScript for production deployment.
+* **clean**: This rule removes the `public` folder containing generated files.
 
 ```bash
 run:
@@ -129,6 +130,9 @@ run:
 
 build:
 	hugo --minify --config config-pro.toml
+
+clean:
+	rm -Rf public/
 ```
 
 Instead of typing `hugo --config config-local.toml server -D` every time I want to run this blog in my computer, I just type `make run`.
