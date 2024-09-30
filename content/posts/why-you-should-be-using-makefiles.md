@@ -113,7 +113,7 @@ echo "This is another rule"
 This is another rule
 ```
 
-This is a very basic demonstration. For a more detailed guide on Makefiles, please refer to [this resource](https://makefiletutorial).
+This is a very basic demonstration. For a more detailed guide on Makefiles, please refer to [this resource](https://makefiletutorial.com).
 
 ## Why we should use Makefiles?
 
