@@ -39,7 +39,7 @@ enableGitInfo   = true
 [languages]
     [languages.en]
         title = "tanis.codes"
-        copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+        copyright = "Creative Commons CC BY-NC 4.0"
 
     [languages.en.params.logo]
         logoText = "tanis.codes"
