@@ -2,7 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Estanislao Pérez Nartallo">
-<meta name="description" content="Articles and tutorials about programming, clean code, patterns, command line, build tools, hardware and integrated systems" />
+<meta name="description" content="{{ .Description }}" />
 
 <meta name="keywords" content="developer, programming, clean code, systems, build tools" />
 <meta name="googlebot" content="index,follow">
@@ -14,12 +14,15 @@
 {{ block "title" . }}
     <title>
         {{ if .IsHome }}
-            {{ $.Site.Title }} | Backend, DevOps, Systems, Performance
+            {{ $.Site.Title }} | {{ .Site.Params.homeTitle }}
         {{ else }}
             {{ .Title }}
         {{ end }}
     </title>
 {{ end }}
+
+<!-- OpenGraph -->
+{{- partial "opengraph.html" . }}
 
 <!-- CSS -->
 {{ $options := (dict "targetPath" "main.css" "outputStyle" "compressed" "enableSourceMap" true) }}
