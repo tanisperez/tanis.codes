@@ -16,11 +16,6 @@ enableGitInfo   = true
     dateformNumTime = "2022-08-07 21:50"
     dateFormat      = "02 Jan 06 15:04 MST"
 
-    [params.footer]
-        author = "Estanislao Pérez Nartallo"
-        copyright = true
-        rss = true
-
     [[params.social]]
         name = "linkedin"
         url = "https://www.linkedin.com/in/pereznartallo/"
@@ -44,7 +39,7 @@ enableGitInfo   = true
 [languages]
     [languages.en]
         title = "tanis.codes"
-        copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+        copyright = "Creative Commons CC BY-NC 4.0"
 
     [languages.en.params.logo]
         logoText = "tanis.codes"
