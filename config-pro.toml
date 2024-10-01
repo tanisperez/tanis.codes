@@ -16,11 +16,6 @@ enableGitInfo   = true
     dateformNumTime = "2022-08-07 21:50"
     dateFormat      = "02 Jan 06 15:04 MST"
 
-    [params.footer]
-        author = "Estanislao Pérez Nartallo"
-        copyright = true
-        rss = true
-
     [[params.social]]
         name = "linkedin"
         url = "https://www.linkedin.com/in/pereznartallo/"
