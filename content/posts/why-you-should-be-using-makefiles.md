@@ -194,7 +194,9 @@ dependency-check:
 
 ## Conclusion
 
-Makefiles are helpful when working on multiple projects and you can't always remember how to build or run specific tasks. With a Makefile, you can quickly check the steps and get things done more efficiently.
+Makefiles are invaluable when joining a new team or supporting a legacy project that lacks documentation. If such a project includes a **Makefile**, you can at least build and run the project, even in the absence of technical documentation.
+
+Makefiles are straightforward plain text files that seamlessly integrate with a Git repository and can significantly enhance the project's documentation, particularly when referenced in the `README.md`.
 
 ## References
 
