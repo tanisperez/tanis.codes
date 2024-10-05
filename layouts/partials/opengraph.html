@@ -1,7 +1,11 @@
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{ $.Title }} | {{ .Site.Params.homeTitle }}">
+{{ if .IsHome }}
+    <meta property="og:title" content="{{ $.Title }} | {{ .Site.Params.homeTitle }}">
+{{ else }}
+    <meta property="og:title" content="{{ $.Title }}">
+{{ end }}
 <meta property="og:description" content="{{ .Site.Params.description }}">
 <meta property="og:image" content="/opengraph.png">
 
@@ -9,6 +13,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content="tanis.codes">
 <meta property="twitter:url" content="{{ .Permalink }}">
-<meta name="twitter:title" content="{{ $.Title }} | {{ .Site.Params.homeTitle }}">
+{{ if .IsHome }}
+    <meta name="twitter:title" content="{{ $.Title }} | {{ .Site.Params.homeTitle }}">
+{{ else }}
+    <meta name="twitter:title" content="{{ $.Title }}">
+{{ end }}
 <meta name="twitter:description" content="{{ .Site.Params.description }}">
 <meta name="twitter:image" content="/opengraph.png">
