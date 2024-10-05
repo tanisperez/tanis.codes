@@ -46,6 +46,20 @@ Tab ↹[command 1]
 Tab ↹[command n]
 ```
 
+### Installation
+
+For Debian-based Linux distributions or Windows Subsystem for Linux (WSL), it can be installed using `apt-get`:
+
+```bash
+sudo apt-get install make
+```
+
+On macOS, it can be easily installed using Homebrew:
+
+```bash
+brew install make
+```
+
 ### Make command syntax
 
 The basic syntax for the `make` program is as follows:
