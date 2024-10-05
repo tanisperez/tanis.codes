@@ -1,5 +1,5 @@
 ---
-title: "Why you should be using Makefiles?"
+title: "Why you should be using Makefiles"
 date: 2022-08-19T17:06:00+02:00
 draft: false
 toc: false
