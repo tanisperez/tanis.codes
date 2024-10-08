@@ -44,6 +44,9 @@ enableGitInfo   = true
         title = "tanis.codes"
         copyright = "Creative Commons CC BY-NC 4.0"
 
+    [languages.en.params.author]
+        name = "Estanislao Pérez Nartallo"
+
     [languages.en.params.logo]
         logoText = "tanis.codes"
         logoHomeLink = "/"

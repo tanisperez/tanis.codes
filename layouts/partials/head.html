@@ -12,14 +12,15 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 
 {{ block "title" . }}
-    <title>
-        {{ if .IsHome }}
-            {{ $.Site.Title }} | {{ .Site.Params.homeTitle }}
-        {{ else }}
-            {{ .Title }}
-        {{ end }}
-    </title>
+    {{ if .IsHome }}
+        <title>{{ $.Site.Title }} | {{ .Site.Params.homeTitle }}</title>
+    {{ else }}
+        <title>{{ .Title }}</title>
+    {{ end }}
 {{ end }}
+
+<!-- Schema.org -->
+{{- partial "schema.html" . }}
 
 <!-- OpenGraph -->
 {{- partial "opengraph.html" . }}
