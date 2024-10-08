@@ -10,7 +10,7 @@ enableGitInfo   = true
 [params]
     env             = "pro"
 
-    homeTitle       = "Backend, DevOps, Systems, Performance"
+    homeTitle       = "Articles about Backend, DevOps, Systems and Performance"
     description     = "Articles and tutorials about programming, clean code, patterns, command line, build tools, hardware and integrated systems"
 
     dateform        = "Aug 7, 2022"
