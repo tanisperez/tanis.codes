@@ -167,6 +167,37 @@ Once completed, the page will be successfully configured and accessible with the
 
 ![Page is ready](/images/deploy-hugo-website-to-cloudflare/www-page-active.png)
 
+## Redirect from WWW to Root using HTTP rules
+
+In the previous step, access to the website was configured with the `www.` prefix. However, this configuration may present a challenge in terms of SEO. Search engines, such as Google, consider the `www.` subdomain to be distinct from the root domain (non-`www.`), which can result in discrepancies. Furthermore, within Cloudflare, these subdomains could potentially be deployed on separate servers.
+
+To address this issue, an HTTP rule will be created to enforce the redirection. Navigate to the `Rules` section and select the `Redirect Rules` option. Under the `Redirect from WWW to Root` category, click on the `Create a Rule` button to implement the necessary redirect.
+
+![Redirect rules](/images/deploy-hugo-website-to-cloudflare/redirect-rules.png)
+
+You will be prompted to provide a name for the rule. The default custom filter expression is sufficient and will function effectively.
+
+![Create new single redirect](/images/deploy-hugo-website-to-cloudflare/create-new-single-redirect.png)
+
+After completing this, if we execute the following command:
+
+```bash
+curl -v https://www.tanis.codes
+```
+
+The response will be `HTTP/2 301`.
+
+```bash
+* Request completely sent off
+< HTTP/2 301
+< date: Sun, 13 Oct 2024 18:59:28 GMT
+< content-type: text/html
+< content-length: 167
+< location: https://tanis.codes/
+```
+
+As a result, requests to `https://www.tanis.codes` will be properly redirected to `https://tanis.codes`.
+
 ## References
 
 * Cloudflare Pages limits: https://developers.cloudflare.com/pages/platform/limits/
