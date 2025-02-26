@@ -6,6 +6,9 @@
     "languages": {
         "HTML": {
             "format_on_save": "off"
+        },
+        "TOML": {
+            "format_on_save": "off"
         }
     }
 }
