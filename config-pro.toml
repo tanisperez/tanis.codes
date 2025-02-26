@@ -1,11 +1,13 @@
 baseURL         = "https://tanis.codes"
 title           = "tanis.codes"
 languageCode    = "en-us"
-paginate        = 10
 enableGitInfo   = true
 
 [outputs]
     home = ["HTML", "RSS", "JSON"]
+
+[pagination]
+    pagerSize = 10
 
 [params]
     env             = "pro"
