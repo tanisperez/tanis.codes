@@ -123,17 +123,6 @@
             }
         }
     }
-
-    &-audio {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 20px;
-
-        audio {
-            width: 90%;
-        }
-    }
 }
 
 .pagination {
