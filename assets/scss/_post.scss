@@ -26,41 +26,41 @@
 
     &-content {
         margin-top: 2rem;
-    
+
         table {
             border-collapse: collapse;
             margin: 25px auto;
             font-size: 0.9em;
             min-width: 400px;
             max-width: 100%;
-    
+
             th,
             td {
                 padding: 12px 15px;
                 border: 1px solid $dark-table-color;
-    
+
                 & {
                     border: 1px solid $dark-table-color;
                 }
             }
-    
+
             thead {
                 tr {
                     text-align: left;
                     background-color: $dark-table-color;
                     color: $dark-color;
-    
+
                     & {
                         background-color: $dark-table-color;
                         color: $dark-color;
                     }
                 }
             }
-    
+
             tbody {
                 tr {
                     border: 1px solid $dark-table-color;
-    
+
                     & {
                         border: 1px solid $dark-table-color;
                     }
@@ -95,24 +95,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-    }
-
-    &-cover {
-        border-radius: 8px;
-        margin: 40px -50px;
-        width: $max-width;
-        max-width: $max-width;
-        overflow: hidden;
-
-        @media #{$media-size-tablet} {
-            margin: 20px 0;
-            width: 100%;
-        }
-    }
-
-    &-excerpt {
-        color: grey;
-        font-style: italic;
     }
 
     &-info {
