@@ -9,6 +9,9 @@ enableGitInfo   = true
 [pagination]
     pagerSize = 10
 
+[taxonomies]
+    tag = "tags"
+
 [params]
     env             = "local"
 
