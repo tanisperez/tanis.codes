@@ -1,5 +1,5 @@
 {{ define "body" }}
-    <body class="{{ if .Site.Params.backgroundImage }} background-image" style="background-image: url('{{ .Site.Params.backgroundImage }}');" {{ else }}"{{ end }}>
+    <body>
 {{ end }}
 
 {{ define "main" }}
@@ -8,7 +8,7 @@
         <div class="home-articles">
             {{ $paginator := .Paginate (where .Site.RegularPages "Type" "==" "posts") }}
             {{ range $paginator.Pages }}
-            
+
             <a class="home-article" href="{{.Permalink}}">
                 <div class="home-article-image">
                     <img src="{{ with .Params.image }}{{ . }}{{ end }}" decoding="async" width="120" height="70" alt="{{ .Title }}"/>
