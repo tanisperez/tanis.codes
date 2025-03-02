@@ -6,18 +6,16 @@
     <main class="home">
         <h1>Last articles</h1>
         <div class="home-articles">
-            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "==" "posts") }}
-            {{ range $paginator.Pages }}
-
-            <a class="home-article" href="{{.Permalink}}">
-                <div class="home-article-image">
-                    <img src="{{ with .Params.image }}{{ . }}{{ end }}" decoding="async" width="120" height="70" alt="{{ .Title }}"/>
-                </div>
-                <div class="home-article-content">
-                    <h2>{{ .Title }}</h2>
-                    <span>{{ .Date.Month }} {{ .Date.Day }}, {{ .Date.Year }}</span>
-                </div>
-            </a>
+            {{ range first 10 (where .Site.RegularPages "Type" "==" "posts") }}
+                <a class="home-article" href="{{.Permalink}}">
+                    <div class="home-article-image">
+                        <img src="{{ with .Params.image }}{{ . }}{{ end }}" decoding="async" width="120" height="70" alt="{{ .Title }}"/>
+                    </div>
+                    <div class="home-article-content">
+                        <h2>{{ .Title }}</h2>
+                        <span>{{ .Date.Month }} {{ .Date.Day }}, {{ .Date.Year }}</span>
+                    </div>
+                </a>
             {{ end }}
         </div>
 
