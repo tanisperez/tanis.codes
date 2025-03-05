@@ -1,0 +1,219 @@
+#search-wrapper {
+    visibility: hidden;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    cursor: default;
+    background-color: rgba(24, 24, 27, .5);
+    backdrop-filter: blur(4px);
+    padding: 12vh;
+}
+
+#search-modal {
+    top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+    max-width: 48rem;
+    box-sizing: border-box;
+    border-radius: .375rem;
+    border: 1px solid rgba(63, 63, 70, 1);
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px, var(--tw-shadow);
+    background-color: rgba(39, 39, 42, 1);
+}
+
+#search-modal header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+#search-modal header form {
+    display: flex;
+    min-width: 0;
+    flex: auto;
+    align-items: center;
+}
+
+#search-modal section {
+    flex: auto;
+    overflow: auto;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.search-icon {
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: rgba(161, 161, 170, 1);
+}
+
+.search-icon span {
+    vertical-align: text-bottom;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    display: inline-block;
+    position: relative;
+}
+
+.search-icon span svg {
+    height: 1em;
+    width: 1em;
+    display: block;
+}
+
+#search-query {
+    margin-left: .25rem;
+    margin-right: .25rem;
+    display: flex;
+    height: 3rem;
+    flex: auto;
+    appearance: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: initial;
+    color: #FFF;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+#search-query:focus {
+    outline-color: transparent;
+    outline-width: 2px;
+    outline-style: dotted;
+}
+
+#search-results {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#search-results li {
+    margin-bottom: .5rem;
+}
+
+#search-results li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    border-radius: .375rem;
+    appearance: none;
+    background-color: rgba(63, 63, 70, 1);
+}
+
+#search-results li a:focus {
+    background-color: var(--dark-color-menu-hover);
+    outline-color: transparent;
+    outline-width: 2px;
+    outline-style: dotted;
+}
+
+#search-results li a:hover {
+    background-color: var(--dark-color-menu-hover);
+}
+
+.result-detail {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.result-detail-title {
+    color: var(--white);
+    margin-bottom: -.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+}
+
+.result-detail-mod-date {
+    color: var(--dark-color);
+    font-size: .875rem;
+    line-height: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.result-detail-description {
+    color: var(--white);
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.result-detail-arrow {
+    display: block;
+    color: rgba(113, 113, 122, 1);
+    margin-left: .5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#close-search-button {
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: 150ms;
+    background-color: transparent;
+    background-image: none;
+    text-transform: none;
+    appearance: none;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: initial;
+    cursor: pointer;
+}
+
+#close-search-button span {
+    vertical-align: text-bottom;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    font-size: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+#close-search-button span svg {
+    height: 1em;
+    width: 1em;
+}
+
+#search-query::-webkit-search-cancel-button,
+#search-query::-webkit-search-decoration,
+#search-query::-webkit-search-results-button,
+#search-query::-webkit-search-results-decoration {
+    display: none;
+}
+
+@media (max-width: 684px) {
+    #search-wrapper {
+        padding: 1.5rem;
+    }
+}
