@@ -4,6 +4,11 @@
     text-align: left;
 }
 
+.posts-group .post-title {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
 .post-title {
     font-size: 2.625rem;
     margin: 0.75rem 0 0 0;
