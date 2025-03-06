@@ -39,15 +39,48 @@
 {{- partial "opengraph.html" . }}
 
 <!-- CSS -->
-{{ $options := (dict "targetPath" "main.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $style := resources.Get "scss/main.scss" | css.Sass $options | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{ $cssFiles := slice }}
 
-{{ range $val := $.Site.Params.customCSS }}
-    {{ if gt (len $val) 0 }}
-        <link rel="stylesheet" type="text/css" href="{{ $val }}">
-    {{ end }}
+<!-- Add normalize.css and prism.css first -->
+{{ $normalizeCss := resources.Get "css/normalize.css" }}
+{{ $prismCss := resources.Get "css/prism.css" }}
+{{ $cssFiles = $cssFiles | append $normalizeCss | append $prismCss }}
+
+<!-- Add variables.css next -->
+{{ $variablesCss := resources.Get "css/variables.css" }}
+{{ $cssFiles = $cssFiles | append $variablesCss }}
+
+<!-- Add remaining CSS files -->
+{{ range (slice 
+    "prism-custom.css" 
+    "fonts.css" 
+    "buttons.css" 
+    "header.css" 
+    "consent.css" 
+    "logo.css" 
+    "search.css" 
+    "menu.css" 
+    "main.css" 
+    "home.css" 
+    "list.css" 
+    "post.css" 
+    "footer.css" 
+    "sharing-buttons.css" 
+    "404.css") }}
+    {{ $css := resources.Get (printf "css/%s" .) }}
+    {{ $cssFiles = $cssFiles | append $css }}
 {{ end }}
+
+<!-- Combine CSS files -->
+{{ $style := $cssFiles | resources.Concat "css/style.css" }}
+
+{{ if eq .Site.Params.Env "pro"}}
+    {{ $style = $style | minify | fingerprint }}
+{{ else }}
+    {{ $style = $style | fingerprint }}
+{{ end }}
+
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
 
 <!-- Icons -->
 {{- partial "favicons.html" . }}
