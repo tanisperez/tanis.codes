@@ -9,20 +9,27 @@ tags:
   - arch linux
 ---
 
-Add disclaimer: I'm not responsible if you break your system....
+By default, Arch Linux displays a console output and kernel messages during the boot process. This guide will demonstrate how to suppress these messages and implement a `Plymouth` splash screen during system startup.
 
-By default, Arch Linux shows a console while the kernel is loading. This guide only applies to systems which uses GRUB as the bootloader.
+> **Important**: This guide is specifically intended for systems using `GRUB` bootloader. Please note that following these instructions is at your own risk.
 
-## Make GRUB silent
+## Install GRUB Silent
 
-The installation of GRUB using the main packages of Arch Linux does not have any option to completely hide boot messages. But, we will use the unofficial `grub-silent` (AUR) package.
+The default GRUB package in Arch Linux repositories does not provide options to fully suppress boot messages. To achieve a completely silent boot, we'll use the `grub-silent` package from the Arch User Repository (AUR).
+
+First, ensure you have an AUR helper installed (like `yay`). Then, install the package:
 
 ```bash
 yay -S grub-silent
 ```
 
-Attach picture 1. This process will take a few minutes, dependening on the machine, because it has to compile `grub-silent`.
+![Installation of grub-silent using AUR packages](/images/install-grub-silent.jpg#center)
 
+> **Note**: The installation process may take several minutes as `grub-silent` needs to be compiled from source code. The compilation time varies depending on your system's specifications.
+
+Once the compilation is complete, the package will automatically replace your existing GRUB installation:
+
+![Replace GRUB with grub-silent](/images/replace-grub-with-grub-silent.jpg#center)
 
 ## Reinstall GRUB with grub-silent
 
