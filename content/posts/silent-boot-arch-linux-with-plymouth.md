@@ -72,73 +72,34 @@ sudo reboot
 > **Note**: After rebooting, your system should start with a silent boot process. If you encounter any issues, you can still access the GRUB menu by pressing the Shift key during boot.
 
 
-----------------------------------------------------------------------
+## Edit hooks in mkinitcpio
 
+`mkinitcpio` is a Bash script used to create an initial ramdisk environment in Arch Linux. The configuration of this script can be edited in the `/etc/mkinitcpio.conf` file.
 
-## Edit Kernel parameters
+The `HOOKS` array is the most important setting in the file. Hooks are small scripts which describe what will be added to the image. For some hooks, they will also contain a runtime component which provides additional behavior, such as starting a daemon, or assembling a stacked block device. Hooks are referred to by their name, and executed in the order they exist in the `HOOKS` array of the configuration file.
 
-If you are using GRUB, edit the file `/etc/default/grub` to add the following parameters:
-
-```
-quiet loglevel=3
-```
-
-## fsck
-
-To hide fsck messages during boot, let systemd check the root filesystem. For this, replace udev hook with systemd and remove the fsck hook:
+This is my default `HOOKS` array:
 
 ```
-HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck)
 ```
 
-in `/etc/mkinitcpio.conf` and regenerate the initramfs.
+[This guide](https://wiki.archlinux.org/title/Mkinitcpio#Common_hooks) from the Arch Linux wiki describes common hooks and when to use it. In our case, to hide [`fsck`](https://wiki.archlinux.org/title/Silent_boot#fsck) messages during boot, we will let `systemd` check the root filesystem.
+
+This will be our new HOOKS configuration:
+
+```
+HOOKS=(systemd autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
+```
+
+Then, regenerate the `initramfs`.
 
 ```bash
 sudo mkinitcpio -P
 ```
 
-## Make GRUB silent
-
-To hide GRUB welcome and boot messages, you may install unofficial `grub-silent` (AUR) package.
-
-```bash
-yay -S grub-silent
-```
-
-### Reinstall GRUB with grub-silent
-
-After the installation, it is required to reinstall GRUB to necessary partition first.
-
-```bash
-sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-```
-
-En BIOS sería así:
-```bash
-sudo grub-install --target=i386-pc /dev/sdX
-```
-
-Then, take an example as `/etc/default/grub.silent`, and make necessary changes to `/etc/default/grub`.
-
-```
-GRUB_DEFAULT=0
-GRUB_TIMEOUT=0
-GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
-```
-
-### Regenerate GRUB config
-
-```bash
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-### Reboot
-
-```bash
-sudo reboot
-```
-
-
+![Regenerate initramfs](/images/silent-boot-arch-linux-with-plymouth/mkinitcpio.jpg#center)
 
 ## References
 * GRUB: https://wiki.archlinux.org/title/GRUB
+* mkinitcpio: https://wiki.archlinux.org/title/Mkinitcpio
