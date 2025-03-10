@@ -31,41 +31,45 @@ Once the compilation is complete, the package will automatically replace your ex
 
 ![Replace GRUB with grub-silent](/images/replace-grub-with-grub-silent.jpg#center)
 
-## Reinstall GRUB with grub-silent
+> **Important**: After installing `grub-silent`, you must complete the following configuration steps to properly replace the standard GRUB installation.
 
-After the installation, it is required to reinstall GRUB to necessary partition first.
+### UEFI Systems Configuration
+
+For systems using UEFI, execute the following command to install `grub-silent`:
 
 ```bash
 sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
 
-Using BIOS, the `grub-install` command is a bit different, where you have to specify the target hard disk:
+![GRUB silent installation on UEFI systems](/images/install-grub-silent.jpg#center)
+
+### BIOS Systems Configuration
+
+For BIOS-based systems, the installation command requires specifying the target disk device. Replace `sdX` with your system's boot disk (e.g., `sda`, `sdb`, `vda`):
+
 ```bash
 sudo grub-install --target=i386-pc /dev/sdX
 ```
 
-Then, take an example as `/etc/default/grub.silent`, and make necessary changes to `/etc/default/grub`.
+### Generate GRUB Configuration
 
-```
-GRUB_DEFAULT=0
-GRUB_TIMEOUT=0
-GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
-```
-
-### Regenerate GRUB config
+After installation, regenerate the GRUB configuration file:
 
 ```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-### Reboot
+![Generating GRUB configuration](/images/grub-mkconfig.jpg#center)
+
+### Apply Changes
+
+Restart your system to apply the new GRUB configuration:
 
 ```bash
 sudo reboot
 ```
 
-
-
+> **Note**: After rebooting, your system should start with a silent boot process. If you encounter any issues, you can still access the GRUB menu by pressing the Shift key during boot.
 
 
 ----------------------------------------------------------------------
@@ -137,3 +141,4 @@ sudo reboot
 
 
 ## References
+* GRUB: https://wiki.archlinux.org/title/GRUB
