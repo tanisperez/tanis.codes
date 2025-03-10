@@ -3,7 +3,7 @@ title: "Silent boot in Arch Linux with Plymouth"
 date: 2025-03-10T18:08:00+01:00
 draft: false
 toc: false
-image: "/images/git-cheat-sheet/logo.png"
+image: "/images/silent-boot-arch-linux-with-plymouth/git-cheat-sheet/logo.png"
 description: ""
 tags:
   - arch linux
@@ -23,13 +23,13 @@ First, ensure you have an AUR helper installed (like `yay`). Then, install the p
 yay -S grub-silent
 ```
 
-![Installation of grub-silent using AUR packages](/images/install-grub-silent.jpg#center)
+![Installation of grub-silent using AUR packages](/images/silent-boot-arch-linux-with-plymouth/install-grub-silent.jpg#center)
 
 > **Note**: The installation process may take several minutes as `grub-silent` needs to be compiled from source code. The compilation time varies depending on your system's specifications.
 
 Once the compilation is complete, the package will automatically replace your existing GRUB installation:
 
-![Replace GRUB with grub-silent](/images/replace-grub-with-grub-silent.jpg#center)
+![Replace GRUB with grub-silent](/images/silent-boot-arch-linux-with-plymouth/replace-grub-with-grub-silent.jpg#center)
 
 > **Important**: After installing `grub-silent`, you must complete the following configuration steps to properly replace the standard GRUB installation.
 
@@ -41,7 +41,7 @@ For systems using UEFI, execute the following command to install `grub-silent`:
 sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
 
-![GRUB silent installation on UEFI systems](/images/install-grub-silent.jpg#center)
+![GRUB silent installation on UEFI systems](/images/silent-boot-arch-linux-with-plymouth/install-grub-silent.jpg#center)
 
 ### BIOS Systems Configuration
 
@@ -59,7 +59,7 @@ After installation, regenerate the GRUB configuration file:
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-![Generating GRUB configuration](/images/grub-mkconfig.jpg#center)
+![Generating GRUB configuration](/images/silent-boot-arch-linux-with-plymouth/grub-mkconfig.jpg#center)
 
 ### Apply Changes
 
