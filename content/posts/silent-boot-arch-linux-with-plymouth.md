@@ -88,19 +88,19 @@ sudo reboot
 > **Note**: Your system should now boot silently. To access the GRUB menu when needed, hold the Shift key during boot. For UEFI systems, use the Esc key instead.
 
 
-## Edit hooks in mkinitcpio
+## Configuring mkinitcpio Hooks
 
 `mkinitcpio` is a Bash script used to create an initial ramdisk environment in Arch Linux. The configuration of this script can be edited in the `/etc/mkinitcpio.conf` file.
 
 The `HOOKS` array is the most important setting in the file. Hooks are small scripts which describe what will be added to the image. For some hooks, they will also contain a runtime component which provides additional behavior, such as starting a daemon, or assembling a stacked block device. Hooks are referred to by their name, and executed in the order they exist in the `HOOKS` array of the configuration file.
 
-This is the Arch Linux default `HOOKS` array:
+The default Arch Linux `HOOKS` configuration is:
 
 ```
 HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck)
 ```
 
-[This guide](https://wiki.archlinux.org/title/Mkinitcpio#Common_hooks) from the Arch Linux wiki describes common hooks and when to use it. In our case, to hide [`fsck`](https://wiki.archlinux.org/title/Silent_boot#fsck) messages during boot, we will let `systemd` check the root filesystem.
+[This guide](https://wiki.archlinux.org/title/Mkinitcpio#Common_hooks) from the Arch Linux wiki describes common hooks and when to use it. In this case, to hide [`fsck`](https://wiki.archlinux.org/title/Silent_boot#fsck) messages during boot, we will let `systemd` check the root filesystem.
 
 This will be the new HOOKS configuration using `systemd`:
 
@@ -108,7 +108,7 @@ This will be the new HOOKS configuration using `systemd`:
 HOOKS=(systemd autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
 ```
 
-Then, regenerate the `initramfs`.
+After modifying the configuration, regenerate the `initramfs` with:
 
 ```bash
 sudo mkinitcpio -P
