@@ -31,9 +31,9 @@ Before proceeding with the implementation, ensure your system meets these requir
 
 ## Install GRUB Silent
 
-The default GRUB package in Arch Linux repositories does not provide options to fully suppress boot messages. To achieve a completely silent boot, we'll use the `grub-silent` package from the Arch User Repository (AUR).
+The standard GRUB package available in the official Arch Linux repositories lacks options for complete boot message suppression. To achieve a silent boot experience, we'll implement `grub-silent` from the Arch User Repository (AUR).
 
-First, ensure you have an AUR helper installed (like `yay`). Then, install the package:
+Before proceeding, ensure you have an AUR helper like `yay` installed on your system. Then run:
 
 ```bash
 yay -S grub-silent
@@ -41,13 +41,13 @@ yay -S grub-silent
 
 ![Installation of grub-silent using AUR packages](/images/silent-boot-arch-linux-with-plymouth/install-grub-silent.jpg#center)
 
-> **Note**: The installation process may take several minutes as `grub-silent` needs to be compiled from source code. The compilation time varies depending on your system's specifications.
+> **Note**: Package compilation may take several minutes, as `grub-silent` is built from source. Build time depends on your system's hardware capabilities.
 
-Once the compilation is complete, the package will automatically replace your existing GRUB installation:
+Upon successful compilation, the package will replace your current GRUB installation:
 
 ![Replace GRUB with grub-silent](/images/silent-boot-arch-linux-with-plymouth/replace-grub-with-grub-silent.jpg#center)
 
-> **Important**: After installing `grub-silent`, you must complete the following configuration steps to properly replace the standard GRUB installation.
+> **Important**: After installing `grub-silent`, follow these configuration steps to ensure proper GRUB replacement.
 
 ### UEFI Systems Configuration
 
@@ -69,7 +69,7 @@ sudo grub-install --target=i386-pc /dev/sdX
 
 ### Generate GRUB Configuration
 
-After installation, regenerate the GRUB configuration file:
+After installing GRUB Silent, generate the configuration file:
 
 ```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -79,13 +79,13 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ### Apply Changes
 
-Restart your system to apply the new GRUB configuration:
+Restart your system to implement the new configuration:
 
 ```bash
 sudo reboot
 ```
 
-> **Note**: After rebooting, your system should start with a silent boot process. If you encounter any issues, you can still access the GRUB menu by pressing the Shift key during boot.
+> **Note**: Your system should now boot silently. To access the GRUB menu when needed, hold the Shift key during boot. For UEFI systems, use the Esc key instead.
 
 
 ## Edit hooks in mkinitcpio
