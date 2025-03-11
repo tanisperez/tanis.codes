@@ -9,9 +9,25 @@ tags:
   - arch linux
 ---
 
-By default, Arch Linux displays a console output and kernel messages during the boot process. This guide will demonstrate how to suppress these messages and implement a `Plymouth` splash screen during system startup.
+The default boot process in Arch Linux displays verbose console output and kernel messages, which may detract from a polished system experience. This technical guide demonstrates how to:
 
-> **Important**: This guide is specifically intended for systems using `GRUB` bootloader. Please note that following these instructions is at your own risk.
+- Implement a clean, message-free boot process
+- Configure Plymouth for graphical splash screen support
+- Set up GRUB for silent operation
+- Maintain system diagnostics accessibility when required
+
+> **Important**: This guide is specifically designed for systems using the GRUB bootloader. While these modifications are safe when properly implemented, ensure you have a system backup before proceeding. Users should be comfortable with command-line operations and basic system configuration.
+
+## Prerequisites
+
+Before proceeding with the implementation, ensure your system meets these requirements:
+
+- A functioning Arch Linux installation with GRUB
+- Root or sudo privileges
+- An AUR helper installed (e.g., `yay`)
+- A system backup
+- A systemd-compatible root filesystem
+
 
 ## Install GRUB Silent
 
