@@ -100,6 +100,25 @@ sudo mkinitcpio -P
 
 ![Regenerate initramfs](/images/silent-boot-arch-linux-with-plymouth/mkinitcpio.jpg#center)
 
+## Install Plymouth
+
+
+```bash
+sudo pacman -S plymouth
+```
+
+[Add image]
+
+
+Edit `/etc/mkinitcpio.conf` to add the `plymouth` hook just right after `systemtd`.
+
+[Add new HOOK]
+
+> Note: It's super important to have `systemd` before `plymouth`.
+
+
 ## References
 * GRUB: https://wiki.archlinux.org/title/GRUB
 * mkinitcpio: https://wiki.archlinux.org/title/Mkinitcpio
+* Plymouth: https://wiki.archlinux.org/title/Plymouth
+
