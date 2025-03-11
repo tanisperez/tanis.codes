@@ -118,8 +118,7 @@ sudo mkinitcpio -P
 
 ## Install Plymouth
 
-
-Plymouth is a project from Fedora which provides a flicker-free graphical boot process.
+Plymouth is an independent boot splash system developed by Fedora that provides a flicker-free graphical boot experience. It handles the initialization process from kernel load to user space.
 
 ```bash
 sudo pacman -S plymouth
@@ -128,23 +127,24 @@ sudo pacman -S plymouth
 ![Install Plymouth](/images/silent-boot-arch-linux-with-plymouth/install-plymouth.jpg#center)
 
 
-Then, it is needed to add the hook `plymouth` right after `systemd`.
-
-
-Edit `/etc/mkinitcpio.conf` to add the `plymouth` hook just right after `systemtd`.
+Plymouth requires specific hook configuration in the `initramfs` generation process. Modify `/etc/mkinitcpio.conf` to integrate Plymouth with systemd:
 
 ```
 HOOKS=(systemd plymouth autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
 ```
 
-> Note: It's super important to have `systemd` before `plymouth`.
+> **Important**: The hook order is crucial. The `systemd` hook must precede `plymouth` to ensure proper initialization sequence.
 
-
-Finally, regenerate the `initramfs`.
+After modifying the hook configuration, regenerate the initramfs:
 
 ```bash
 sudo mkinitcpio -P
 ```
+
+> **Technical Note**: The `-P` flag rebuilds all preset configurations, ensuring complete system integration.
+
+
+**NOTE**: Set up themes...
 
 ## References
 * GRUB: https://wiki.archlinux.org/title/GRUB
