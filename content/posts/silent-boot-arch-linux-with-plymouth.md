@@ -4,7 +4,7 @@ date: 2025-03-10T18:08:00+01:00
 draft: false
 toc: false
 image: "/images/silent-boot-arch-linux-with-plymouth/git-cheat-sheet/logo.png"
-description: ""
+description: "A comprehensive guide to implementing a silent and elegant boot process in Arch Linux using Plymouth and GRUB silent"
 tags:
   - arch linux
 ---
@@ -78,7 +78,7 @@ sudo reboot
 
 The `HOOKS` array is the most important setting in the file. Hooks are small scripts which describe what will be added to the image. For some hooks, they will also contain a runtime component which provides additional behavior, such as starting a daemon, or assembling a stacked block device. Hooks are referred to by their name, and executed in the order they exist in the `HOOKS` array of the configuration file.
 
-This is my default `HOOKS` array:
+This is the Arch Linux default `HOOKS` array:
 
 ```
 HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck)
@@ -86,7 +86,7 @@ HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont bl
 
 [This guide](https://wiki.archlinux.org/title/Mkinitcpio#Common_hooks) from the Arch Linux wiki describes common hooks and when to use it. In our case, to hide [`fsck`](https://wiki.archlinux.org/title/Silent_boot#fsck) messages during boot, we will let `systemd` check the root filesystem.
 
-This will be our new HOOKS configuration:
+This will be the new HOOKS configuration using `systemd`:
 
 ```
 HOOKS=(systemd autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
@@ -103,19 +103,32 @@ sudo mkinitcpio -P
 ## Install Plymouth
 
 
+Plymouth is a project from Fedora which provides a flicker-free graphical boot process.
+
 ```bash
 sudo pacman -S plymouth
 ```
 
-[Add image]
+![Install Plymouth](/images/silent-boot-arch-linux-with-plymouth/install-plymouth.jpg#center)
+
+
+Then, it is needed to add the hook `plymouth` right after `systemd`.
 
 
 Edit `/etc/mkinitcpio.conf` to add the `plymouth` hook just right after `systemtd`.
 
-[Add new HOOK]
+```
+HOOKS=(systemd plymouth autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
+```
 
 > Note: It's super important to have `systemd` before `plymouth`.
 
+
+Finally, regenerate the `initramfs`.
+
+```bash
+sudo mkinitcpio -P
+```
 
 ## References
 * GRUB: https://wiki.archlinux.org/title/GRUB
