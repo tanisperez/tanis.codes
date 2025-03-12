@@ -90,7 +90,7 @@ sudo reboot
 
 `mkinitcpio` is a Bash script used to create an initial ramdisk environment in Arch Linux. The configuration of this script can be edited in the `/etc/mkinitcpio.conf` file.
 
-The `HOOKS` array is the most important setting in the file. Hooks are small scripts which describe what will be added to the image. For some hooks, they will also contain a runtime component which provides additional behavior, such as starting a daemon, or assembling a stacked block device. Hooks are referred to by their name, and executed in the order they exist in the `HOOKS` array of the configuration file.
+The `HOOKS` array is the most important setting in the file. Hooks are small scripts which describe what will be added to the image. They are executed in the order they exist in the `HOOKS` array of the configuration file.
 
 The default Arch Linux `HOOKS` configuration is:
 
@@ -98,7 +98,7 @@ The default Arch Linux `HOOKS` configuration is:
 HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck)
 ```
 
-[This guide](https://wiki.archlinux.org/title/Mkinitcpio#Common_hooks) from the Arch Linux wiki describes common hooks and when to use it. In this case, to hide [`fsck`](https://wiki.archlinux.org/title/Silent_boot#fsck) messages during boot, we will let `systemd` check the root filesystem.
+The [mkinitcpio documentation](https://wiki.archlinux.org/title/Mkinitcpio#Common_hooks) provides detailed information about common hooks and their usage. To suppress [`fsck`](https://wiki.archlinux.org/title/Silent_boot#fsck) messages during boot, the system can be configured to use `systemd` for root filesystem checking instead of the traditional `fsck` hook.
 
 This will be the new HOOKS configuration using `systemd`:
 
