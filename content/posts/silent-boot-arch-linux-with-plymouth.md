@@ -112,6 +112,8 @@ After modifying the configuration, regenerate the `initramfs` with:
 sudo mkinitcpio -P
 ```
 
+> **Note**: The `-P` flag rebuilds all preset configurations, ensuring complete system integration.
+
 ![Regenerate initramfs](/images/silent-boot-arch-linux-with-plymouth/mkinitcpio.jpg#center)
 
 ## Install Plymouth
@@ -138,8 +140,6 @@ After modifying the hook configuration, regenerate the initramfs:
 ```bash
 sudo mkinitcpio -P
 ```
-
-> **Note**: The `-P` flag rebuilds all preset configurations, ensuring complete system integration.
 
 ### Plymouth Theme Configuration
 
@@ -173,9 +173,8 @@ sudo plymouth-set-default-theme -R theme
 For additional theme customization options, refer to the [Plymouth Theme Documentation](https://wiki.archlinux.org/title/Plymouth#Changing_the_theme).
 
 ## References
+* Silent Boot: https://wiki.archlinux.org/title/Silent_boot
 * GRUB: https://wiki.archlinux.org/title/GRUB
 * mkinitcpio: https://wiki.archlinux.org/title/Mkinitcpio
 * Plymouth: https://wiki.archlinux.org/title/Plymouth
 * Plymouth theme: https://wiki.archlinux.org/title/Plymouth#Changing_the_theme
-
-
