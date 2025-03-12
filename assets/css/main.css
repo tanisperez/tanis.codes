@@ -140,8 +140,10 @@ pre code {
 
 blockquote {
     border-left: 5px solid var(--main-color);
+    background-color: #27292a;
+    border-radius: 5px;
     margin: 10px 0;
-    padding: 5px 0 5px 10px;
+    padding: 5px 5px 5px 10px;
 }
 
 blockquote:before {
