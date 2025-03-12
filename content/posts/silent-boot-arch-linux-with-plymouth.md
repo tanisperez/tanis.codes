@@ -94,7 +94,7 @@ The `HOOKS` array is the most important setting in the file. Hooks are small scr
 
 The default Arch Linux `HOOKS` configuration is:
 
-```
+```conf
 HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck)
 ```
 
@@ -102,7 +102,7 @@ The [mkinitcpio documentation](https://wiki.archlinux.org/title/Mkinitcpio#Commo
 
 This will be the new HOOKS configuration using `systemd`:
 
-```
+```conf
 HOOKS=(systemd autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
 ```
 
@@ -129,7 +129,7 @@ sudo pacman -S plymouth
 
 Plymouth requires specific hook configuration in the `initramfs` generation process. Modify `/etc/mkinitcpio.conf` to integrate Plymouth with systemd:
 
-```
+```conf
 HOOKS=(systemd plymouth autodetect microcode modconf kms keyboard sd-vconsole block filesystems)
 ```
 
