@@ -57,8 +57,6 @@ For systems using UEFI, execute the following command to install `grub-silent`:
 sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
 
-![GRUB silent installation on UEFI systems](/images/silent-boot-arch-linux-with-plymouth/install-grub-silent.jpg#center)
-
 ### BIOS Systems Configuration
 
 For BIOS-based systems, the installation command requires specifying the target disk device. Replace `sdX` with your system's boot disk (e.g., `sda`, `sdb`, `vda`):
