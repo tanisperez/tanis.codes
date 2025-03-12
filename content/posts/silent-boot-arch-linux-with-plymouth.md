@@ -141,13 +141,43 @@ After modifying the hook configuration, regenerate the initramfs:
 sudo mkinitcpio -P
 ```
 
-> **Technical Note**: The `-P` flag rebuilds all preset configurations, ensuring complete system integration.
+> **Note**: The `-P` flag rebuilds all preset configurations, ensuring complete system integration.
 
+### Plymouth Theme Configuration
 
-**NOTE**: Set up themes...
+By default, Arch Linux configures Plymouth to use the `bgrt` theme. To verify the current theme setting:
+
+```bash
+plymouth-set-default-theme
+```
+
+Plymouth provides several built-in themes, each offering different visual experiences during boot:
+
+* **BGRT**: Advanced Spinner variant that preserves OEM logo functionality (Boot Graphics Resource Table).
+* **Fade-in**: Minimalist theme featuring a fade transition with animated star effects.
+* **Glow**: Enterprise-grade theme displaying boot progress via pie chart and illuminated logo.
+* **Script**: Custom theme showcasing the Arch Linux logo with professional animations.
+* **Solar**: Dynamic space-themed interface with animated blue star effects.
+* **Spinner**: Lightweight theme implementing a basic loading indicator.
+* **Spinfinity**: Modern theme featuring an animated infinity symbol.
+* **Tribar**: Terminal-based theme with tri-colored progress indication.
+* **Text**: Console-oriented theme with tri-colored progress tracking.
+* **Details**: Verbose mode theme for diagnostic purposes.
+
+The theme can be changed by running the following command as `root`:
+
+```bash
+sudo plymouth-set-default-theme -R theme
+```
+
+> **Note**: The `-R` flag automatically regenerates the initramfs after theme selection.
+
+For additional theme customization options, refer to the [Plymouth Theme Documentation](https://wiki.archlinux.org/title/Plymouth#Changing_the_theme).
 
 ## References
 * GRUB: https://wiki.archlinux.org/title/GRUB
 * mkinitcpio: https://wiki.archlinux.org/title/Mkinitcpio
 * Plymouth: https://wiki.archlinux.org/title/Plymouth
+* Plymouth theme: https://wiki.archlinux.org/title/Plymouth#Changing_the_theme
+
 
