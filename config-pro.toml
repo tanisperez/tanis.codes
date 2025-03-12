@@ -1,7 +1,7 @@
 baseURL         = "https://tanis.codes"
 title           = "tanis.codes"
 languageCode    = "en-us"
-enableGitInfo   = true
+enableGitInfo   = false
 
 [outputs]
     home = ["HTML", "RSS", "JSON"]
