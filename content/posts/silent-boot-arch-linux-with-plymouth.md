@@ -1,6 +1,6 @@
 ---
 title: "Silent boot in Arch Linux with Plymouth"
-date: 2025-03-10T18:08:00+01:00
+date: 2025-03-12T16:28:00+01:00
 draft: false
 toc: false
 image: "/images/silent-boot-arch-linux-with-plymouth/logo.png"
