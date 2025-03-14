@@ -172,6 +172,10 @@ sudo plymouth-set-default-theme -R theme
 
 For additional theme customization options, refer to the [Plymouth Theme Documentation](https://wiki.archlinux.org/title/Plymouth#Changing_the_theme).
 
+## Final result
+
+{{<youtube h65n7Y3nq04>}}
+
 ## References
 * Silent Boot: https://wiki.archlinux.org/title/Silent_boot
 * GRUB: https://wiki.archlinux.org/title/GRUB
