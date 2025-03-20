@@ -77,6 +77,35 @@ PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm
 
 ## Usage
 
+NVM facilitates the rapid installation and seamless switching between different Node.js versions through command-line operations.
+
+
+```bash
+$ $nvm -v  
+0.40.2
+$ $node -v
+v22.14.0
+$ $nvm use 21
+N/A: version "v21" is not yet installed.
+You need to run `nvm install 21` to install and use it.
+$ $nvm install 21      
+Downloading and installing node v21.7.3...
+Downloading https://nodejs.org/dist/v21.7.3/node-v21.7.3-linux-x64.tar.xz...
+################################################################################################################################## 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v21.7.3 (npm v10.5.0)
+$ node -v
+v21.7.3
+$ nvm use 22    
+Now using node v22.14.0 (npm v10.9.2)
+$ node -v
+v22.14.0
+```
+
+![NVM usage](/images/node-version-manager-nvm/nvm.jpg#center)
+
+
 
 
 ## References
