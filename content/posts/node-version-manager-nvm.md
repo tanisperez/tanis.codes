@@ -75,39 +75,55 @@ PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm
 > **Note**: Ensure that `NVM_DIR` does not contain a trailing slash when customizing the installation directory.
 
 
-## Usage
+## Basic Usage
 
-NVM facilitates the rapid installation and seamless switching between different Node.js versions through command-line operations.
+NVM provides a comprehensive set of commands for managing Node.js versions. Here are some fundamental operations:
 
-
+### Version Information
+Check the installed NVM version:
 ```bash
-$ $nvm -v  
+$ nvm -v
 0.40.2
-$ $node -v
+```
+
+View the active Node.js version:
+```bash
+$ node -v
 v22.14.0
-$ $nvm use 21
-N/A: version "v21" is not yet installed.
-You need to run `nvm install 21` to install and use it.
-$ $nvm install 21      
+```
+
+### Managing Node.js Versions
+
+To install a specific Node.js version:
+```bash
+$ nvm install 21      
 Downloading and installing node v21.7.3...
 Downloading https://nodejs.org/dist/v21.7.3/node-v21.7.3-linux-x64.tar.xz...
 ################################################################################################################################## 100.0%
 Computing checksum with sha256sum
 Checksums matched!
 Now using node v21.7.3 (npm v10.5.0)
-$ node -v
-v21.7.3
+```
+
+Switch to a different installed version:
+```bash
 $ nvm use 22    
 Now using node v22.14.0 (npm v10.9.2)
+```
+
+Verify the active version after switching:
+```bash
 $ node -v
 v22.14.0
 ```
 
-![NVM usage](/images/node-version-manager-nvm/nvm.jpg#center)
+![NVM version management demonstration](/images/node-version-manager-nvm/nvm.jpg#center)
 
+> **Note**: If you attempt to switch to a non-installed version, NVM will prompt you to install it first.
 
-
+For a comprehensive overview of all available commands and advanced usage patterns, refer to the [official NVM documentation](https://github.com/nvm-sh/nvm?tab=readme-ov-file#usage).
 
 ## References
 
-- NVM GitHub project: https://github.com/nvm-sh/nvm
+- [NVM GitHub Repository](https://github.com/nvm-sh/nvm) - Official source code and documentation
+- [Node.js Release Schedule](https://nodejs.org/en/about/releases/) - Information about Node.js version lifecycle
