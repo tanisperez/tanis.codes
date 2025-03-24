@@ -1,7 +1,7 @@
 ---
 title: "Node Version Manager (NVM)"
-date: 2025-03-20T11:37:00+01:00
-draft: true
+date: 2025-03-24T10:23:00+01:00
+draft: false
 toc: false
 image: "/images/node-version-manager-nvm/logo.png"
 description: "A comprehensive guide to installing and using Node Version Manager (NVM) for managing multiple Node.js versions"
@@ -178,7 +178,7 @@ To remove NVM from your system:
 rm -rf "$NVM_DIR"
 ```
 
-Then remove the NVM initialization lines from your shell's configuration file (~/.bashrc, ~/.zshrc, or ~/.profile).
+Then remove the NVM initialization lines from your shell's configuration file (`~/.bashrc`, `~/.zshrc`, or `~/.profile`).
 
 ## References
 
