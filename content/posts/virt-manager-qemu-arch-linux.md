@@ -95,6 +95,8 @@ virt-manager
 
 The application should start without requiring root privileges and display no network connection errors.
 
+![Virt-Manager running](/images/virt-manager-qemu-arch-linux/virt-manager.jpg#center)
+
 ## References
 
 - libvirt: https://wiki.archlinux.org/title/Libvirt
