@@ -2,12 +2,14 @@
 title: "Virt-Manager with QEMU on Arch Linux"
 date: 2025-03-30T06:23:00+01:00
 draft: false
-toc: false
+toc: true
 image: "/images/virt-manager-qemu-arch-linux/logo.png"
-description: "Qemu"
+description: "A comprehensive guide to installing and configuring QEMU with Virt-Manager for virtualization on Arch Linux"
 tags:
   - qemu
   - arch linux
+  - virtualization
+  - libvirt
 ---
 
 [Virt-Manager](https://virt-manager.org/) is a graphical user interface for managing virtual machines through the [Libvirt](https://wiki.archlinux.org/title/Libvirt) virtualization API. This tool simplifies the process of creating and managing virtual machines without requiring direct command-line interaction.
@@ -99,6 +101,6 @@ The application should start without requiring root privileges and display no ne
 
 ## References
 
-- libvirt: https://wiki.archlinux.org/title/Libvirt
-- virt-manager: https://wiki.archlinux.org/title/Virt-manager
-- qemu: https://wiki.archlinux.org/title/QEMU
+- [Libvirt Documentation](https://wiki.archlinux.org/title/Libvirt) - Comprehensive guide to libvirt
+- [Virt-Manager Wiki](https://wiki.archlinux.org/title/Virt-manager) - Official Arch Linux documentation
+- [QEMU](https://wiki.archlinux.org/title/QEMU) - QEMU configuration and usage guide
