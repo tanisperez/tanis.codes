@@ -20,10 +20,37 @@ This approach offers several advantages over traditional passwords:
 - Protection against brute force attacks.
 - Ability to revoke access by removing public keys.
 
-## Generating SSH Keys
-* How to generate a new SSH key pair
-* Choosing the right key type (ED25519 vs RSA)
-* Setting a passphrase
+## Generate a new SSH key for GitHub
+
+Before generating SSH keys for GitHub, ensure you use the same email address associated with your GitHub account. This maintains consistency and helps with key management.
+
+### Using Ed25519 (Recommended)
+The Ed25519 algorithm is the recommended choice for new SSH keys due to its enhanced security and performance:
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+### Using RSA (Alternative)
+For systems that don't support Ed25519, use RSA with 4096 bits:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+During the key generation process:
+1. Accept the default file location (`~/.ssh/id_ed25519` or `~/.ssh/id_rsa`). Using the default file location allows SSH and Git to automatically detect and use your keys. If you specify a custom location, additional configuration will be required in `~/.ssh/config` to explicitly map each host to its corresponding key file.
+2. Enter a secure passphrase (highly recommended).
+3. Verify your passphrase.
+
+The process will generate two files:
+- Private key: `~/.ssh/id_ed25519` (or `id_rsa`)
+- Public key: `~/.ssh/id_ed25519.pub` (or `id_rsa.pub`)
+
+> 🔒 **Security Note**: Never share your private key and always protect it with a strong passphrase.
+
+![Generated SSH keys](/images/using-ssh-keys-with-git/generated-ssh-keys.png#center)
+
 
 ## Adding SSH Keys to Your Git Provider
 * How to copy your public key
@@ -40,6 +67,16 @@ This approach offers several advantages over traditional passwords:
 * Backing up your keys
 * When to create new keys
 
+
+## Configure different keys for hosts
+
+`~/.ssh/config`
+
+```
+Host github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+```
 
 # Enable the ssh-agent on Linux
 
