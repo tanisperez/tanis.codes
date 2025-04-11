@@ -52,27 +52,16 @@ The process will generate two files:
 ![Generated SSH keys](/images/using-ssh-keys-with-git/generated-ssh-keys.png#center)
 
 
-## Adding SSH Keys to Your Git Provider
-* How to copy your public key
-* Adding keys to GitHub/GitLab/Bitbucket
-* Testing your connection
+## Add the public ssh key to GitHub
 
-## Configuring Git to Use SSH
-* Changing remote URLs from HTTPS to SSH
-* Setting up the SSH config file
-* Handling multiple keys for different services
-
-## Best Practices
-* Key security tips
-* Backing up your keys
-* When to create new keys
+## Add the ssh key to the ssh-agent
 
 
 ## Configure different keys for hosts
 
 `~/.ssh/config`
 
-```
+```txt
 Host github.com
   User git
   IdentityFile ~/.ssh/id_rsa
@@ -86,7 +75,7 @@ systemctl enable --now --user ssh-agent.service
 
 zshrc or bashrc
 
-```
+```bash
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 ```
 
@@ -99,6 +88,6 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 ## References
 
-- https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-- https://wiki.archlinux.org/title/SSH_keys#SSH_agents
-- https://wiki.archlinux.org/title/KDE_Wallet#Using_the_KDE_Wallet_to_store_ssh_key_passphrases
+- [GitHub Docs: Generating a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- [ArchWiki: SSH Keys](https://wiki.archlinux.org/title/SSH_keys#SSH_agents)
+- [ArchWiki: KDE Wallet SSH Integration](https://wiki.archlinux.org/title/KDE_Wallet#Using_the_KDE_Wallet_to_store_ssh_key_passphrases)
