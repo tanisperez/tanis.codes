@@ -3,7 +3,7 @@ title: "Git cheat sheet"
 date: 2023-02-18T17:53:00+01:00
 draft: false
 toc: false
-image: "/images/git-cheat-sheet/logo.png"
+image: "/images/common/git.png"
 description: "Learn Git basics! Track changes, collaborate with team members, and optimize workflows. This post covers key features, commands, and best practices."
 tags:
   - git
