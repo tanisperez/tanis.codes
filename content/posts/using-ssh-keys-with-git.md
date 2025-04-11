@@ -1,5 +1,5 @@
 ---
-title: "Using SSH Keys with Git"
+title: "Using SSH keys with Git"
 date: 2025-04-11T00:00:00+01:00
 draft: false
 toc: true
@@ -10,8 +10,15 @@ tags:
   - ssh
 ---
 
-## What are SSH Keys?
-Brief explanation of public-private key pairs and why they're more secure than passwords.
+SSH (Secure Shell) keys are cryptographic credentials that enable secure authentication between systems. They consist of two components: a public key that can be shared freely, and a private key that must be kept secure. When using Git with remote repositories, SSH keys provide a robust alternative to password-based authentication.
+
+The authentication process works through public-key cryptography: your private key remains on your local machine, while the public key is stored on the remote Git server. When establishing a connection, the server uses the public key to create an encrypted message that only your private key can decrypt, thus verifying your identity without transmitting sensitive information.
+
+This approach offers several advantages over traditional passwords:
+- Enhanced security through cryptographic verification.
+- No need to manually enter credentials.
+- Protection against brute force attacks.
+- Ability to revoke access by removing public keys.
 
 ## Generating SSH Keys
 * How to generate a new SSH key pair
@@ -32,6 +39,20 @@ Brief explanation of public-private key pairs and why they're more secure than p
 * Key security tips
 * Backing up your keys
 * When to create new keys
+
+
+# Enable the ssh-agent on Linux
+
+```bash
+systemctl enable --now --user ssh-agent.service
+```
+
+zshrc or bashrc
+
+```
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+```
+
 
 ## Troubleshooting Common Issues
 * Permission denied errors
