@@ -53,12 +53,29 @@ The process generates two distinct files:
 ![Generated SSH keys](/images/using-ssh-keys-with-git/generated-ssh-keys.png#center)
 
 
-## Add the public ssh key to GitHub
-
-
-
 ## Add the ssh key to the ssh-agent
 
+
+
+## Add the public SSH key to GitHub
+
+The registration of the public key in the GitHub account is required. This option is accessible through the following path: `Settings` > `SSH and GPG keys` in the GitHub profile interface.
+
+![Add new SSH key to GitHub](/images/using-ssh-keys-with-git/add-new-ssh-key-to-github.png#center)
+
+Select the `New SSH key` button and proceed to enter an identifiable label for the key along with the corresponding public key content.
+
+![SSH key added](/images/using-ssh-keys-with-git/ssh-key-added.png#center)
+
+Upon successful key registration, repository access can be configured either by modifying existing remotes or by performing a new clone operation using the SSH URL format.
+
+![Git clone using SSH](/images/using-ssh-keys-with-git/git-clone-ssh.png#center)
+
+```bash
+git clone git@github.com:tanisperez/dotfiles.git
+```
+
+The implementation of this SSH URL format enables automatic authentication through the configured SSH key during repository operations.
 
 ## Configure different keys for hosts
 
@@ -86,5 +103,6 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 ## References
 
 - [GitHub Docs: Generating a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 - [ArchWiki: SSH Keys](https://wiki.archlinux.org/title/SSH_keys#SSH_agents)
 - [ArchWiki: KDE Wallet SSH Integration](https://wiki.archlinux.org/title/KDE_Wallet#Using_the_KDE_Wallet_to_store_ssh_key_passphrases)
