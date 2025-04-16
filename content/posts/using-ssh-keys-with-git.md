@@ -22,37 +22,40 @@ This approach offers several advantages over traditional passwords:
 
 ## Generate a new SSH key for GitHub
 
-Before generating SSH keys for GitHub, ensure you use the same email address associated with your GitHub account. This maintains consistency and helps with key management.
+Before generating SSH keys for GitHub, it is essential to verify that the email address matches the one associated with the GitHub account. This practice ensures proper key management and maintains consistency.
 
 ### Using Ed25519 (Recommended)
-The Ed25519 algorithm is the recommended choice for new SSH keys due to its enhanced security and performance:
+The Ed25519 algorithm represents the recommended choice for new SSH keys, offering enhanced security characteristics and superior performance:
 
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
 ### Using RSA (Alternative)
-For systems that don't support Ed25519, use RSA with 4096 bits:
+For systems lacking Ed25519 support, RSA with 4096 bits provides a robust alternative:
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
-During the key generation process:
-1. Accept the default file location (`~/.ssh/id_ed25519` or `~/.ssh/id_rsa`). Using the default file location allows SSH and Git to automatically detect and use your keys. If you specify a custom location, additional configuration will be required in `~/.ssh/config` to explicitly map each host to its corresponding key file.
-2. Enter a secure passphrase (highly recommended).
-3. Verify your passphrase.
+### Key Generation Process
+The key generation procedure involves the following steps:
+1. Accept the default file location (`~/.ssh/id_ed25519` or `~/.ssh/id_rsa`). The standard path enables automatic key detection by SSH and Git systems. Custom locations require additional configuration in `~/.ssh/config`.
+2. Enter a secure passphrase (strongly recommended).
+3. Confirm the passphrase entry.
 
-The process will generate two files:
+The process generates two distinct files:
 - Private key: `~/.ssh/id_ed25519` (or `id_rsa`)
 - Public key: `~/.ssh/id_ed25519.pub` (or `id_rsa.pub`)
 
-> 🔒 **Security Note**: Never share your private key and always protect it with a strong passphrase.
+> 🔒 **Security Note**: Never share the private key and always protect it with a strong passphrase.
 
 ![Generated SSH keys](/images/using-ssh-keys-with-git/generated-ssh-keys.png#center)
 
 
 ## Add the public ssh key to GitHub
+
+
 
 ## Add the ssh key to the ssh-agent
 
@@ -78,12 +81,6 @@ zshrc or bashrc
 ```bash
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 ```
-
-
-## Troubleshooting Common Issues
-* Permission denied errors
-* Agent forwarding problems
-* Key format issues
 
 
 ## References
