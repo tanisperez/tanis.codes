@@ -1,6 +1,6 @@
 ---
 title: "Using SSH keys with Git"
-date: 2025-04-11T00:00:00+01:00
+date: 2025-04-16T22:10:00+01:00
 draft: false
 toc: true
 image: "/images/common/git.png"
@@ -24,21 +24,21 @@ This approach offers several advantages over traditional passwords:
 
 Before generating SSH keys for GitHub, it is essential to verify that the email address matches the one associated with the GitHub account. This practice ensures proper key management and maintains consistency.
 
-### Using Ed25519 (Recommended)
+### Using Ed25519 (recommended)
 The Ed25519 algorithm represents the recommended choice for new SSH keys, offering enhanced security characteristics and superior performance:
 
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-### Using RSA (Alternative)
+### Using RSA (alternative)
 For systems lacking Ed25519 support, RSA with 4096 bits provides a robust alternative:
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
-### Key Generation Process
+### Key generation process
 The key generation procedure involves the following steps:
 1. Accept the default file location (`~/.ssh/id_ed25519` or `~/.ssh/id_rsa`). The standard path enables automatic key detection by SSH and Git systems. Custom locations require additional configuration in `~/.ssh/config`.
 2. Enter a secure passphrase (strongly recommended).
@@ -53,7 +53,7 @@ The process generates two distinct files:
 ![Generated SSH keys](/images/using-ssh-keys-with-git/generated-ssh-keys.png#center)
 
 
-## Configure SSH Agent
+## Configure SSH agent
 
 The SSH agent functionality requires proper installation and configuration. To verify the installation status and operational state:
 
@@ -63,7 +63,7 @@ eval "$(ssh-agent -s)"
 
 A successful execution will display: `Agent pid XXXX`, where XXXX represents the process identifier.
 
-### Systemd Configuration
+### Systemd configuration
 
 On systemd-based distributions, the SSH agent can be configured as a persistent service:
 
@@ -71,7 +71,7 @@ On systemd-based distributions, the SSH agent can be configured as a persistent 
 systemctl enable --now --user ssh-agent.service
 ```
 
-### Alternative Configuration
+### Alternative configuration
 
 For non-systemd environments, the SSH agent can be initialized through shell configuration files. Add the following command to `.zprofile` or the appropriate shell startup script:
 
@@ -79,7 +79,7 @@ For non-systemd environments, the SSH agent can be initialized through shell con
 eval "$(ssh-agent -s)"
 ```
 
-### Key Registration
+### Key registration
 
 After configuring the SSH agent, register the private key:
 
@@ -113,28 +113,59 @@ git clone git@github.com:tanisperez/dotfiles.git
 
 The implementation of this SSH URL format enables automatic authentication through the configured SSH key during repository operations.
 
-## Configure different keys for hosts
+## Configure SSH keys for different hosts
 
-`~/.ssh/config`
+When working with multiple Git hosting services or requiring distinct authentication credentials for different hosts, SSH configuration allows the specification of unique key files for each remote server. This configuration is managed through the SSH client configuration file.
+
+The following example demonstrates the basic structure for host-specific SSH key configuration in the `~/.ssh/config` file:
 
 ```txt
+# GitHub configuration
 Host github.com
-  User git
-  IdentityFile ~/.ssh/id_rsa
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/github_ed25519
+    AddKeysToAgent yes
+
+# GitLab configuration
+Host gitlab.com
+    HostName gitlab.com
+    User git
+    IdentityFile ~/.ssh/gitlab_ed25519
+    AddKeysToAgent yes
+
+# Company GitLab instance
+Host gitlab.company.com
+    HostName gitlab.company.com
+    User git
+    IdentityFile ~/.ssh/company_ed25519
+    AddKeysToAgent yes
+    PreferredAuthentications publickey
 ```
 
-# Enable the ssh-agent on Linux
+This configuration enables the automatic selection of the appropriate SSH key when connecting to specific hosts.
 
+## Troubleshooting common issues
+
+### Permission denied
+If encountering `Permission denied (publickey)` errors:
 ```bash
-systemctl enable --now --user ssh-agent.service
+ssh -vT git@github.com
 ```
+This verbose output helps identify authentication issues.
 
-zshrc or bashrc
-
+### Wrong key used
+To force SSH to use a specific key:
 ```bash
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+ssh -i ~/.ssh/specific_key -T git@github.com
 ```
 
+### Agent issues
+If the SSH agent is not responding:
+```bash
+eval "$(ssh-agent -s)"
+ssh-add -l
+```
 
 ## References
 
