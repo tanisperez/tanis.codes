@@ -53,7 +53,7 @@ The process generates two distinct files:
 ![Generated SSH keys](/images/using-ssh-keys-with-git/generated-ssh-keys.png#center)
 
 
-## Configure SSH agent
+## Configure the SSH agent
 
 The SSH agent functionality requires proper installation and configuration. To verify the installation status and operational state:
 
