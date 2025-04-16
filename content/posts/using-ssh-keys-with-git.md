@@ -53,9 +53,45 @@ The process generates two distinct files:
 ![Generated SSH keys](/images/using-ssh-keys-with-git/generated-ssh-keys.png#center)
 
 
-## Add the ssh key to the ssh-agent
+## Configure SSH Agent
 
+The SSH agent functionality requires proper installation and configuration. To verify the installation status and operational state:
 
+```bash
+eval "$(ssh-agent -s)"
+```
+
+A successful execution will display: `Agent pid XXXX`, where XXXX represents the process identifier.
+
+### Systemd Configuration
+
+On systemd-based distributions, the SSH agent can be configured as a persistent service:
+
+```bash
+systemctl enable --now --user ssh-agent.service
+```
+
+### Alternative Configuration
+
+For non-systemd environments, the SSH agent can be initialized through shell configuration files. Add the following command to `.zprofile` or the appropriate shell startup script:
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+### Key Registration
+
+After configuring the SSH agent, register the private key:
+
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+
+To verify the registered keys:
+
+```bash
+ssh-add -l
+```
 
 ## Add the public SSH key to GitHub
 
