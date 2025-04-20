@@ -41,11 +41,32 @@ Git Bash Alternative:
 
 ## Installation
 
-### Prerequisites Verification
-[Commands to verify requirements]
+The installation process consists of downloading and executing the SDKMAN! installation script. Open a terminal and execute:
 
-### Installation Process
-[Installation steps]
+```bash
+curl -s "https://get.sdkman.io" | bash
+```
+
+For systems where curl is not available, wget can be used as an alternative:
+
+```bash
+wget -qO- "https://get.sdkman.io" | bash
+```
+
+![SDKMAN! installation](/images/getting-started-with-sdkman/sdkman-installation.png#center)
+
+
+Afterward, open a new terminal or initialize SDKMAN! in the current shell:
+
+```bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
+To verify the installation:
+
+```bash
+sdk version
+```
 
 ## Basic Usage
 
