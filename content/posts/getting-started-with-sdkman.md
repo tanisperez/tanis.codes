@@ -73,9 +73,11 @@ sdk version
 - `sdk list`: Display all available candidates (SDKs).
 - `sdk list java`: List available versions for Java.
 - `sdk list maven`: List available versions for Maven.
-- `sdk current java`: Show current installed versions.
+- `sdk current`: Show current installed versions.
+- `sdk current java`: Show current installed versions of Java.
 - `sdk install java`: Install the latest stable version of Java.
 - `sdk install java 21.0.7-zulu`: Install a specific version of Java.
+- `sdk install maven 3.9.9`: Install the version 3.9.9 of Maven.
 - `sdk uninstall java 24.0.1-graal`: Remove an installed version of Java.
 
 ![Install Java 21](/images/getting-started-with-sdkman/install-java-21.png#center)
@@ -94,6 +96,38 @@ sdk default java 21.0.7-zulu
 ```
 
 ![Switch between versions](/images/getting-started-with-sdkman/switch-between-versions.png#center)
+
+## Advanced Features
+
+### Offline mode
+
+Enable offline mode:
+```bash
+sdk offline enable
+```
+
+### Auto-Answer mode
+
+Skip confirmation prompts:
+```bash
+sdk install java 21.0.7-zulu -y
+```
+
+### Update SDKMAN!
+
+Keep the tool up to date:
+```bash
+sdk selfupdate
+sdk update
+```
+
+## Conclusion
+
+SDKMAN! streamlines the management of multiple JVM development kits through an intuitive command-line interface. Its capabilities include:
+- Simple installation and version management.
+- Support for multiple JDK distributions.
+- Offline operation capabilities.
+- Automated updates and maintenance.
 
 ## References
 - [Official SDKMAN! Documentation](https://sdkman.io/usage)
