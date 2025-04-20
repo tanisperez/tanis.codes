@@ -28,9 +28,9 @@ SDKMAN! requires a Unix-like environment and is compatible with:
 ### Windows setup options
 
 WSL Installation (Recommended):
-- Install Windows Subsystem for Linux
-- Install required tools via package manager
-- Follow standard Unix installation steps
+- Install Windows Subsystem for Linux.
+- Install required tools via package manager.
+- Follow standard Unix installation steps.
 
 Git Bash Alternative:
 - Install Git Bash for Windows.
