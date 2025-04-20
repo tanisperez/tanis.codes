@@ -76,21 +76,24 @@ sdk version
 - `sdk current java`: Show current installed versions.
 - `sdk install java`: Install the latest stable version of Java.
 - `sdk install java 21.0.7-zulu`: Install a specific version of Java.
-- `sdk uninstall java 17.0.8-tem`: Remove an installed version of Java.
+- `sdk uninstall java 24.0.1-graal`: Remove an installed version of Java.
 
 ![Install Java 21](/images/getting-started-with-sdkman/install-java-21.png#center)
 
-### Switch Between Versions
+### Switch between versions
 
 Switch the current terminal to a specific version:
+
 ```bash
-sdk use java 17.0.8-tem
+sdk use java 21.0.7-zulu
 ```
 
 Set the default version for all terminals:
 ```bash
-sdk default java 17.0.8-tem
+sdk default java 21.0.7-zulu
 ```
+
+![Switch between versions](/images/getting-started-with-sdkman/switch-between-versions.png#center)
 
 ## References
 - [Official SDKMAN! Documentation](https://sdkman.io/usage)
