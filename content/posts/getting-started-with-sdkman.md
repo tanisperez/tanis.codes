@@ -68,33 +68,29 @@ To verify the installation:
 sdk version
 ```
 
-## Basic Usage
+## Usage
 
-### List Available Versions
-[Commands and examples]
+- `sdk list`: Display all available candidates (SDKs).
+- `sdk list java`: List available versions for Java.
+- `sdk list maven`: List available versions for Maven.
+- `sdk current java`: Show current installed versions.
+- `sdk install java`: Install the latest stable version of Java.
+- `sdk install java 21.0.7-zulu`: Install a specific version of Java.
+- `sdk uninstall java 17.0.8-tem`: Remove an installed version of Java.
 
-### Install Specific Versions
-[Installation commands]
+![Install Java 21](/images/getting-started-with-sdkman/install-java-21.png#center)
 
 ### Switch Between Versions
-[Version switching]
 
-### Set Default Version
-[Default version configuration]
+Switch the current terminal to a specific version:
+```bash
+sdk use java 17.0.8-tem
+```
 
-## Advanced Features
-
-### Auto-Answer Yes
-[Configuration options]
-
-### Offline Mode
-[Working offline]
-
-### Update SDKMAN!
-[Update commands]
-
-## Common Issues and Solutions
-[Troubleshooting section]
+Set the default version for all terminals:
+```bash
+sdk default java 17.0.8-tem
+```
 
 ## References
 - [Official SDKMAN! Documentation](https://sdkman.io/usage)
