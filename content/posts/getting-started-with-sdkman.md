@@ -1,6 +1,6 @@
 ---
 title: "Getting started with SDKMAN!"
-date: 2025-04-20T22:10:00+01:00
+date: 2025-04-20T18:18:00+02:00
 draft: false
 toc: true
 image: "/images/getting-started-with-sdkman/logo.png"
@@ -9,16 +9,35 @@ tags:
   - java
 ---
 
-## What is SDKMAN!
-
 SDKMAN! is a tool for managing parallel versions of multiple Software Development Kits on Unix-based systems. It provides a convenient command-line interface for installing, switching between, and removing different versions of Java, Gradle, Maven, and other JVM-based development kits.
 
-## System Requirements
+## System requirements
 
-- Unix-like operating system (Linux, macOS)
-- `curl` or `wget` installed
-- `zip` and `unzip` installed
-- `bash`, `zsh`, or other POSIX-compliant shell
+SDKMAN! requires a Unix-like environment and is compatible with:
+- Linux distributions.
+- macOS.
+- Windows (via WSL or Git Bash).
+- Bash and ZSH shells.
+
+### Required components
+- `curl` or `wget` for downloads.
+- `zip` and `unzip` for package management.
+- `sed` and `awk` for text processing.
+- POSIX-compliant shell (bash or zsh).
+
+### Windows setup options
+
+WSL Installation (Recommended):
+- Install Windows Subsystem for Linux
+- Install required tools via package manager
+- Follow standard Unix installation steps
+
+Git Bash Alternative:
+- Install Git Bash for Windows.
+- Add MinGW tools for Unix utilities.
+- Configure system PATH as needed.
+
+> **Note**: Native Windows installation is not supported. WSL provides the best experience for Windows users.
 
 ## Installation
 
