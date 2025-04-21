@@ -97,6 +97,55 @@ sdk default java 21.0.7-zulu
 
 ![Switch between versions](/images/getting-started-with-sdkman/switch-between-versions.png#center)
 
+### Project-specific environment
+
+SDKMAN! provides environment management through the `.sdkmanrc` file, which allows defining project-specific SDK versions:
+
+```bash
+# Create .sdkmanrc in project root
+sdk env init
+```
+
+Example of `.sdkmanrc` file:
+```txt
+java=21.0.7-zulu
+maven=3.9.9
+```
+
+Apply the environment configuration:
+
+```bash
+sdk env
+```
+
+Install current environment dependencies:
+
+```bash
+sdk env install
+```
+
+Verify the environment configuration:
+
+```bash
+sdk env current
+```
+
+Temporarily disable environment:
+
+```bash
+sdk env clear
+```
+
+This configuration ensures consistent SDK versions across development teams and environments. To enable automatic switching when entering directories with `.sdkmanrc`, configure:
+
+```bash
+echo "sdkman_auto_env=true" >> "$HOME/.sdkman/etc/config"
+```
+
+After enabling this feature, SDKMAN! will automatically switch to the specified versions when entering a directory containing `.sdkmanrc`.
+
+> **Note**: Add `.sdkmanrc` to version control to share the configuration with team members.
+
 ## Advanced Features
 
 ### Offline mode
