@@ -27,7 +27,7 @@ Verify virtualization support in your system:
 LC_ALL=C lscpu | grep Virtualization
 ```
 
-![Hardware virtualization check output](/images/virt-manager-qemu-arch-linux/virtualization-enabled.jpg#center)
+![Hardware virtualization check output](/images/virt-manager-qemu-arch-linux/virtualization-enabled.png#center)
 
 > **Note**: For Intel processors, look for `VT-x` in the output. AMD processors will show `AMD-V` instead.
 
