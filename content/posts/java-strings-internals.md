@@ -3,12 +3,11 @@ title: "Java Strings Internals"
 date: 2025-09-30T12:47:00+02:00
 draft: false
 toc: true
-image: "/images/java-strings-internals/java-logo.png"
+image: "/images/common/java.png"
 description: "Deep dive into Java Strings internals: learn about storage optimizations, encoding evolution, and performance improvements across different JDK versions."
 tags:
   - java
   - performance
-  - jdk
 ---
 
 Java Strings are one of the most used data structures in the Java ecosystem. While they seem simple on the surface, their internal implementation has evolved significantly across different JDK versions to improve memory usage and performance.
