@@ -417,20 +417,20 @@ public class MessageBuilder {
 
 > **Note**: In modern Java applications, it's rare to need `StringBuffer`. If you need thread-safe string manipulation, consider using other synchronization mechanisms or concurrent data structures.
 
-## 5. References
+## References
 
-### 5.1. JEPs (JDK Enhancement Proposals)
+### JEPs (JDK Enhancement Proposals)
 - [JEP 254: Compact Strings](https://openjdk.org/jeps/254)
 - [JEP 400: UTF-8 by Default](https://openjdk.org/jeps/400)
 - [JEP 280: String Concatenation](https://openjdk.org/jeps/280)
 - [JEP 192: String Deduplication](https://openjdk.org/jeps/192)
 
-### 5.2. Official Documentation
+### Official Documentation
 - [String (Java SE 21 & JDK 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html)
 - [StringBuilder (Java SE 21 & JDK 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html)
 - [StringBuffer (Java SE 21 & JDK 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuffer.html)
 
-### 5.3. Performance and Best Practices
+### Performance and Best Practices
 - [String Concatenation (Java Language Specification)](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.18.1)
 - [Java Performance Tuning Guide - String Pool](https://docs.oracle.com/cd/E15523_01/web.1111/e13814/jvm_tuning.htm#PERFM161)
 
