@@ -12,29 +12,100 @@ tags:
 
 Java Strings are one of the most used data structures in the Java ecosystem. While they seem simple on the surface, their internal implementation has evolved significantly across different JDK versions to improve memory usage and performance.
 
-## String Storage & Encoding
+## String Storage and Encoding
 
 Before JDK 9, all String characters were stored using UTF-16 encoding, meaning each character consumed 2 bytes of memory regardless of the actual character being stored. This was inefficient for strings containing only ASCII characters, which was the common case for most applications.
 
 ### Compact Strings (JDK 9+)
 
-JEP 254 introduced Compact Strings, a memory optimization that changed how strings are stored internally:
+JEP 254 introduced Compact Strings, a memory optimization that changed how strings are stored internally at runtime. This means that even if your code was compiled with Java 8, running it on JVM 9+ will automatically benefit from this optimization, as it's a JVM feature, not a compile-time one.
+
+Let's see an example:
 
 ```java
-// Before JDK 9 - Always UTF-16
-String ascii = "Hello";     // 10 bytes (2 bytes per char)
-String special = "Hello👋"; // 14 bytes (2 bytes per char including emoji)
-
-// After JDK 9 - LATIN1 or UTF16
-String ascii = "Hello";     // 5 bytes (1 byte per char)
-String special = "Hello👋"; // 14 bytes (still UTF16 due to emoji)
+// This code compiled with Java 8 will still use Compact Strings when run on JVM 9+
+String ascii = "Hello";     // Will use LATIN1 encoding on JVM 9+
+String special = "Hello👋"; // Will use UTF16 encoding on both JVM 8 and 9+
 ```
 
-This optimization automatically chooses between two encodings:
+The JVM automatically chooses between two encodings:
+- LATIN1 (ISO-8859-1) for strings that only contain characters that can be represented in one byte
+- UTF16 for strings that require more than one byte per character
 
-LATIN1 (ISO-8859-1) for strings that only contain characters that can be represented in one byte
-UTF16 for strings that require more than one byte per character.
+This optimization is transparent to the application code and can reduce the memory footprint of your application by up to 50% in cases where most strings contain only ASCII characters.
 
+### UTF-8 by Default (JDK 18+)
+
+JEP 400 changed the default charset to UTF-8 in Java 18. Before this change, the default charset depended on the operating system and locale settings, which could lead to inconsistent behavior across different environments.
+
+```java
+// Before Java 18 - Default charset was platform dependent
+// Windows en-US: windows-1252
+// Linux en-US: UTF-8
+// MacOS en-US: UTF-8
+System.out.println(Charset.defaultCharset()); 
+
+// After Java 18 - Always UTF-8 by default
+System.out.println(Charset.defaultCharset()); // UTF-8
+```
+
+This change affects several Java APIs and system properties:
+- `java.nio.charset.Charset.defaultCharset()`
+- `System.getProperty("file.encoding")`
+- File I/O operations
+- Platform APIs that depend on character encoding
+
+> **Note**: Internal String representation (LATIN1/UTF16) is different from the default charset used for I/O operations. Compact Strings optimization works at the JVM level, while the default charset affects how Java interacts with the external world.
+
+#### Potential Breaking Changes
+
+If your application relies on the platform's default encoding, you might need to:
+
+```java
+// Explicit charset specification for backward compatibility
+String content = new String(bytes, Charset.forName("windows-1252"));
+Files.write(path, content.getBytes(StandardCharsets.ISO_8859_1));
+```
+
+## String Pool and Interning
+
+In Java, String interning is a method of storing only one copy of each distinct String value, which must be immutable. The String pool is a special storage area in the Java heap where Java stores these interned Strings. When you create a String literal, Java checks the String pool first to see if an identical String already exists. If it does, Java returns a reference to the pooled instance. If it doesn't, Java adds the new String to the pool and then returns the reference.
+
+### How Interning Works
+
+Interning is done using the `String.intern()` method. When you intern a String, Java checks if the String is already in the pool. If it is, `intern()` returns the reference from the pool. If it's not, `intern()` adds the String to the pool and then returns the reference.
+
+Here's an example:
+
+```java
+String a = "Hello";
+String b = "Hello";
+String c = new String("Hello").intern();
+
+System.out.println(a == b); // true, both refer to the same instance in the pool
+System.out.println(a == c); // true, c is interned and refers to the same instance as a
+```
+
+### Benefits of Interning
+
+- **Memory Savings**: Interning can save memory when you have many identical Strings, as only one copy of each String is stored in the pool.
+- **Performance Improvement**: Comparing interned Strings is faster because you can use `==` instead of `equals()`, as interned Strings with the same content refer to the same object.
+
+### Drawbacks of Interning
+
+- **Memory Consumption**: The String pool itself consumes memory, and if you intern too many Strings, it can lead to increased memory usage.
+- **Garbage Collection**: Interned Strings are not garbage collected until the ClassLoader that loaded them is garbage collected. This can potentially lead to memory leaks if not managed properly.
+
+### When to Use Interning
+
+Interning is useful when:
+- You have a large number of identical Strings.
+- You need to save memory.
+- You need faster String comparison.
+
+However, you should avoid interning:
+- Large Strings, to prevent excessive memory usage.
+- Strings from external sources (like user input), due to potential security risks like DOS attacks.
 
 ## References
 - [JEP 254: Compact Strings](https://openjdk.org/jeps/254)
