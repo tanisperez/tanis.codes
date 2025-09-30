@@ -144,7 +144,218 @@ String c = new String("hello");          // New object in heap
 - Combine with Compact Strings for optimal memory usage
 - Unlike interning, deduplication happens automatically and is generally safer for dynamic strings
 
-## References
-- [JEP 254: Compact Strings](https://openjdk.org/jeps/254)
-- [JEP 400: UTF-8 by Default](https://openjdk.org/jeps/400)
+## 4. String Concatenation
+
+### 4.1. Compile-time Optimizations
+
+The Java compiler performs several optimizations when dealing with String concatenation. When concatenating string literals or final variables, the compiler will combine them at compile time:
+
+```java
+// Compile-time constants
+final String GREETING = "Hello";
+final String WORLD = "World";
+String result = GREETING + " " + WORLD;
+
+// Decompiled bytecode will show:
+String result = "Hello World";
+```
+
+However, when working with non-final variables, the compiler behavior has evolved:
+
+```java
+String a = "Hello";
+String b = "World";
+String result = a + " " + b;
+
+// Before JDK 9 - Compiled to StringBuilder
+// Decompiled bytecode equivalent:
+String result = new StringBuilder()
+    .append(a)
+    .append(" ")
+    .append(b)
+    .toString();
+
+// After JDK 9 - Uses invokedynamic
+// More efficient implementation determined at runtime
+```
+
+### 4.2. The concat() Method
+
+While the `+` operator is the most common way to concatenate strings, Java also provides the `concat()` method. However, there are important differences to consider:
+
+```java
+String a = "Hello";
+String b = "World";
+
+// Using + operator
+String result1 = a + " " + b;
+
+// Using concat()
+String result2 = a.concat(" ").concat(b);
+```
+
+Key considerations:
+- `concat()` creates a new String object for each call
+- Unlike `+`, `concat()` doesn't get optimized by the compiler into StringBuilder operations
+- `concat()` throws NullPointerException if the argument is null, while `+` converts null to "null"
+
+```java
+String str = "Hello";
+String nullStr = null;
+
+// Works fine, prints "Hello null"
+System.out.println(str + nullStr);
+
+// Throws NullPointerException
+System.out.println(str.concat(nullStr));
+```
+
+In terms of performance:
+- For simple concatenations, `+` is usually the best choice
+- For multiple concatenations in loops, use StringBuilder
+- Avoid `concat()` in performance-critical code or loops
+
+### 4.3. String Concatenation in Loops
+
+One of the most common performance pitfalls is concatenating strings inside loops:
+
+```java
+// Bad practice
+String result = "";
+for (int i = 0; i < 1000; i++) {
+    result += "number" + i; // Creates many temporary objects
+}
+
+// Good practice
+StringBuilder builder = new StringBuilder();
+for (int i = 0; i < 1000; i++) {
+    builder.append("number").append(i);
+}
+String result = builder.toString();
+```
+
+> **Note**: Even though the compiler uses StringBuilder internally for the `+` operator, it creates a new StringBuilder for each concatenation operation in the loop.
+
+### 4.4. Performance Impact
+
+Let's see a simple benchmark comparing different approaches:
+
+```java
+// Don't do this
+public String concatenateWithPlus() {
+    String result = "";
+    for (int i = 0; i < 1000; i++) {
+        result += "number" + i;
+    }
+    return result;
+}
+
+// Better approach
+public String concatenateWithBuilder() {
+    StringBuilder builder = new StringBuilder();
+    for (int i = 0; i < 1000; i++) {
+        builder.append("number").append(i);
+    }
+    return builder.toString();
+}
+
+// Best when final size is known
+public String concatenateWithPreallocatedBuilder() {
+    StringBuilder builder = new StringBuilder(10000); // Preallocate capacity
+    for (int i = 0; i < 1000; i++) {
+        builder.append("number").append(i);
+    }
+    return builder.toString();
+}
+```
+
+The performance difference can be significant:
+- String concatenation: O(n²) complexity
+- StringBuilder: O(n) complexity
+- Preallocated StringBuilder: O(n) with minimal reallocations
+
+### 4.5. Understanding invokedynamic and Bytecode
+
+Since JDK 9, String concatenation uses `invokedynamic` to optimize the operation at runtime. Let's look at a simple example and its bytecode:
+
+```java
+String name = "John";
+int age = 30;
+String message = "Hello " + name + ", you are " + age + " years old";
+```
+
+Before JDK 9, the bytecode would show:
+```java
+// Decompiled from JDK 8 bytecode
+new java/lang/StringBuilder
+dup
+ldc "Hello "
+invokespecial java/lang/StringBuilder.<init>(Ljava/lang/String;)V
+aload_1
+invokevirtual java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+ldc ", you are "
+invokevirtual java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+iload_2
+invokevirtual java/lang/StringBuilder.append(I)Ljava/lang/StringBuilder;
+ldc " years old"
+invokevirtual java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+invokevirtual java/lang/StringBuilder.toString()Ljava/lang/String;
+```
+
+After JDK 9, it becomes:
+```java
+// Decompiled from JDK 9+ bytecode
+invokedynamic makeConcatWithConstants(Ljava/lang/String;I)Ljava/lang/String;
+  // Bootstrap method using StringConcatFactory
+```
+
+This change allows the JVM to:
+- Choose the best concatenation strategy at runtime
+- Avoid creating unnecessary intermediate objects
+- Optimize based on the actual string content and size
+
+### 4.6. StringBuffer vs StringBuilder
+
+While `StringBuilder` is the preferred choice for string concatenation, `StringBuffer` still has its place:
+
+```java
+// Thread-safe but slower
+StringBuffer buffer = new StringBuffer();
+buffer.append("Hello ");
+buffer.append("World");
+
+// Not thread-safe but faster
+StringBuilder builder = new StringBuilder();
+builder.append("Hello ");
+builder.append("World");
+```
+
+Key differences:
+- `StringBuffer`: All methods are synchronized
+- `StringBuilder`: No synchronization, better performance
+- Memory usage is identical
+- Both are mutable
+
+When to use each:
+```java
+// Use StringBuffer when sharing between threads
+public class SharedMessage {
+    private final StringBuffer message = new StringBuffer();
+    
+    public synchronized void addToMessage(String text) {
+        message.append(text);
+    }
+}
+
+// Use StringBuilder for single-thread operations
+public class MessageBuilder {
+    private final StringBuilder message = new StringBuilder();
+    
+    public void addToMessage(String text) {
+        message.append(text);
+    }
+}
+```
+
+> **Note**: In modern Java applications, it's rare to need `StringBuffer`. If you need thread-safe string manipulation, consider using other synchronization mechanisms or concurrent data structures.
 
