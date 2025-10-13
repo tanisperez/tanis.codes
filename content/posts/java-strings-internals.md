@@ -35,8 +35,8 @@ String special = "Hello👋"; // Will use UTF16 encoding on both JVM 8 and 9+
 ```
 
 The JVM automatically chooses between two encodings:
-- LATIN1 (ISO-8859-1) for strings that only contain characters that can be represented in one byte
-- UTF16 for strings that require more than one byte per character
+- **LATIN1 (ISO-8859-1)** for strings that only contain characters that can be represented in one byte.
+- **UTF16** for strings that require more than one byte per character.
 
 This optimization is transparent to the application code and can reduce the memory footprint of your application by up to 50% in cases where most strings contain only ASCII characters.
 
@@ -65,8 +65,8 @@ System.out.println(Charset.defaultCharset()); // UTF-8
 This change affects several Java APIs and system properties:
 - `java.nio.charset.Charset.defaultCharset()`
 - `System.getProperty("file.encoding")`
-- File I/O operations
-- Platform APIs that depend on character encoding
+- File I/O operations.
+- Platform APIs that depend on character encoding.
 
 > **Note**: Internal String representation (LATIN1/UTF16) is different from the default charset used for I/O operations. Compact Strings optimization works at the JVM level, while the default charset affects how Java interacts with the external world.
 
@@ -99,26 +99,22 @@ System.out.println(a == b); // true, both refer to the same instance in the pool
 System.out.println(a == c); // true, c is interned and refers to the same instance as a
 ```
 
-### 2.2. Benefits of Interning
+### 2.2. String Interning in Practice
 
-- **Memory Savings**: Interning can save memory when you have many identical Strings, as only one copy of each String is stored in the pool.
-- **Performance Improvement**: Comparing interned Strings is faster because you can use `==` instead of `equals()`, as interned Strings with the same content refer to the same object.
+String interning stores a single copy of each distinct string in a dedicated pool to avoid duplicates. While it may seem beneficial, it comes with notable trade-offs:
 
-### 2.3. Drawbacks of Interning
+| Aspect | Advantages | Disadvantages |
+|--------|-------------|----------------|
+| **Memory** | Saves memory when many identical strings exist. | The pool itself consumes memory; interning too many strings can actually increase memory usage. |
+| **Performance** | Comparing interned strings with `==` is faster than using `equals()`. | Interning requires a synchronized lookup in the pool, adding overhead when calling `intern()`. |
+| **Garbage Collection** | — | Interned strings remain alive until their defining `ClassLoader` is unloaded, which can lead to memory leaks if used carelessly. |
+| **Security / Stability** | — | Interning external or user-supplied strings can expose the application to denial-of-service risks by filling the pool with unique values. |
 
-- **Memory Consumption**: The String pool itself consumes memory, and if you intern too many Strings, it can lead to increased memory usage.
-- **Garbage Collection**: Interned Strings are not garbage collected until the ClassLoader that loaded them is garbage collected. This can potentially lead to memory leaks if not managed properly.
+In modern Java applications, using `String.intern()` is rarely necessary.  
 
-### 2.4. When to Use Interning
+The JVM’s advanced garbage collectors and optional **String deduplication** mechanisms (in G1 and ZGC) already minimize duplicate character arrays efficiently.  
 
-Interning is useful when:
-- You have a large number of identical Strings.
-- You need to save memory.
-- You need faster String comparison.
-
-However, you should avoid interning:
-- Large Strings, to prevent excessive memory usage.
-- Strings from external sources (like user input), due to potential security risks like DOS attacks.
+In general, explicit interning should be avoided unless you have a **very specific, well-profiled case** demonstrating measurable benefits.
 
 ## 3. JVM String Optimizations
 
@@ -143,13 +139,13 @@ String c = new String("hello");          // New object in heap
 ```
 
 #### 3.1.1. Configuration Parameters
-- `-XX:StringDeduplicationAgeThreshold`: Age threshold before String objects are considered for deduplication (default: 3)
-- `-XX:StringTableSize`: Size of the hash table for String deduplication (default: 60013)
+- `-XX:StringDeduplicationAgeThreshold`: Age threshold before String objects are considered for deduplication (default: 3).
+- `-XX:StringTableSize`: Size of the hash table for String deduplication (default: 60013).
 
 ### 3.2. Performance Considerations
-- Monitor deduplication with `-XX:+PrintStringDeduplicationStatistics`
-- Combine with Compact Strings for optimal memory usage
-- Unlike interning, deduplication happens automatically and is generally safer for dynamic strings
+- Monitor deduplication with `-XX:+PrintStringDeduplicationStatistics`.
+- Combine with Compact Strings for optimal memory usage.
+- Unlike interning, deduplication happens automatically and is generally safer for dynamic strings,
 
 ## 4. String Concatenation
 
@@ -202,9 +198,9 @@ String result2 = a.concat(" ").concat(b);
 ```
 
 Key considerations:
-- `concat()` creates a new String object for each call
-- Unlike `+`, `concat()` doesn't get optimized by the compiler into StringBuilder operations
-- `concat()` throws NullPointerException if the argument is null, while `+` converts null to "null"
+- `concat()` creates a new String object for each call.
+- Unlike `+`, `concat()` doesn't get optimized by the compiler into StringBuilder operations.
+- `concat()` throws NullPointerException if the argument is null, while `+` converts null to "null".
 
 ```java
 String str = "Hello";
@@ -218,9 +214,9 @@ System.out.println(str.concat(nullStr));
 ```
 
 In terms of performance:
-- For simple concatenations, `+` is usually the best choice
-- For multiple concatenations in loops, use StringBuilder
-- Avoid `concat()` in performance-critical code or loops
+- For simple concatenations, `+` is usually the best choice.
+- For multiple concatenations in loops, use StringBuilder.
+- Avoid `concat()` in performance-critical code or loops.
 
 ### 4.3. String Concatenation in Loops
 
@@ -368,9 +364,9 @@ invokedynamic makeConcatWithConstants(Ljava/lang/String;I)Ljava/lang/String;
 ```
 
 This change allows the JVM to:
-- Choose the best concatenation strategy at runtime
-- Avoid creating unnecessary intermediate objects
-- Optimize based on the actual string content and size
+- Choose the best concatenation strategy at runtime.
+- Avoid creating unnecessary intermediate objects.
+- Optimize based on the actual string content and size.
 
 ### 4.6. StringBuffer vs StringBuilder
 
@@ -389,10 +385,10 @@ builder.append("World");
 ```
 
 Key differences:
-- `StringBuffer`: All methods are synchronized
-- `StringBuilder`: No synchronization, better performance
-- Memory usage is identical
-- Both are mutable
+- `StringBuffer`: All methods are synchronized.
+- `StringBuilder`: No synchronization, better performance.
+- Memory usage is identical.
+- Both are mutable.
 
 When to use each:
 ```java
