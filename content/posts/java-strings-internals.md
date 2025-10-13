@@ -1,6 +1,6 @@
 ---
 title: "Java Strings Internals"
-date: 2025-09-30T12:47:00+02:00
+date: 2025-10-13T18:16:00+02:00
 draft: false
 toc: true
 image: "/images/common/java.png"
