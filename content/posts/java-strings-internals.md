@@ -40,6 +40,8 @@ The JVM automatically chooses between two encodings:
 - **LATIN1 (ISO-8859-1)** for strings that only contain characters that can be represented in one byte.
 - **UTF16** for strings that require more than one byte per character.
 
+![String encodings comparison](/images/java-strings-internals/string-encoding.png#center)
+
 This optimization is transparent to application code and can reduce the memory footprint of your application by up to 50% when most strings contain only ASCII characters.
 
 You can disable this optimization using the JVM flag:
