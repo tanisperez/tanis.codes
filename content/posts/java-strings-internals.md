@@ -134,18 +134,18 @@ String c = new String("hello");          // New object in heap
 // This happens automatically without explicit interning
 ```
 
-#### 3.1.1. Configuration Parameters
+#### 2.3.1. Configuration Parameters
 - `-XX:StringDeduplicationAgeThreshold`: Age threshold before String objects are considered for deduplication (default: 3).
 - `-XX:StringTableSize`: Size of the hash table for String deduplication (default: 60013).
 
-### 3.2. Performance Considerations
+### 2.4. Performance Considerations
 - Monitor deduplication with `-XX:+PrintStringDeduplicationStatistics`.
 - Combine with Compact Strings for optimal memory usage.
 - Unlike interning, deduplication happens automatically and is generally safer for dynamic strings,
 
-## 4. String Concatenation
+## 3. String Concatenation
 
-### 4.1. Compile-time Optimizations
+### 3.1. Compile-time Optimizations
 
 The Java compiler performs several optimizations when dealing with String concatenation. When concatenating string literals or final variables, the compiler will combine them at compile time:
 
@@ -178,7 +178,7 @@ String result = new StringBuilder()
 // More efficient implementation determined at runtime
 ```
 
-### 4.2. The concat() Method
+### 3.2. The concat() Method
 
 While the `+` operator is the most common way to concatenate strings, Java also provides the `concat()` method. However, there are important differences to consider:
 
@@ -214,7 +214,7 @@ In terms of performance:
 - For multiple concatenations in loops, use StringBuilder.
 - Avoid `concat()` in performance-critical code or loops.
 
-### 4.3. String Concatenation in Loops
+### 3.3. String Concatenation in Loops
 
 One of the most common performance pitfalls is concatenating strings inside loops:
 
@@ -235,7 +235,7 @@ String result = builder.toString();
 
 > **Note**: Even though the compiler uses StringBuilder internally for the `+` operator, it creates a new StringBuilder for each concatenation operation in the loop.
 
-### 4.4. Performance Impact
+### 3.4. Performance Impact
 
 Let's see a simple benchmark comparing different approaches:
 
@@ -324,7 +324,7 @@ StringConcatenationBenchmark.concatenateWithPreallocated 1000 avgt    3     9.98
 
 As we can see, the performance difference is substantial, especially as the number of concatenations increases.
 
-### 4.5. Understanding invokedynamic and Bytecode
+### 3.5. Understanding invokedynamic and Bytecode
 
 Since JDK 9, String concatenation uses `invokedynamic` to optimize the operation at runtime. Let's look at a simple example and its bytecode:
 
@@ -364,7 +364,7 @@ This change allows the JVM to:
 - Avoid creating unnecessary intermediate objects.
 - Optimize based on the actual string content and size.
 
-### 4.6. StringBuffer vs StringBuilder
+### 3.6. StringBuffer vs StringBuilder
 
 While `StringBuilder` is the preferred choice for string concatenation, `StringBuffer` still has its place:
 
