@@ -311,18 +311,60 @@ public class StringConcatenationBenchmark {
 }
 ```
 
-Results on OpenJDK 21:
-```
-Benchmark                                   (length)  Mode  Cnt     Score    Error  Units
-StringConcatenationBenchmark.concatenateWithPlus         100  avgt    3   149.273 ±  2.845  us/op
-StringConcatenationBenchmark.concatenateWithBuilder      100  avgt    3     1.273 ±  0.045  us/op
-StringConcatenationBenchmark.concatenateWithPreallocated 100  avgt    3     0.984 ±  0.035  us/op
-StringConcatenationBenchmark.concatenateWithPlus        1000  avgt    3  8149.273 ± 22.845  us/op
-StringConcatenationBenchmark.concatenateWithBuilder     1000  avgt    3    12.273 ±  0.245  us/op
-StringConcatenationBenchmark.concatenateWithPreallocated 1000 avgt    3     9.984 ±  0.135  us/op
+This was the benchmark setup:
+* Dell XPS 9370 with an i7-8550U.
+* 16 GB of RAM.
+* Arch Linux with kernel 6.17.1-arch1-1.
+
+| Benchmark | length | Mode | Cnt | Score | Error | Units |
+|-----------|--------|------|-----|--------|--------|--------|
+| concatenateWithBuilder | 100 | avgt | 3 | 0.669 | 0.405 | us/op |
+| concatenateWithBuilder | 1000 | avgt | 3 | 7.818 | 0.989 | us/op |
+| concatenateWithBuilder | 10000 | avgt | 3 | 109.673 | 6.827 | us/op |
+| concatenateWithPlus | 100 | avgt | 3 | 3.883 | 0.195 | us/op |
+| concatenateWithPlus | 1000 | avgt | 3 | 380.518 | 18.312 | us/op |
+| concatenateWithPlus | 10000 | avgt | 3 | 37008.220 | 467.445 | us/op |
+| concatenateWithPreallocatedBuilder | 100 | avgt | 3 | 0.555 | 0.048 | us/op |
+| concatenateWithPreallocatedBuilder | 1000 | avgt | 3 | 7.159 | 0.651 | us/op |
+| concatenateWithPreallocatedBuilder | 10000 | avgt | 3 | 91.623 | 6.622 | us/op |
+
+The benchmark results demonstrate several key points:
+
+1. **String concatenation with + operator**: 
+   - Shows exponential performance degradation
+   - At 10,000 iterations, takes ~37ms (37008.220 μs)
+   - Creates multiple intermediate String objects
+
+2. **StringBuilder without preallocation**:
+   - Linear performance growth
+   - At 10,000 iterations, takes ~109μs
+   - Still requires buffer resizing operations
+
+3. **Preallocated StringBuilder**:
+   - Best performance across all sizes
+   - At 10,000 iterations, only ~91μs
+   - Avoids buffer resizing completely
+
+The importance of preallocating StringBuilder capacity:
+- Eliminates the need for buffer resizing
+- Reduces memory allocation overhead
+- Prevents copying of existing content during resize
+- Particularly important in performance-critical loops
+
+For example, StringBuilder's default capacity is 16 characters. Without preallocation, it will need to resize multiple times:
+```java
+// Initial capacity: 16
+// First resize: 34
+// Second resize: 70
+// Third resize: 142
+// ...and so on
+
+// Better approach:
+int finalSize = items.size() * 20; // Estimate final size
+StringBuilder builder = new StringBuilder(finalSize);
 ```
 
-As we can see, the performance difference is substantial, especially as the number of concatenations increases.
+As shown in the benchmark, proper preallocation can improve performance by up to 16% in large concatenation operations.
 
 ### 3.5. Understanding invokedynamic and Bytecode
 
