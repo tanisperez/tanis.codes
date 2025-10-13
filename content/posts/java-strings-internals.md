@@ -28,7 +28,7 @@ Before JDK 9, all String characters were stored using UTF-16 encoding, meaning e
 ### 1.1. Compact Strings (JDK 9+)
 
 [JEP 254](https://openjdk.org/jeps/254) introduced **Compact Strings**, a memory optimization that changed how strings are stored internally at runtime.  
-This means that even if your code was compiled with Java 8, running it on JVM 9+ will automatically benefit from this optimization, as it's a JVM feature, not a compile-time one.
+This means that even if your code was compiled with Java 8, running it on JVM 9+ will automatically benefit from this optimization, as it is a JVM feature, not a compile-time one.
 
 ```java
 // This code compiled with Java 8 will still use Compact Strings when run on JVM 9+
@@ -80,13 +80,13 @@ Files.write(path, content.getBytes(StandardCharsets.ISO_8859_1));
 
 ## 2. String Pool and Interning
 
-In Java, String interning is a method of storing only one copy of each distinct String value, which must be immutable. The String pool is a special storage area in the Java heap where Java stores these interned Strings. When you create a String literal, Java checks the String pool first to see if an identical String already exists. If it does, Java returns a reference to the pooled instance. If it doesn't, Java adds the new String to the pool and then returns the reference.
+In Java, String interning is a method of storing only one copy of each distinct String value, which must be immutable. The String pool is a special storage area in the Java heap where Java stores these interned Strings. When you create a String literal, Java checks the String pool first to see if an identical String already exists. If it does, Java returns a reference to the pooled instance. If it does not, Java adds the new String to the pool and then returns the reference.
 
 ### 2.1. How Interning Works
 
-Interning is done using the `String.intern()` method. When you intern a String, Java checks if the String is already in the pool. If it is, `intern()` returns the reference from the pool. If it's not, `intern()` adds the String to the pool and then returns the reference.
+Interning is done using the `String.intern()` method. When you intern a String, Java checks if the String is already in the pool. If it is, `intern()` returns the reference from the pool. If it is not, `intern()` adds the String to the pool and then returns the reference.
 
-Here's an example:
+Here is an example:
 
 ```java
 String a = "Hello";
@@ -195,7 +195,7 @@ String result2 = a.concat(" ").concat(b);
 
 Key considerations:
 - `concat()` creates a new String object for each call.
-- Unlike `+`, `concat()` doesn't get optimized by the compiler into StringBuilder operations.
+- Unlike `+`, `concat()` will not be optimized by the compiler into StringBuilder operations.
 - `concat()` throws NullPointerException if the argument is null, while `+` converts null to "null".
 
 ```java
@@ -237,38 +237,7 @@ String result = builder.toString();
 
 ### 3.4. Performance Impact
 
-Let's see a simple benchmark comparing different approaches:
-
-```java
-// Don't do this
-public String concatenateWithPlus() {
-    String result = "";
-    for (int i = 0; i < 1000; i++) {
-        result += "number" + i;
-    }
-    return result;
-}
-
-// Better approach
-public String concatenateWithBuilder() {
-    StringBuilder builder = new StringBuilder();
-    for (int i = 0; i < 1000; i++) {
-        builder.append("number").append(i);
-    }
-    return builder.toString();
-}
-
-// Best when final size is known
-public String concatenateWithPreallocatedBuilder() {
-    StringBuilder builder = new StringBuilder(10000); // Preallocate capacity
-    for (int i = 0; i < 1000; i++) {
-        builder.append("number").append(i);
-    }
-    return builder.toString();
-}
-```
-
-Here's a JMH benchmark showing the performance difference:
+Here is a JMH benchmark comparing different approaches and showing the performance difference:
 
 ```java
 @BenchmarkMode(Mode.AverageTime)
@@ -331,25 +300,25 @@ This was the benchmark setup:
 The benchmark results demonstrate several key points:
 
 1. **String concatenation with + operator**: 
-   - Shows exponential performance degradation
-   - At 10,000 iterations, takes ~37ms (37008.220 μs)
-   - Creates multiple intermediate String objects
+   - Shows exponential performance degradation.
+   - At 10,000 iterations, takes ~37ms (37008.220 μs).
+   - Creates multiple intermediate String objects.
 
 2. **StringBuilder without preallocation**:
-   - Linear performance growth
-   - At 10,000 iterations, takes ~109μs
-   - Still requires buffer resizing operations
+   - Linear performance growth.
+   - At 10,000 iterations, takes ~109μs.
+   - Still requires buffer resizing operations.
 
 3. **Preallocated StringBuilder**:
-   - Best performance across all sizes
-   - At 10,000 iterations, only ~91μs
-   - Avoids buffer resizing completely
+   - Best performance across all sizes.
+   - At 10,000 iterations, only ~91μs.
+   - Avoids buffer resizing completely.
 
 The importance of preallocating StringBuilder capacity:
-- Eliminates the need for buffer resizing
-- Reduces memory allocation overhead
-- Prevents copying of existing content during resize
-- Particularly important in performance-critical loops
+- Eliminates the need for buffer resizing.
+- Reduces memory allocation overhead.
+- Prevents copying of existing content during resize.
+- Particularly important in performance-critical loops.
 
 For example, StringBuilder's default capacity is 16 characters. Without preallocation, it will need to resize multiple times:
 ```java
@@ -368,7 +337,7 @@ As shown in the benchmark, proper preallocation can improve performance by up to
 
 ### 3.5. Understanding invokedynamic and Bytecode
 
-Since JDK 9, String concatenation uses `invokedynamic` to optimize the operation at runtime. Let's look at a simple example and its bytecode:
+Since JDK 9, String concatenation uses `invokedynamic` to optimize the operation at runtime. This is a simple Java sample code and its result bytecode:
 
 ```java
 String name = "John";
@@ -449,7 +418,7 @@ public class MessageBuilder {
 }
 ```
 
-> **Note**: In modern Java applications, it's rare to need `StringBuffer`. If you need thread-safe string manipulation, consider using other synchronization mechanisms or concurrent data structures.
+> **Note**: In modern Java applications, it is rare to need `StringBuffer`. If you need thread-safe string manipulation, consider using other synchronization mechanisms or concurrent data structures.
 
 ## References
 
