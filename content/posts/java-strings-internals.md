@@ -10,7 +10,7 @@ tags:
   - performance
 ---
 
-Java Strings are one of the most used data structures in the Java ecosystem. A key characteristic of String class is its immutability - once created, a String object cannot be modified. This immutability provides several benefits:
+Java Strings are one of the most used data structures in the Java ecosystem. A key characteristic of the `String` class is its immutability — once created, a String object cannot be modified. This immutability provides several benefits:
 
 - **Thread Safety**: Immutable objects are inherently thread-safe, making Strings ideal for concurrent applications.
 - **Security**: Since Strings cannot be modified, they are safe to use for sensitive data like passwords or authentication tokens.
@@ -24,21 +24,20 @@ Before JDK 9, all String characters were stored using UTF-16 encoding, meaning e
 
 ### 1.1. Compact Strings (JDK 9+)
 
-JEP 254 introduced Compact Strings, a memory optimization that changed how strings are stored internally at runtime. This means that even if your code was compiled with Java 8, running it on JVM 9+ will automatically benefit from this optimization, as it's a JVM feature, not a compile-time one.
-
-Let's see an example:
+[JEP 254](https://openjdk.org/jeps/254) introduced **Compact Strings**, a memory optimization that changed how strings are stored internally at runtime.  
+This means that even if your code was compiled with Java 8, running it on JVM 9+ will automatically benefit from this optimization, as it's a JVM feature, not a compile-time one.
 
 ```java
 // This code compiled with Java 8 will still use Compact Strings when run on JVM 9+
-String ascii = "Hello";     // Will use LATIN1 encoding on JVM 9+
-String special = "Hello👋"; // Will use UTF16 encoding on both JVM 8 and 9+
+String ascii = "Hello";     // Uses LATIN1 encoding on JVM 9+
+String special = "Hello👋"; // Uses UTF16 encoding on both JVM 8 and 9+
 ```
 
 The JVM automatically chooses between two encodings:
 - **LATIN1 (ISO-8859-1)** for strings that only contain characters that can be represented in one byte.
 - **UTF16** for strings that require more than one byte per character.
 
-This optimization is transparent to the application code and can reduce the memory footprint of your application by up to 50% in cases where most strings contain only ASCII characters.
+This optimization is transparent to application code and can reduce the memory footprint of your application by up to 50% when most strings contain only ASCII characters.
 
 You can disable this optimization using the JVM flag:
 ```bash
@@ -49,24 +48,18 @@ However, disabling Compact Strings is not recommended unless you have a very spe
 
 ### 1.2. UTF-8 by Default (JDK 18+)
 
-JEP 400 changed the default charset to UTF-8 in Java 18. Before this change, the default charset depended on the operating system and locale settings, which could lead to inconsistent behavior across different environments.
+[JEP 400](https://openjdk.org/jeps/400) changed the default charset to UTF-8 in Java 18. Before this change, the default charset depended on the operating system and locale settings, which could lead to inconsistent behavior across different environments.
 
 ```java
-// Before Java 18 - Default charset was platform dependent
-// Windows en-US: windows-1252
-// Linux en-US: UTF-8
-// MacOS en-US: UTF-8
-System.out.println(Charset.defaultCharset()); 
-
-// After Java 18 - Always UTF-8 by default
-System.out.println(Charset.defaultCharset()); // UTF-8
+System.out.println(Charset.defaultCharset());
 ```
 
-This change affects several Java APIs and system properties:
-- `java.nio.charset.Charset.defaultCharset()`
-- `System.getProperty("file.encoding")`
-- File I/O operations.
-- Platform APIs that depend on character encoding.
+| Version | Example Default Charset |
+|--------|-------------|
+|Before JDK 18|Windows: `windows-1252`, Linux/macOS: `UTF-8`|
+|JDK 18+|Always `UTF-8`|
+
+This affects APIs like `Charset.defaultCharset()`, file I/O, and system properties such as `file.encoding`.
 
 > **Note**: Internal String representation (LATIN1/UTF16) is different from the default charset used for I/O operations. Compact Strings optimization works at the JVM level, while the default charset affects how Java interacts with the external world.
 
@@ -116,9 +109,7 @@ The JVM’s advanced garbage collectors and optional **String deduplication** me
 
 In general, explicit interning should be avoided unless you have a **very specific, well-profiled case** demonstrating measurable benefits.
 
-## 3. JVM String Optimizations
-
-### 3.1. String Deduplication
+### 2.3. String Deduplication
 
 String deduplication is a JVM feature that automatically identifies and removes duplicate String objects from memory. Unlike String interning, which you control explicitly through code, deduplication happens automatically during garbage collection when enabled.
 
