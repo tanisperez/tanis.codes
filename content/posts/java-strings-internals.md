@@ -235,7 +235,7 @@ String result = builder.toString();
 
 > **Note**: Even though the compiler uses StringBuilder internally for the `+` operator, it creates a new StringBuilder for each concatenation operation in the loop.
 
-### 3.4. Performance Impact
+### 3.4. Performance Benchmark
 
 Here is a JMH benchmark comparing different approaches and showing the performance difference:
 
@@ -284,24 +284,25 @@ This was the benchmark setup:
 * Dell XPS 9370 with an i7-8550U.
 * 16 GB of RAM.
 * Arch Linux with kernel 6.17.1-arch1-1.
+* OpenJDK Runtime Environment Zulu25.28+85-CA (build 25+36-LTS).
 
 | Benchmark | length | Mode | Cnt | Score | Error | Units |
 |-----------|--------|------|-----|--------|--------|--------|
 | concatenateWithBuilder | 100 | avgt | 3 | 0.669 | 0.405 | us/op |
 | concatenateWithBuilder | 1000 | avgt | 3 | 7.818 | 0.989 | us/op |
-| concatenateWithBuilder | 10000 | avgt | 3 | 109.673 | 6.827 | us/op |
+| concatenateWithBuilder | 10,000 | avgt | 3 | 109.673 | 6.827 | us/op |
 | concatenateWithPlus | 100 | avgt | 3 | 3.883 | 0.195 | us/op |
 | concatenateWithPlus | 1000 | avgt | 3 | 380.518 | 18.312 | us/op |
-| concatenateWithPlus | 10000 | avgt | 3 | 37008.220 | 467.445 | us/op |
+| concatenateWithPlus | 10,000 | avgt | 3 | 37,008.220 | 467.445 | us/op |
 | concatenateWithPreallocatedBuilder | 100 | avgt | 3 | 0.555 | 0.048 | us/op |
 | concatenateWithPreallocatedBuilder | 1000 | avgt | 3 | 7.159 | 0.651 | us/op |
-| concatenateWithPreallocatedBuilder | 10000 | avgt | 3 | 91.623 | 6.622 | us/op |
+| concatenateWithPreallocatedBuilder | 10,000 | avgt | 3 | 91.623 | 6.622 | us/op |
 
 The benchmark results demonstrate several key points:
 
 1. **String concatenation with + operator**: 
    - Shows exponential performance degradation.
-   - At 10,000 iterations, takes ~37ms (37008.220 μs).
+   - At 10,000 iterations, takes ~37ms (37,008.220 μs).
    - Creates multiple intermediate String objects.
 
 2. **StringBuilder without preallocation**:
