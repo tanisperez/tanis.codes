@@ -25,6 +25,22 @@ While Strings seem simple on the surface, their internal implementation has evol
 
 Before JDK 9, all String characters were stored using UTF-16 encoding, meaning each character consumed 2 bytes of memory regardless of the actual character being stored. This was inefficient for strings containing only ASCII characters, which was the common case for most applications.
 
+> **Note**: In Java, the primitive `char` type is 16 bits (2 bytes). Some Unicode characters outside the Basic Multilingual Plane (BMP) require two `char` values to be represented.
+
+```java
+String note = "𝄞";  // G clef (U+1D11E)
+System.out.println(note.length());      // Prints 2
+System.out.println(note.codePointCount(0, note.length())); // Prints 1
+
+// Internal representation uses two char values
+char[] chars = note.toCharArray();
+System.out.println(String.format("First char: %04X", (int)chars[0]));  // D834
+System.out.println(String.format("Second char: %04X", (int)chars[1])); // DD1E
+```
+
+This means that `String.length()` returns the number of `char` values used to represent the String, not the actual number of Unicode characters (code points).
+
+
 ### 1.1. Compact Strings (JDK 9+)
 
 [JEP 254](https://openjdk.org/jeps/254) introduced **Compact Strings**, a memory optimization that changed how strings are stored internally at runtime.  
