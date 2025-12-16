@@ -26,12 +26,15 @@
     margin-top: 2rem;
 }
 
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+}
+
 .post-content table {
     border-collapse: collapse;
-    margin: 25px auto;
     font-size: 0.9em;
-    min-width: 400px;
-    max-width: 100%;
 }
 
 .post-content table th,

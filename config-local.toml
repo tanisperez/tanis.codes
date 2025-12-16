@@ -12,6 +12,12 @@ enableGitInfo   = false
 [taxonomies]
     tag = "tags"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+
 [params]
     env             = "local"
 
