@@ -12,16 +12,19 @@ tags:
   - security
 ---
 
-## Introduction
+Smart card readers enable certificate-based authentication and cryptographic signing operations. While some desktops and laptops include an integrated smart card reader, the most common setup relies on an external USB smart card reader.
 
-Smart card readers enable certificate-based authentication on Linux systems. Whether you're using a Spanish electronic DNI (DNIe), a digital signature card, or any other smart card, this guide covers the essential setup steps to get your card reader working on Arch Linux.
+On Windows and macOS, smart card readers typically work out of the box with minimal user intervention. Linux distributions, however, often require explicit configuration of middleware and cryptographic providers, and Arch Linux is no exception.
 
-## Prerequisites
+This guide covers the configuration of a smart card reader named "Trust Primo Lector DNI Electrónico" used for the Spanish electronic national identity card (DNIe). Although the examples focus on this particular device and ID system, the same principles apply to most USB smart card readers and government-issued cryptographic smart cards.
 
-- Arch Linux system
-- A compatible smart card reader (e.g., Trust Primo Lector USB-C)
-- Your smart card (e.g., Spanish DNIe)
-- Administrative access (sudo)
+![Trust Smart Card Reader](/images/smart-card-reader-arch-linux/trust-smart-card-reader.png)
+
+The Spanish DNIe is a cryptographic smart card compliant with PKCS#15, containing hardware-protected private keys that never leave the card. Authentication and digital signatures are performed internally by the chip after successful PIN verification. Depending on the generation, the DNIe uses RSA-based certificates (typically 2048-bit keys) and, in more recent versions, introduces elliptic-curve cryptography (ECC) for improved performance and security. Certificates are issued under a public key infrastructure operated by the Spanish authorities and exposed to applications using standard interfaces.
+
+![Trust Smart Card Reader](/images/smart-card-reader-arch-linux/dni.png)
+
+On Linux systems, access to these cryptographic capabilities is provided through PKCS#11, a standardized API that allows user-space applications — including web browsers — to interact with smart cards via a compatible middleware such as OpenSC. Correct PKCS#11 integration is therefore a prerequisite for using the DNIe in browsers, and differences in PKCS#11 support explain why some browsers behave differently in this context.
 
 ## Installing Smart Card Support
 
