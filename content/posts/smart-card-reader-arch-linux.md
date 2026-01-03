@@ -1,6 +1,6 @@
 ---
 title: "Smart Card Reader on Arch Linux"
-date: 2026-01-02T18:52:00+02:00
+date: 2026-01-03T20:15:00+02:00
 draft: false
 toc: true
 image: "/images/smart-card-reader-arch-linux/logo.png"
