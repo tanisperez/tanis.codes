@@ -75,108 +75,49 @@ On Windows and macOS, Chromium does not rely on `PKCS#11` directly. Instead, it 
 Linux, by contrast, lacks a unified system-level cryptographic API. This architectural difference explains why browsers without NSS cannot access smart card–backed certificates on this platform.
 
 
-## Configuring Your Browser for Certificate Authentication
+## LibreWolf
 
-Most modern browsers require additional configuration to use smart cards. LibreWolf (a privacy-focused Firefox fork) is an excellent choice for this purpose.
+Although Firefox provides **PKCS#11** support through NSS, `LibreWolf` is a compelling alternative. As a privacy-focused Firefox fork, `LibreWolf` maintains the core **PKCS#11** functionality while avoiding [recent policy changes](https://techcrunch.com/2025/03/03/mozilla-rewrites-firefoxs-terms-of-use-after-user-backlash/) and Mozilla's shift towards AI-integrated browser features.
 
-### Installing LibreWolf
+Install `LibreWolf` from the Arch User Repository:
 
 ```bash
-yay -S librewolf
+yay -S librewolf-bin
 ```
 
 ### Registering the Smart Card Module
 
 To enable smart card authentication in your browser, register the OpenSC PKCS#11 module:
 
-1. Open LibreWolf and navigate to `about:preferences#privacy`
-2. Scroll to the **Certificates** section
-3. Click on **Security Devices**
-4. Click **Load** and add the OpenSC module located at:
-   ```
+1. Open `LibreWolf` and navigate to `about:preferences#privacy`
+2. Scroll to the **Certificates** section.
+3. Click on **Security Devices**.
+4. Click **Load** and add the `OpenSC` module located at:
+   ```bash
    /usr/lib/pkcs11/opensc-pkcs11.so
    ```
-5. Give it a descriptive name (e.g., `Smart Card` or `DNIe`)
+5. Give it a descriptive name (e.g., `Smart Card` or `DNIe`).
 
-### Browser Security Settings
+![Registering the Smart Card Module](/images/smart-card-reader-arch-linux/smart-card-module.png)
 
-LibreWolf enforces strict security policies that may need adjustment for compatibility with some websites (particularly older government portals):
+### Configure Security Settings for PIN Dialogs
 
-1. Open `about:config` in LibreWolf
-2. Verify or modify these settings:
+`LibreWolf` enforces strict security policies that may need adjustment for compatibility with some websites (particularly older government portals):
+
+1. Open `about:config` in `LibreWolf`.
+2. Verify or modify this setting:
    - `security.osclientcerts.autoload` = `false`
-   - `security.smartcard.enabled` = `true`
 
-The second setting is usually enabled by default, but it's worth confirming.
-
-## Troubleshooting
-
-If you encounter issues:
-- Ensure the `pcscd` service is running: `systemctl status pcscd.service`
-- Test the card reader with `pcsc_scan` to verify it detects your smart card
-- Check your browser's permissions and certificate settings if authentication dialogs don't appear
-
-## References
-
-- [Smartcards - Arch Linux Wiki](https://wiki.archlinux.org/title/Smartcards)
-
----
-
-## Notes
-
-```bash
-sudo pacman -S pcsclite pcsc-tools ccid
-sudo systemctl enable --now pcscd.service
-```
-
-Then, we can try `pcsc_scan`. (TODO: paste the output of the DNIe from Spain).
-
-También podemos poner una foto de un DNIe de España como ejemplo.
-
-## LibreWolf
-
-En lugar de usar Firefox, usaremos Librewolf, que es un fork de Firefox sin las nuevas políticas sobre la IA y los cambios de policies internos. Explicar esto en una línea e igual con una referencia externa.
+![LibreWolf Security Settings](/images/smart-card-reader-arch-linux/librewolf-security-settings.png)
 
 
-yay -S librewolf
+## Verification
 
-about:preferences#privacy
+With the smart card reader configured and the PKCS#11 module registered, DNIe authentication now works seamlessly in `LibreWolf`. Access any Spanish government website that requires certificate-based authentication, such as the tax office portal or official administration services. The browser will prompt for the smart card PIN, and after successful authentication, certificate-backed operations function as expected.
 
+The following screenshot demonstrates successful certificate-based authentication on the Galician Healthcare system:
 
-→ Certificados
-→ Dispositivos de seguridad
-→ Cargar
-
-Ruta:
-
-/usr/lib/pkcs11/opensc-pkcs11.so
-
-
-Nombre:
-
-DNIe
-
-
-
-4. Ajustes de LibreWolf que conviene revisar
-
-LibreWolf endurece algunas políticas que pueden bloquear PIN dialogs si el sitio es muy antiguo.
-
-Revisa:
-
-about:config
-
-
-Verifica que estén en estos valores:
-
-security.osclientcerts.autoload = false
-security.smartcard.enabled = true
-
-
-(El segundo suele venir bien, pero conviene comprobarlo).
-
-
-
+![LibreWolf using the Smart Card Reader](/images/smart-card-reader-arch-linux/librewolf-smart-card-reader.png)
 
 ## References
 
@@ -186,4 +127,3 @@ security.smartcard.enabled = true
 - [PKCS#11](https://en.wikipedia.org/wiki/PKCS_11)
 - [OpenSC](https://github.com/OpenSC/OpenSC)
 - [NSS](https://en.wikipedia.org/wiki/Network_Security_Services)
-
