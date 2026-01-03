@@ -20,11 +20,11 @@ This guide covers the configuration of a smart card reader named "Trust Primo Le
 
 ![Trust Smart Card Reader](/images/smart-card-reader-arch-linux/trust-smart-card-reader.png)
 
-The Spanish DNIe is a cryptographic smart card compliant with PKCS#15, containing hardware-protected private keys that never leave the card. Authentication and digital signatures are performed internally by the chip after successful PIN verification. Depending on the generation, the DNIe uses RSA-based certificates (typically 2048-bit keys) and, in more recent versions, introduces elliptic-curve cryptography (ECC) for improved performance and security. Certificates are issued under a public key infrastructure operated by the Spanish authorities and exposed to applications using standard interfaces.
+The Spanish DNIe is a cryptographic smart card compliant with PKCS#15, containing hardware-protected private keys that never leave the card. Authentication and digital signatures are performed internally by the chip after successful PIN verification. Depending on the generation, the DNIe uses [RSA-based certificates](https://en.wikipedia.org/wiki/RSA_cryptosystem) (typically 2048-bit keys) and, in more recent versions, introduces [elliptic-curve cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) (ECC) for improved performance and security. Certificates are issued under a public key infrastructure operated by the Spanish authorities and exposed to applications using standard interfaces.
 
 ![Trust Smart Card Reader](/images/smart-card-reader-arch-linux/dni.png)
 
-On Linux systems, access to these cryptographic capabilities is provided through PKCS#11, a standardized API that allows user-space applications — including web browsers — to interact with smart cards via a compatible middleware such as OpenSC. Correct PKCS#11 integration is therefore a prerequisite for using the DNIe in browsers, and differences in PKCS#11 support explain why some browsers behave differently in this context.
+On Linux systems, access to these cryptographic capabilities is provided through [PKCS#11](https://en.wikipedia.org/wiki/PKCS_11), a standardized API that allows user-space applications, including web browsers, to interact with smart cards via a compatible middleware such as [OpenSC](https://github.com/OpenSC/OpenSC). Correct `PKCS#11` integration is therefore a prerequisite for using the DNIe in browsers, and differences in `PKCS#11` support explain why some browsers behave differently in this context.
 
 ## Installing Smart Card Support
 
@@ -152,4 +152,9 @@ security.smartcard.enabled = true
 ## References
 
 - [Smartcards](https://wiki.archlinux.org/title/Smartcards)
+- [RSA cryptosystem](https://en.wikipedia.org/wiki/RSA_cryptosystem)
+- [Elliptic-curve cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography)
+- [PKCS#11](https://en.wikipedia.org/wiki/PKCS_11)
+- [OpenSC](https://github.com/OpenSC/OpenSC)
+
 
