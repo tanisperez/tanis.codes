@@ -26,25 +26,32 @@ The Spanish DNIe is a cryptographic smart card compliant with PKCS#15, containin
 
 On Linux systems, access to these cryptographic capabilities is provided through [PKCS#11](https://en.wikipedia.org/wiki/PKCS_11), a standardized API that allows user-space applications, including web browsers, to interact with smart cards via a compatible middleware such as [OpenSC](https://github.com/OpenSC/OpenSC). Correct `PKCS#11` integration is therefore a prerequisite for using the DNIe in browsers, and differences in `PKCS#11` support explain why some browsers behave differently in this context.
 
-## Installing Smart Card Support
+## Installing necessary packages
 
 The first step is to install the necessary packages for smart card reader support:
+- **pcsclite**: The PC/SC Lite daemon and libraries.
+- **pcsc-tools**: Utilities to interact with smart card readers.
+- **ccid**: Chip Card Interface Device driver.
 
 ```bash
 sudo pacman -S pcsclite pcsc-tools ccid
+```
+
+Next, enable and start the `pcscd` daemon service:
+
+```bash
 sudo systemctl enable --now pcscd.service
 ```
 
-This installs:
-- **pcsclite**: The PC/SC Lite daemon and libraries
-- **pcsc-tools**: Utilities to interact with smart card readers
-- **ccid**: Chip Card Interface Device driver
-
-After installation, the smart card daemon will start automatically. You can verify your card reader is detected by running:
+Once the USB smart card reader is connected, run the following command:
 
 ```bash
 pcsc_scan
 ```
+
+![pcsc_scan](/images/smart-card-reader-arch-linux/pcsc_scan.png)
+
+The output displays information about the detected smart card, identifying it as `DNI electrónico (Spanish electronic ID card)`.
 
 ## Configuring Your Browser for Certificate Authentication
 
