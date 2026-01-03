@@ -53,6 +53,28 @@ pcsc_scan
 
 The output displays information about the detected smart card, identifying it as `DNI electrónico (Spanish electronic ID card)`.
 
+## Browser Compatibility and Smart Card Support
+
+Using a smart card from a web browser requires native support for the `PKCS#11` standard. On Linux, Chromium-based browsers no longer provide functional `PKCS#11` support, which prevents them from accessing hardware-backed certificates such as those stored on the Spanish electronic ID (DNIe).
+
+As a result, the only viable option on Linux is to use a `Gecko`-based browser, such as `Firefox` or `LibreWolf`, which relies on **NSS (Network Security Services)** for its cryptographic infrastructure.
+
+NSS (Network Security Services) is a cryptographic library originally developed by Mozilla. It provides:
+- TLS/SSL implementations.
+- X.509 certificate management.
+- Key and certificate storage.
+- Native support for `PKCS#11` modules.
+
+Chromium-based browsers, on the other hand, use `BoringSSL` for TLS and maintain their own certificate handling logic. While experimental `PKCS#11` support existed on Linux in the past, it has been completely removed in recent Chromium versions.
+
+On Windows and macOS, Chromium does not rely on `PKCS#11` directly. Instead, it delegates cryptographic operations to the operating system:
+
+- **Windows**: Uses the native **CryptoAPI / CNG** for cryptographic operations and smart card access.
+- **macOS**: Relies on **Keychain and Security.framework**, both providing first-class smart card support.
+
+Linux, by contrast, lacks a unified system-level cryptographic API. This architectural difference explains why browsers without NSS cannot access smart card–backed certificates on this platform.
+
+
 ## Configuring Your Browser for Certificate Authentication
 
 Most modern browsers require additional configuration to use smart cards. LibreWolf (a privacy-focused Firefox fork) is an excellent choice for this purpose.
@@ -163,5 +185,5 @@ security.smartcard.enabled = true
 - [Elliptic-curve cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography)
 - [PKCS#11](https://en.wikipedia.org/wiki/PKCS_11)
 - [OpenSC](https://github.com/OpenSC/OpenSC)
-
+- [NSS](https://en.wikipedia.org/wiki/Network_Security_Services)
 
