@@ -21,17 +21,15 @@ Before installing any driver, understand this requirement:
 
 > If there is no boot chime, there will be no sound in Linux.
 
-When you power on the MacBook, the firmware must initialize the audio hardware. If the codec is not powered and configured by the firmware, the Linux driver cannot recover it. Power on your machine and listen carefully—do you hear the Apple boot chime?
+When the MacBook is powered on, the firmware must initialize the audio hardware. If the codec is not powered and configured by the firmware, the Linux driver cannot recover it.
 
-If not, audio will not work in Linux. The first step is to enable it.
-
-On macOS, enable the boot chime by setting an NVRAM variable:
+On macOS, the boot chime can be enabled by setting an NVRAM variable:
 
 ```bash
 sudo nvram StartupMute=%00
 ```
 
-Alternatively, boot into macOS Recovery (Command + R at startup), open Terminal, and run the same command. After setting it, shut down completely and power on again. You must hear the chime.
+If there is not dual boot with macOS, alternatively, boot into macOS Recovery (Command + R at startup), open Terminal, and run the same command. After setting it, shut down completely and power on again. Now, the chime must sound.
 
 If the chime still does not appear, your firmware is likely outdated. The only reliable fix is to install macOS on an external USB drive, boot it fully at least once (allowing the firmware to update silently), then return to Linux. This is the step that made the difference for me.
 
