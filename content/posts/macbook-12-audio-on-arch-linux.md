@@ -29,17 +29,17 @@ On macOS, the boot chime can be enabled by setting an NVRAM variable:
 sudo nvram StartupMute=%00
 ```
 
-If there is not dual boot with macOS, alternatively, boot into macOS Recovery (Command + R at startup), open Terminal, and run the same command. After setting it, shut down completely and power on again. Now, the chime must sound.
+If there is not dual boot with macOS, alternatively, boot into macOS Recovery (**Command** + **R** at startup), open Terminal, and run the same command. After setting it, shut down completely and power on again. Now, the chime must sound.
 
 If the chime still does not appear, your firmware is likely outdated. The only reliable fix is to install macOS on an external USB drive, boot it fully at least once (allowing the firmware to update silently), then return to Linux. This is the step that made the difference for me.
 
 ## Installing the Audio Driver
 
-Once the boot chime works reliably, install the community-maintained driver:
+Once the boot chime works reliably, install this community-maintained driver forked by [@juicecultus](https://github.com/juicecultus) on GitHub. The original work was developed by [@leifliddy](https://github.com/leifliddy) but the project is likely abandoned and it does not compile on modern Linux Kernels.
 
 https://github.com/juicecultus/macbook12-audio-driver
 
-This driver specifically targets the CS4208 implementation and must be installed as a DKMS module. DKMS (Dynamic Kernel Module Support) means the driver automatically rebuilds when the kernel upgrades—essential for rolling distributions like Arch Linux. Without it, every kernel update would break audio.
+This driver specifically targets the `CS4208` implementation and must be installed as a **DKMS module**. **DKMS** (Dynamic Kernel Module Support) means the driver automatically rebuilds when the kernel upgrades—essential for rolling distributions like Arch Linux. Without it, every kernel update would break audio.
 
 Follow the repository instructions to install, ensure it builds successfully, and verify the module loads correctly after reboot.
 
@@ -48,9 +48,7 @@ Follow the repository instructions to install, ensure it builds successfully, an
 Since enabling the chime and firmware initialization, boot time increased by roughly 10–15 seconds. The firmware now performs additional initialization phases. However, audio now works consistently on every cold boot, which makes the tradeoff worthwhile.
 
 
-
 ## References
 
 - [MacBook 12 Audio Driver](https://github.com/juicecultus/macbook12-audio-driver)
-- [Arch Wiki](https://wiki.archlinux.org/)
 
