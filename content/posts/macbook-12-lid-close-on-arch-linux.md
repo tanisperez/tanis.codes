@@ -1,6 +1,6 @@
 ---
 title: "MacBook 12 lid close on Arch Linux"
-date: 2026-03-27T21:45:20+02:00
+date: 2026-03-27T23:51:20+02:00
 draft: false
 toc: true
 image: "/images/common/apple.png"
@@ -71,25 +71,21 @@ Enable and start the service:
 sudo systemctl enable --now fix_sleep.service
 ```
 
-Verify the service is running:
-
-```bash
-sudo systemctl status fix_sleep.service
-```
-
 ## Configure proper sleep mode in the bootloader
 
 The second part of the fix is to configure the kernel to use the `S2idle sleep` state instead of `deep sleep`. This will consume more energy when the lid is closed but it ensures proper wake behavior and prevents audio issues when the lid opens.
 
 ### Edit the bootloader configuration
 
-Edit your bootloader entry file:
+Add `mem_sleep_default=s2idle` to the kernel options. With `systemd-boot` the configuration files should be located at `/boot/loader/entries`.
+
+For CachyOS, this is the file to modify:
 
 ```bash
 sudo nano /boot/loader/entries/linux-cachyos.conf
 ```
 
-Add `mem_sleep_default=s2idle` to the kernel options. Your file should look similar to:
+Append `mem_sleep_default=s2idle` at the end of the `options` line.
 
 ```ini
 title Linux Cachyos
@@ -97,8 +93,6 @@ options root=UUID=24581664-8c42-4aab-8468-4f0d7bd2b78b rw zswap.enabled=0 nowatc
 linux /vmlinuz-linux-cachyos
 initrd /initramfs-linux-cachyos.img
 ```
-
-> **Note:** Replace the UUID with your actual root partition UUID. You can find it by running `sudo blkid`.
 
 ### Verify the configuration
 
@@ -118,19 +112,13 @@ The `[s2idle]` indicates that S2idle is currently active.
 
 ## Testing the fix
 
-After implementing both fixes, reboot your system:
-
-```bash
-sudo reboot
-```
-
-Test the wake functionality:
+After implementing both fixes and rebooting your system, test the wake functionality:
 1. Close the MacBook lid.
 2. Wait a few seconds.
 3. Open the lid.
 4. The system should wake up and respond immediately.
 
-If you experience any issues, check the systemd service status and verify the bootloader configuration as described above.
+If you experience any issues, check the `fix_sleep` systemd service status and verify the bootloader configuration as described above.
 
 ## References
 
