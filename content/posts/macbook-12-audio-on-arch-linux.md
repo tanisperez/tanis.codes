@@ -1,6 +1,6 @@
 ---
 title: "MacBook 12 Audio on Arch Linux"
-date: 2026-03-03T23:08:00+02:00
+date: 2026-03-27T21:21:20+02:00
 draft: false
 toc: true
 image: "/images/macbook-12-audio-on-arch-linux/logo.png"
@@ -55,4 +55,5 @@ Since enabling the chime and firmware initialization, boot time increased by rou
 ## References
 
 - [MacBook 12 Audio Driver](https://github.com/juicecultus/macbook12-audio-driver)
+- [MacBook 12 Audio Driver fork as backup on my GitHub account](https://github.com/tanisperez/macbook12-audio-driver)
 
