@@ -3,7 +3,7 @@ title: "MacBook 12 Audio on Arch Linux"
 date: 2026-03-27T21:21:20+02:00
 draft: false
 toc: true
-image: "/images/macbook-12-audio-on-arch-linux/logo.png"
+image: "/images/common/apple.png"
 description: "How to fix audio on MacBook 12 running Arch Linux by enabling the boot chime and installing the custom DKMS audio driver"
 tags:
   - arch linux

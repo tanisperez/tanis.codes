@@ -3,7 +3,7 @@ title: "MacBook 12 lid close on Arch Linux"
 date: 2026-03-27T21:45:20+02:00
 draft: false
 toc: true
-image: "/images/macbook-12-audio-on-arch-linux/logo.png"
+image: "/images/common/apple.png"
 description: "How to fix the lid close on MacBook 12 2017 running Arch Linux"
 tags:
   - arch linux
@@ -15,7 +15,7 @@ Running Arch Linux on the MacBook (Retina, 12-inch, 2017) works surprisingly wel
 
 This article documents how I fixed the lid close on my 2017 model. The same procedure may work for the 2016 model, but I can not guarantee.
 
-## Verify the MacBook model and the audio codec
+## Verify the MacBook model
 
 Before attempting to install any driver, verify the MacBook model:
 
