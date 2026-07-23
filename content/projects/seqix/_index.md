@@ -20,8 +20,8 @@ A single **Seqix Pro** in-app purchase unlocks a bigger 4×4 board, letters/icon
 
 Get Seqix on your phone:
 
-- 🍎 [Download on the App Store](https://apps.apple.com/us/app/seqix/id6785265402)
-- 🤖 [Get it on Google Play](https://play.google.com/store/apps/details?id=codes.tanis.seqix)
+[![Download on the App Store](/images/common/app-store-badge.png#badge)](https://apps.apple.com/us/app/seqix/id6785265402) [![Get it on Google Play](/images/common/google-play-badge.png#badge)](https://play.google.com/store/apps/details?id=codes.tanis.seqix)
+{.store-badges}
 
 ## Privacy Policy
 

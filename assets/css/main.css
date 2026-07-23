@@ -68,6 +68,27 @@ img.circle {
 }
 
 img[src$='#center'] { margin: auto; }
+img[src$='#phone'] { max-width: 320px; margin: auto; }
+img[src$='#badge'] {
+    height: 60px;
+    width: auto;
+    display: inline-block;
+    margin: 8px;
+    border-radius: 11px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.store-badges { text-align: center; }
+
+.store-badges a:hover img[src$='#badge'] {
+    transform: scale(1.06);
+    box-shadow: 0 0 18px 4px var(--light-blue);
+}
+
+.store-badges a:active img[src$='#badge'] {
+    transform: scale(0.97);
+    box-shadow: 0 0 26px 6px var(--light-blue);
+}
 
 figure {
     display: table;
