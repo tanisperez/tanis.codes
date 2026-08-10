@@ -25,10 +25,12 @@ Foliato has no account, no cloud, no server component and no network calls of an
 
 Foliato 1.0.0 is free, with no in-app purchases.
 
-<!-- TODO: add store badges once the App Store and Google Play listings are live, e.g.:
-[![Download on the App Store](/images/common/app-store-badge.png#badge)](APP_STORE_URL) [![Get it on Google Play](/images/common/google-play-badge.png#badge)](PLAY_STORE_URL)
+## Download
+
+Get Foliato on your phone:
+
+[![Download on the App Store](/images/common/app-store-badge.png#badge)](https://apps.apple.com/us/app/foliato-offline-pdf-tools/id6795265777) [![Get it on Google Play](/images/common/google-play-badge.png#badge)](https://play.google.com/store/apps/details?id=codes.tanis.foliato&hl=en)
 {.store-badges}
--->
 
 ## Privacy Policy
 
