@@ -25,6 +25,11 @@ Foliato has no account, no cloud, no server component and no network calls of an
 
 Foliato 1.0.0 is free, with no in-app purchases.
 
+## Watch it in action
+
+{{< youtube irv1dqHynoA >}}
+
+
 ## Download
 
 Get Foliato on your phone:
