@@ -1,14 +1,11 @@
-{{ $assets := newScratch }}
-
-{{ $menu := resources.Get "js/menu.js" }}
-{{ $search := resources.Get "js/search.js" }}
-{{ $assets.Add "js" (slice $menu $search) }}
-
-{{ $prism := resources.Get "js/prism.js" }}
-{{ $assets.Add "js" (slice $prism) }}
-
-{{ $bundle := $assets.Get "js" | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{ $jsFiles := slice (resources.Get "js/menu.js") (resources.Get "js/search.js") }}
+{{ $bundle := $jsFiles | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}" defer></script>
+
+{{ if strings.Contains .Content "<pre" }}
+    {{ $prism := resources.Get "js/prism.js" | resources.Minify | resources.Fingerprint "sha512" }}
+    <script type="text/javascript" src="{{ $prism.RelPermalink }}" integrity="{{ $prism.Data.Integrity }}" defer></script>
+{{ end }}
 
 {{ if eq .Site.Params.Env "pro"}}
     <script>

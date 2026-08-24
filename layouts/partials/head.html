@@ -34,40 +34,29 @@
 <!-- OpenGraph -->
 {{- partial "opengraph.html" . }}
 
-<!-- CSS -->
+<!-- CSS: core bundle -->
 {{ $cssFiles := slice }}
-
-<!-- Add normalize.css and prism.css first -->
-{{ $normalizeCss := resources.Get "css/normalize.css" }}
-{{ $prismCss := resources.Get "css/prism.css" }}
-{{ $cssFiles = $cssFiles | append $normalizeCss | append $prismCss }}
-
-<!-- Add variables.css next -->
-{{ $variablesCss := resources.Get "css/variables.css" }}
-{{ $cssFiles = $cssFiles | append $variablesCss }}
-
-<!-- Add remaining CSS files -->
-{{ range (slice 
-    "prism-custom.css" 
-    "fonts.css" 
-    "buttons.css" 
-    "header.css" 
-    "logo.css" 
-    "search.css" 
-    "menu.css" 
-    "main.css" 
-    "home.css" 
-    "list.css" 
-    "post.css" 
+{{ range (slice
+    "normalize.css"
+    "variables.css"
+    "fonts.css"
+    "buttons.css"
+    "header.css"
+    "logo.css"
+    "search.css"
+    "menu.css"
+    "main.css"
+    "home.css"
+    "list.css"
+    "post.css"
     "tag.css"
-    "footer.css" 
-    "sharing-buttons.css" 
+    "footer.css"
+    "sharing-buttons.css"
     "404.css") }}
     {{ $css := resources.Get (printf "css/%s" .) }}
     {{ $cssFiles = $cssFiles | append $css }}
 {{ end }}
 
-<!-- Combine CSS files -->
 {{ $style := $cssFiles | resources.Concat "css/style.css" }}
 
 {{ if eq .Site.Params.Env "pro"}}
@@ -77,6 +66,20 @@
 {{ end }}
 
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+<!-- CSS: Prism, solo en paginas con bloques de codigo -->
+{{ if strings.Contains .Content "<pre" }}
+    {{ $codeFiles := slice (resources.Get "css/prism.css") (resources.Get "css/prism-custom.css") }}
+    {{ $code := $codeFiles | resources.Concat "css/code.css" }}
+
+    {{ if eq .Site.Params.Env "pro"}}
+        {{ $code = $code | minify | fingerprint }}
+    {{ else }}
+        {{ $code = $code | fingerprint }}
+    {{ end }}
+
+    <link rel="stylesheet" href="{{ $code.RelPermalink }}" integrity="{{ $code.Data.Integrity }}">
+{{ end }}
 
 <!-- Icons -->
 {{- partial "favicons.html" . }}
