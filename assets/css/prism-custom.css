@@ -2,6 +2,8 @@
     margin: 10px auto;
 }
 
+pre[class*="language-"] { background: #272822; color: #f8f8f2; }
+
 .code-toolbar {
     margin-bottom: 20px;
 }
