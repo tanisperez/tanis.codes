@@ -52,7 +52,13 @@ tags:
   - arch linux
 ```
 
-Post images are stored under `static/images/`.
+Post images are stored under `assets/images/`.
+
+### Images
+
+Images referenced from markdown (`![alt](/images/...)`) and the home thumbnails (`Params.image`) are processed by Hugo image processing rather than served as static files. `layouts/_default/_markup/render-image.html` is a render hook that converts each image to WebP (picking whichever is smaller between lossless and q82), generates a `srcset` for larger images, and preserves any `#center`/`#phone`/`#badge` fragment on the `src` (required by the CSS selectors in `assets/css/main.css`). It also republishes the original file at its historical URL via `$r.Publish`, so old, indexed `.png`/`.jpg` links keep resolving; this is meant to be kept for a few months, then removed.
+
+`resources/` is Hugo's build cache for these processed images (and other resources). It is build output, not source — it must **not** be committed (already in `.gitignore`) and `make clean` must not delete it. Deleting it forces a full re-transcode on the next build (~1 min for this site).
 
 ### Search
 

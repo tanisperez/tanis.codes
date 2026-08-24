@@ -6,14 +6,20 @@
     <main class="home">
         <h1>Last articles</h1>
         <div class="home-articles">
-            {{ range first 10 (where .Site.RegularPages "Type" "==" "posts") }}
-                <a class="home-article" href="{{.Permalink}}">
+            {{ range $i, $p := first 10 (where .Site.RegularPages "Type" "==" "posts") }}
+                <a class="home-article" href="{{ $p.Permalink }}">
                     <div class="home-article-image">
-                        <img src="{{ with .Params.image }}{{ . }}{{ end }}" decoding="async" width="120" height="70" alt="{{ .Title }}"/>
+                        {{- $page := $p }}
+                        {{- with $p.Params.image }}
+                            {{- with resources.Get (strings.TrimPrefix "/" .) }}
+                                {{- $logo := .Process "webp lossless" }}
+                                <img src="{{ $logo.RelPermalink }}" width="{{ $logo.Width }}" height="{{ $logo.Height }}" {{ if lt $i 3 }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} decoding="async" alt="{{ $page.Title }}">
+                            {{- end }}
+                        {{- end }}
                     </div>
                     <div class="home-article-content">
-                        <h2>{{ .Title }}</h2>
-                        <span>{{ .Date.Month }} {{ .Date.Day }}, {{ .Date.Year }}</span>
+                        <h2>{{ $p.Title }}</h2>
+                        <span>{{ $p.Date.Month }} {{ $p.Date.Day }}, {{ $p.Date.Year }}</span>
                     </div>
                 </a>
             {{ end }}

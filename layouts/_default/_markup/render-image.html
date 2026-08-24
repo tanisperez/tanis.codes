@@ -1,0 +1,41 @@
+{{- $dest := .Destination -}}
+{{- $fragment := "" -}}
+{{- with (index (findRE `#[^#/]*$` $dest) 0) }}{{ $fragment = . }}{{ end -}}
+{{- $path := strings.TrimSuffix $fragment $dest -}}
+
+{{- $r := "" -}}
+{{- if not (urls.Parse $path).IsAbs -}}
+  {{- $r = resources.Get (strings.TrimPrefix "/" $path) -}}
+  {{- if not $r }}{{ warnf "render-image: asset not found: %q (page %s)" $path .Page.Path }}{{ end -}}
+{{- end -}}
+
+{{- if not $r -}}
+  <img src="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }} alt="{{ .PlainText }}" loading="lazy" decoding="async">
+{{- else -}}
+  {{- $display := 800 }}{{ $sizes := "(max-width: 900px) 100vw, 800px" -}}
+  {{- if eq $fragment "#phone" }}{{ $display = 320 }}{{ $sizes = "320px" }}{{ end -}}
+  {{- if eq $fragment "#badge" }}{{ $display = 220 }}{{ $sizes = "220px" }}{{ end -}}
+
+  {{- $max := mul $display 2 -}}
+  {{- $widths := slice -}}
+  {{- range (slice $display $max) }}{{ if le . $r.Width }}{{ $widths = $widths | append . }}{{ end }}{{ end -}}
+  {{- if and (gt $r.Width $display) (lt $r.Width $max) }}{{ $widths = $widths | append $r.Width }}{{ end -}}
+  {{- if not $widths }}{{ $widths = slice $r.Width }}{{ end -}}
+
+  {{- $variants := slice -}}
+  {{- range $w := $widths -}}
+    {{- $lossless := "" }}{{ $lossy := "" -}}
+    {{- if eq $w $r.Width -}}
+      {{- $lossless = $r.Process "webp lossless" }}{{ $lossy = $r.Process "webp q82" -}}
+    {{- else -}}
+      {{- $lossless = $r.Resize (printf "%dx webp lossless" $w) }}{{ $lossy = $r.Resize (printf "%dx webp q82" $w) -}}
+    {{- end -}}
+    {{- $variants = $variants | append (cond (lt (len $lossless.Content) (len $lossy.Content)) $lossless $lossy) -}}
+  {{- end -}}
+  {{- $src := index $variants 0 -}}
+
+  {{- $r.Publish -}}
+  <img src="{{ $src.RelPermalink }}{{ $fragment }}" width="{{ $src.Width }}" height="{{ $src.Height }}"
+  {{- if gt (len $variants) 1 }} srcset="{{ range $i, $v := $variants }}{{ if $i }}, {{ end }}{{ $v.RelPermalink }} {{ $v.Width }}w{{ end }}" sizes="{{ $sizes }}"{{ end }}
+  {{- with .Title }} title="{{ . }}"{{ end }} alt="{{ .PlainText }}" loading="lazy" decoding="async">
+{{- end -}}
