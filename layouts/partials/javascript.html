@@ -12,8 +12,28 @@
 <script type="text/javascript" src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>
 
 {{ if eq .Site.Params.Env "pro"}}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4262890370207958"
-         crossorigin="anonymous"></script>
+    <script>
+        (function () {
+            var adsenseLoaded = false;
+            function loadAdsense() {
+                if (adsenseLoaded) return;
+                adsenseLoaded = true;
+                var script = document.createElement('script');
+                script.async = true;
+                script.crossOrigin = 'anonymous';
+                script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4262890370207958';
+                document.head.appendChild(script);
+            }
+            ['scroll', 'pointerdown', 'keydown'].forEach(function (evt) {
+                window.addEventListener(evt, loadAdsense, { once: true, passive: true });
+            });
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadAdsense, { timeout: 3000 });
+            } else {
+                setTimeout(loadAdsense, 3000);
+            }
+        })();
+    </script>
 {{ end }}
 
 {{ range $val := $.Site.Params.customJS }}
