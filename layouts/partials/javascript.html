@@ -5,11 +5,10 @@
 {{ $assets.Add "js" (slice $menu $search) }}
 
 {{ $prism := resources.Get "js/prism.js" }}
-{{ $fuse := resources.Get "js/libs/fuse.min.js" }}
-{{ $assets.Add "js" (slice $prism $fuse) }}
+{{ $assets.Add "js" (slice $prism) }}
 
 {{ $bundle := $assets.Get "js" | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
-<script type="text/javascript" src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>
+<script type="text/javascript" src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}" defer></script>
 
 {{ if eq .Site.Params.Env "pro"}}
     <script>

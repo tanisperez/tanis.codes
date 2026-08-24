@@ -1,4 +1,5 @@
-<div id="search-wrapper">
+{{ $fuse := resources.Get "js/libs/fuse.min.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<div id="search-wrapper" data-fuse-src="{{ $fuse.RelPermalink }}" data-fuse-integrity="{{ $fuse.Data.Integrity }}">
     <div id="search-modal">
         <header>
             <form>

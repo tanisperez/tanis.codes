@@ -88,21 +88,41 @@ function displaySearch() {
 }
 
 function buildIndex() {
-    fetchJSON("/index.json", function (data) {
-        var options = {
-            shouldSort: true,
-            ignoreLocation: true,
-            threshold: 0.0,
-            includeMatches: true,
-            keys: [
-                { name: "title", weight: 0.8 },
-                { name: "tags", weight: 0.4},
-                { name: "description", weight: 0.2 }
-            ],
-        };
-        fuse = new Fuse(data, options);
-        indexed = true;
+    loadFuse(function () {
+        fetchJSON("/index.json", function (data) {
+            var options = {
+                shouldSort: true,
+                ignoreLocation: true,
+                threshold: 0.0,
+                includeMatches: true,
+                keys: [
+                    { name: "title", weight: 0.8 },
+                    { name: "tags", weight: 0.4},
+                    { name: "description", weight: 0.2 }
+                ],
+            };
+            fuse = new Fuse(data, options);
+            indexed = true;
+            if (input.value) {
+                executeQuery(input.value);
+            }
+        });
     });
+}
+
+function loadFuse(callback) {
+    if (typeof Fuse !== "undefined") {
+        callback();
+        return;
+    }
+    var script = document.createElement("script");
+    script.src = searchWrapper.getAttribute("data-fuse-src");
+    var integrity = searchWrapper.getAttribute("data-fuse-integrity");
+    if (integrity) {
+        script.integrity = integrity;
+    }
+    script.onload = callback;
+    document.head.appendChild(script);
 }
 
 function fetchJSON(path, callback) {
@@ -131,6 +151,10 @@ function hideSearch() {
 }
 
 function executeQuery(term) {
+    if (!fuse) {
+        return;
+    }
+
     var results = fuse.search(term);
     var resultsHTML = "";
 
