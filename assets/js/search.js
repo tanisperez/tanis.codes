@@ -18,6 +18,14 @@ modal.addEventListener("click", function (event) {
     return false;
 });
 searchButton.addEventListener("click", displaySearch);
+searchButton.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+        if (event.key === " ") {
+            event.preventDefault();
+        }
+        displaySearch();
+    }
+});
 
 searchWrapper.addEventListener("click", function(event) {
     hideSearch();

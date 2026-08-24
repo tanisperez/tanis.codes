@@ -1,5 +1,5 @@
 {{ range . -}}
     <div class="footer-social-icon">
-        <a href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name | humanize }}">{{ partial "svg.html" . }}</a>
+        <a href="{{ .url }}" target="_blank" rel="noopener" title="{{ .name | humanize }}" aria-label="{{ .name | humanize }}">{{ partial "svg.html" . }}</a>
     </div>
 {{- end -}}
