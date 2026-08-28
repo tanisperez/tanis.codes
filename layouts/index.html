@@ -4,31 +4,50 @@
 
 {{ define "main" }}
     <main class="home">
-        <h1>Last articles</h1>
-        <div class="home-articles">
-            {{ range $i, $p := first 10 (where .Site.RegularPages "Type" "==" "posts") }}
-                <a class="home-article" href="{{ $p.Permalink }}">
-                    <div class="home-article-image">
-                        {{- $page := $p }}
-                        {{- with $p.Params.image }}
-                            {{- with resources.Get (strings.TrimPrefix "/" .) }}
-                                {{- $logo := .Process "webp lossless" }}
-                                <img src="{{ $logo.RelPermalink }}" width="{{ $logo.Width }}" height="{{ $logo.Height }}" {{ if lt $i 3 }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} decoding="async" alt="{{ $page.Title }}">
-                            {{- end }}
-                        {{- end }}
-                    </div>
-                    <div class="home-article-content">
-                        <h2>{{ $p.Title }}</h2>
-                        <span>{{ $p.Date.Month }} {{ $p.Date.Day }}, {{ $p.Date.Year }}</span>
+        {{/* Intro card: uses the existing homeTitle/description params (config-*.toml), see Fase 4 plan. */}}
+        <div class="intro-card">
+            <p class="intro-card__title">{{ .Site.Params.homeTitle }}</p>
+            <p class="intro-card__description">{{ .Site.Params.description }}</p>
+            <div class="intro-card__actions">
+                <a href="/about" class="button button-accent">About me <span aria-hidden="true">&rarr;</span></a>
+                {{ range where .Site.Params.social "name" "rss" }}
+                    <a href="{{ .url }}" class="button">Subscribe</a>
+                {{ end }}
+            </div>
+        </div>
+
+        {{ $posts := first 5 (where .Site.RegularPages "Type" "==" "posts") }}
+        {{ $hero := index $posts 0 }}
+        {{ $tiles := after 1 $posts }}
+
+        <div class="home-heading">
+            <h1>Last articles</h1>
+            <a class="home-heading__all" href="/posts">All posts &rarr;</a>
+        </div>
+
+        {{ with $hero }}
+            <a class="card hero-card" href="{{ .Permalink }}">
+                {{ partial "post-image.html" (dict "page" . "size" "hero") }}
+                <div class="hero-card__content">
+                    <span class="hero-card__badge">LATEST</span>
+                    <h2 class="hero-card__title">{{ .Title }}</h2>
+                    <div class="hero-card__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
+                    <p class="hero-card__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
+                </div>
+            </a>
+        {{ end }}
+
+        <div class="home-grid">
+            {{ range $tiles }}
+                <a class="card home-tile" href="{{ .Permalink }}">
+                    {{ partial "post-image.html" (dict "page" . "size" "tile") }}
+                    <div class="home-tile__content">
+                        <h3 class="home-tile__title">{{ .Title }}</h3>
+                        <div class="home-tile__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
+                        <p class="home-tile__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
                     </div>
                 </a>
             {{ end }}
         </div>
-
-        <span class="button button-primary">
-            <a href="/posts">
-                <span class="button__text">View older posts</span>
-            </a>
-        </span>
     </main>
 {{ end }}
