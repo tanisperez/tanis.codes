@@ -67,9 +67,23 @@ enableGitInfo   = false
     [[menu.main]]
         identifier = "posts"
         name       = "Posts"
-        url        = "/posts"
+        pageRef    = "/posts/"
+        weight     = 10
+
+    [[menu.main]]
+        identifier = "tags"
+        name       = "Tags"
+        pageRef    = "/tags/"
+        weight     = 20
 
     [[menu.main]]
         identifier = "projects"
         name       = "Projects"
-        url        = "/projects"
+        pageRef    = "/projects/"
+        weight     = 30
+
+    [[menu.main]]
+        identifier = "about"
+        name       = "About"
+        pageRef    = "/about/"
+        weight     = 40

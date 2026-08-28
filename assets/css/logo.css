@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     font-display: auto;
-    font-family: monospace, monospace;
-    font-size: 1rem;
+    font-family: var(--font-mono);
+    font-size: 13px;
 }
 
 .logo img {
@@ -13,20 +13,20 @@
 }
 
 .logo-home {
-    color: var(--light-blue);
+    color: var(--color-accent-blue);
 }
 
 .logo-dev {
-    color: var(--dark-blue);
+    color: var(--color-accent-blue-dark);
 }
 
 .logo-folder {
-    color: var(--light-blue);
+    color: var(--color-accent-blue);
 }
 
 .logo-branch,
 .logo-terminal_separator {
-    color: var(--green-terminal);
+    color: var(--color-accent-green);
     margin-left: 0.5rem;
 }
 
@@ -43,6 +43,12 @@
 @media (prefers-reduced-motion: reduce) {
     .logo-cursor {
         animation: none;
+    }
+}
+
+@media (min-width: 760px) {
+    .logo {
+        font-size: 15px;
     }
 }
 
