@@ -1,7 +1,7 @@
 .sharing-buttons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 8px;
 }
 
 .sharing-buttons .resp-sharing-button__icon,
@@ -11,29 +11,33 @@
 
 .sharing-buttons .resp-sharing-button__link {
     text-decoration: none;
-    margin: 0.5em;
+    margin: 0;
 }
 
 .sharing-buttons .resp-sharing-button {
-    border-radius: 5px;
-    transition: 25ms ease-out;
-    padding: 0.5em 0.75em;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 7px 9px;
+    color: var(--color-text-secondary);
+    transition: border-color 140ms ease, background 140ms ease;
 }
 
 .sharing-buttons .resp-sharing-button:hover {
-    background-color: var(--dark-color-hover);
+    border-color: var(--color-border-hover);
+    background: var(--color-surface);
 }
 
-.sharing-buttons .resp-sharing-button__icon svg {
-    width: 1.5em;
-    height: 1.5em;
-    margin-right: 0.4em;
-    vertical-align: top;
+.sharing-buttons .resp-sharing-button:active {
+    background: var(--color-surface-active);
 }
 
+.sharing-buttons .resp-sharing-button__icon svg,
 .sharing-buttons .resp-sharing-button--small svg {
+    width: 16px;
+    height: 16px;
     margin: 0;
     vertical-align: middle;
 }
-

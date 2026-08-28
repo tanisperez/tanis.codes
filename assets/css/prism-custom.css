@@ -2,28 +2,77 @@
     margin: 10px auto;
 }
 
-pre[class*="language-"] { background: #272822; color: #f8f8f2; }
+pre[class*="language-"] {
+    background: #101210;
+    color: #d8d8d8;
+    margin: 0;
+    border-radius: 0;
+    font-family: var(--font-mono);
+}
 
-.code-toolbar {
+div.code-toolbar {
+    display: flex;
+    flex-direction: column;
+    background: #101210;
+    border: 1px solid #232823;
+    border-radius: 10px;
+    overflow: hidden;
     margin-bottom: 20px;
 }
 
-.code-toolbar .toolbar-item a {
-    position: relative;
-    display: inline-flex;
+/* Prism's own toolbar plugin CSS (div.code-toolbar > .toolbar, loaded just
+   before this file) positions the toolbar as an absolute, hover-to-reveal
+   overlay (position: absolute; opacity: 0). We want a permanently visible
+   bar above the code instead, so this needs the same selector specificity
+   to win the cascade on those properties. */
+div.code-toolbar > .toolbar {
+    order: -1;
+    position: static;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 12px;
+    background: #0b0d0b;
+    border-bottom: 1px solid #1e211e;
+    opacity: 1;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+    display: flex;
+    align-items: center;
+}
+
+/* Overrides Prism's default pill styling (background/box-shadow/padding)
+   on the show-language plugin's plain <span>, same specificity concern as
+   above. */
+div.code-toolbar > .toolbar .toolbar-item span {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--color-text-dim);
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+.code-toolbar .toolbar-item .copy-code-button {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: #b9b9b9;
+    background: none;
+    border: 1px solid #2c2c2c;
+    border-radius: 6px;
     padding: 3px 8px;
-    margin-bottom: 5px;
-    text-decoration: none;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    appearance: none;
     cursor: pointer;
-    outline: none;
-    background: var(--dark-background-secondary);
-    color: inherit;
+    transition: color 140ms ease, border-color 140ms ease;
+}
+
+.code-toolbar .toolbar-item .copy-code-button:hover {
+    color: var(--color-accent-blue);
+    border-color: #2b5a76;
+}
+
+.code-toolbar .toolbar-item .copy-code-button:active {
+    color: var(--color-chip-hover-text);
 }
