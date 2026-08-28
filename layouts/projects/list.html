@@ -2,14 +2,34 @@
 <main class="posts">
     <h1>{{ .Title }}</h1>
 
-    <ul class="posts-list">
+    <div class="projects-list">
         {{ range .Sections }}
-            <li class="post-item">
-                <a href="{{ .Permalink }}">
-                    <span class="post-title">{{ .Title }}</span>
-                </a>
-            </li>
+            {{ $status := .Params.status | default "active" }}
+            <div class="card project-card">
+                <div class="avatar project-card__avatar">
+                    <span class="avatar--fallback">{{ upper (substr .Title 0 2) }}</span>
+                </div>
+                <div class="project-card__heading">
+                    <h2 class="project-card__name"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                    <span class="project-card__status project-card__status--{{ $status }}"><span aria-hidden="true">&#9679;</span> {{ $status | title }}</span>
+                </div>
+                <p class="project-card__description">{{ .Params.description }}</p>
+                {{ with .Params.stack }}
+                    <div class="project-card__stack">
+                        {{ range . }}
+                            <span class="chip chip--neutral">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                {{ end }}
+                {{ with .Params.links }}
+                    <div class="project-card__links">
+                        {{ range . }}
+                            <a class="button button-accent" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }} <span aria-hidden="true">&#8599;</span></a>
+                        {{ end }}
+                    </div>
+                {{ end }}
+            </div>
         {{ end }}
-    </ul>
+    </div>
 </main>
 {{ end }}
