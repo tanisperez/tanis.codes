@@ -27,8 +27,8 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: var(--dark-background);
-    color: var(--dark-color);
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 h2, h3, h4, h5, h6 {
@@ -83,12 +83,12 @@ img[src$='#badge'] {
 
 .store-badges a:hover img[src$='#badge'] {
     transform: scale(1.06);
-    box-shadow: 0 0 18px 4px var(--light-blue);
+    box-shadow: 0 0 18px 4px var(--color-accent-blue);
 }
 
 .store-badges a:active img[src$='#badge'] {
     transform: scale(0.97);
-    box-shadow: 0 0 26px 6px var(--light-blue);
+    box-shadow: 0 0 26px 6px var(--color-accent-blue);
 }
 
 figure {
@@ -129,7 +129,7 @@ figure figcaption.center { text-align: center; }
 figure figcaption.right { text-align: right; }
 
 em, i, strong {
-    color: var(--dark-color-variant);
+    color: var(--color-text-secondary);
 }
 
 code {
@@ -140,12 +140,12 @@ code {
     margin: 0 2px;
     border-radius: 5px;
     font-size: 0.95rem;
-    background: var(--dark-background-secondary);
+    background: var(--color-surface);
     word-break: break-word;
 }
 
 pre {
-    background-color: var(--dark-background-secondary);
+    background-color: var(--color-surface);
     padding: 10px 10px 10px 20px;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -161,7 +161,7 @@ pre code {
 }
 
 blockquote {
-    border-left: 5px solid var(--main-color);
+    border-left: 5px solid var(--color-accent-blue);
     background-color: #27292a;
     border-radius: 5px;
     margin: 10px 0;
@@ -209,7 +209,7 @@ hr {
     width: 100%;
     border: none;
     height: 1px;
-    background: var(--dark-border-color);
+    background: var(--color-border);
 }
 
 .hidden { display: none; }
@@ -270,4 +270,142 @@ hr {
 
 @media (max-width: 900px) {
     .hide-on-tablet { display: none; }
+}
+
+/* ==========================================================================
+   Reusable primitives (Fase 2 del rediseno, ver plan)
+   ========================================================================== */
+
+/* Card: tarjeta clicable generica. Funciona igual sobre un <a> (todo el
+   bloque es el enlace, ej. .home-article) o sobre un <div>/<li> contenedor
+   que envuelve un enlace interior (ej. .post-item) - el hover/active se
+   aplica al elemento que lleve esta clase, sea cual sea su tag. */
+.card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.card:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-hover);
+    transform: translateY(-1px);
+}
+
+.card:active {
+    background: var(--color-surface-active);
+    transform: translateY(0);
+}
+
+/* Chip: pill de tag, usada tanto suelta como dentro de .post-tags. */
+.chip {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--color-accent-blue);
+    background: var(--color-chip-bg);
+    border: 1px solid var(--color-chip-border);
+    border-radius: 6px;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.chip:hover {
+    background: #1b2f3d;
+    border-color: #2b5a76;
+    color: var(--color-chip-hover-text);
+}
+
+.chip:active {
+    background: var(--color-chip-bg);
+}
+
+/* Chip neutral: filter chips del listado de posts ("all 21", "#tag 5"...). */
+.chip--neutral {
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+
+.chip--neutral:hover {
+    background: #1c1c1c;
+    border-color: var(--color-border-hover);
+    color: var(--color-text);
+}
+
+.chip--neutral:active {
+    background: #171717;
+}
+
+/* Avatar: badge pequeno (40-44px) para logos reales reducidos o iniciales. */
+.avatar {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #1f1f1f;
+    border: 1px solid #2a2a2a;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar--fallback {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: inherit;
+}
+
+/* Tile fallback: tile grande generado por CSS (rayas diagonales + tag),
+   usado en home cuando el post no tiene una imagen de portada lo bastante
+   grande para el hero/tile real. Sin <img>, así que --hero y --tile fijan
+   su propio tamaño (aspect-ratio / width+height) para evitar CLS. */
+.tile-fallback {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-family: var(--font-mono);
+    border: 1px solid #262626;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+}
+
+.tile-fallback__tag {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Hero: pintado 720x360 (fuente equivalente 1440x720 si algun dia hay
+   imagen real). width:100% + aspect-ratio mantiene la proporcion 2:1 en
+   cualquier ancho de contenedor, de mobile a desktop. */
+.tile-fallback--hero {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    background-color: #121212;
+    background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 11px);
+    padding: 18px 20px;
+}
+
+/* Tile: pintado 132x132 (fuente equivalente 264x264 si algun dia hay
+   imagen real). */
+.tile-fallback--tile {
+    width: 132px;
+    height: 132px;
+    background-color: #1b1b1b;
+    background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 9px);
+    padding: 11px;
 }

@@ -1,0 +1,56 @@
+{{/*
+  post-image.html — renderiza la imagen de portada de un post, o su
+  fallback CSS cuando no hay imagen usable a ese tamaño.
+
+  Uso:
+    {{ partial "post-image.html" (dict "page" . "size" "tile") }}
+    {{ partial "post-image.html" (dict "page" . "size" "hero") }}
+    {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 44) }}
+
+  Parametros (dict):
+    page   - la Page del post (obligatorio)
+    size   - "avatar" | "tile" | "hero" (obligatorio)
+    pxsize - solo para size="avatar": lado exacto en px al que el llamador
+             va a pintar el badge (opcional, por defecto 40)
+
+  Decision (Fase 2 del rediseno, ver plan): los logos de origen son
+  120x70px fijos, demasiado pequenos para ampliar a los tiles/hero del
+  mockup sin verse borrosos. Por eso "tile" y "hero" usan siempre el tile
+  CSS de fallback (ver .tile-fallback en main.css), tenga o no el post
+  Params.image. Solo "avatar" (badges de 40-44px) reutiliza el logo real,
+  porque reducirlo no pierde calidad.
+
+  TODO(fase futura): si algun post llega a tener una imagen de portada lo
+  bastante grande (>=1440x720 o >=800x800, ver archetypes/posts.md), aqui
+  es donde habria que detectar su resolucion y usar imagen real tambien en
+  tile/hero, sin tocar a quien llama a este partial.
+*/}}
+
+{{ $page := .page }}
+{{ $size := .size }}
+
+{{ if eq $size "avatar" }}
+  {{ $pxsize := .pxsize | default 40 }}
+  <div class="avatar" style="width: {{ $pxsize }}px; height: {{ $pxsize }}px">
+    {{ with $page.Params.image }}
+      {{ with resources.Get (strings.TrimPrefix "/" .) }}
+        {{ $logo := .Process "webp lossless" }}
+        <img src="{{ $logo.RelPermalink }}" width="{{ $pxsize }}" height="{{ $pxsize }}" loading="lazy" decoding="async" alt="{{ $page.Title }}">
+      {{ end }}
+    {{ else }}
+      <span class="avatar--fallback">{{ upper (substr $page.Title 0 2) }}</span>
+    {{ end }}
+  </div>
+{{ else }}
+  {{ $tag := "post" }}
+  {{ with $page.Params.tags }}
+    {{ $tag = index . 0 }}
+  {{ end }}
+  {{ $colors := slice "var(--color-accent-blue)" "var(--color-accent-green)" "var(--color-accent-blue-dark)" }}
+  {{ $color := index $colors (mod (len $tag) 3) }}
+  {{ $modifier := "tile-fallback--tile" }}
+  {{ if eq $size "hero" }}{{ $modifier = "tile-fallback--hero" }}{{ end }}
+  <div class="tile-fallback {{ $modifier }}">
+    <div class="tile-fallback__tag" style="color: {{ $color | safeCSS }}">#{{ $tag }}</div>
+  </div>
+{{ end }}
