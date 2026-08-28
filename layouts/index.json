@@ -8,7 +8,8 @@
                 "title": {{ $page.Title | jsonify}},
                 "modificationDate": {{ $page.Lastmod | jsonify }},
                 "tags": {{ $page.Params.Tags | jsonify }},
-                "description": {{ $page.Params.Description | jsonify }}
+                "description": {{ $page.Params.Description | jsonify }},
+                "readingTime": {{ $page.ReadingTime | jsonify }}
             }
         {{ end }} 
     {{ end }}
