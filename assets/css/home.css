@@ -1,8 +1,7 @@
-/* Home (Fase 4 del rediseno, ver plan): intro card -> hero (ultimo post) ->
-   grid de tiles (siguientes posts) -> link "All posts". Mobile-first, el
-   salto a dos columnas ocurre en var(--bp-desktop) (760px, literal abajo:
-   las custom properties no se resuelven dentro de @media en todos los
-   navegadores soportados). */
+/* Home: hero (ultimo post) -> grid de tiles (siguientes posts) -> link
+   "All posts". Mobile-first, el salto a dos columnas ocurre en
+   var(--bp-desktop) (760px, literal abajo: las custom properties no se
+   resuelven dentro de @media en todos los navegadores soportados). */
 
 .home {
     width: 100%;
@@ -12,40 +11,6 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-}
-
-/* Intro card: aparece tambien en mobile (mas compacta) ademas de en
-   desktop, aunque el mockup mobile ("M-Home images") no la incluye. Es la
-   unica presentacion del homeTitle/description del sitio, asi que quitarla
-   en mobile perderia ese contexto para la mayoria del trafico (movil). */
-.intro-card {
-    background: var(--color-surface-alt);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    padding: 16px 18px;
-    margin-bottom: 18px;
-}
-
-.intro-card__title {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--color-text);
-}
-
-.intro-card__description {
-    margin: 8px 0 0;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: var(--color-text-secondary);
-}
-
-.intro-card__actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 14px;
-    font-size: 0.85rem;
 }
 
 .home-heading {
@@ -171,21 +136,6 @@
 @media (min-width: 760px) {
     .home {
         padding: 36px 40px 44px;
-    }
-
-    .intro-card {
-        padding: 24px 26px;
-        margin-bottom: 30px;
-    }
-
-    .intro-card__title {
-        font-size: 19px;
-        max-width: 640px;
-    }
-
-    .intro-card__description {
-        font-size: 15px;
-        max-width: 640px;
     }
 
     .home-heading h1 {

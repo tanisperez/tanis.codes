@@ -4,18 +4,6 @@
 
 {{ define "main" }}
     <main class="home">
-        {{/* Intro card: uses the existing homeTitle/description params (config-*.toml), see Fase 4 plan. */}}
-        <div class="intro-card">
-            <p class="intro-card__title">{{ .Site.Params.homeTitle }}</p>
-            <p class="intro-card__description">{{ .Site.Params.description }}</p>
-            <div class="intro-card__actions">
-                <a href="/about" class="button button-accent">About me <span aria-hidden="true">&rarr;</span></a>
-                {{ range where .Site.Params.social "name" "rss" }}
-                    <a href="{{ .url }}" class="button">Subscribe</a>
-                {{ end }}
-            </div>
-        </div>
-
         {{ $posts := first 5 (where .Site.RegularPages "Type" "==" "posts") }}
         {{ $hero := index $posts 0 }}
         {{ $tiles := after 1 $posts }}
