@@ -3,6 +3,13 @@ title: "Foliato"
 description: "A 100% on-device PDF toolkit for iOS and Android — your PDF never leaves your device"
 draft: false
 layout: "single"
+status: "active"
+stack: ["iOS", "Android"]
+links:
+  - label: "App Store"
+    url: "https://apps.apple.com/us/app/foliato-offline-pdf-tools/id6795265777"
+  - label: "Google Play"
+    url: "https://play.google.com/store/apps/details?id=codes.tanis.foliato&hl=en"
 ---
 
 Foliato is a PDF viewer and toolkit that runs entirely on your device. Every operation — opening a file, signing it, merging it, watermarking it — happens locally, using your phone's or tablet's own processing. Nothing is ever uploaded anywhere.

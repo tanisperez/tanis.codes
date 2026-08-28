@@ -3,6 +3,9 @@ title: "Quieto"
 description: "A sleep sound app for iOS and Android — every sound is synthesised live on your device, never a recording"
 draft: false
 layout: "single"
+status: "active"
+stack: ["iOS", "Android"]
+links: []
 ---
 
 Quieto plays relaxing sounds and noise to help you fall asleep. Every sound in the catalogue — white noise, rain, ocean waves, a campfire and the rest — is synthesised in real time, on your own device, from mathematical descriptions of sound rather than played back from a recording. That means no loop seam: a sleep app is listened to for hours straight, and a sound that audibly repeats every 30 seconds is the last thing you want next to your pillow.

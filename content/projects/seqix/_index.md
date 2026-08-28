@@ -3,6 +3,13 @@ title: "Seqix"
 description: "A space-themed memory sequence game for iOS, Android and web"
 draft: false
 layout: "single"
+status: "active"
+stack: ["Expo", "React Native"]
+links:
+  - label: "App Store"
+    url: "https://apps.apple.com/us/app/seqix/id6785265402"
+  - label: "Google Play"
+    url: "https://play.google.com/store/apps/details?id=codes.tanis.seqix"
 ---
 
 Seqix is a space-themed memory sequence game. The computer lights up a series of tiles in a random order — your job is to tap them back in the exact same sequence. Each successful round adds one more tile, making the game progressively faster and harder until you make a mistake or run out of time.
