@@ -1,0 +1,155 @@
+/* About (Fase 7 del rediseno, ver plan): foto + caja terminal "cat about.md"
+   + botones de contacto. Mobile-first: apilado y centrado en mobile, dos
+   columnas (foto + contenido) a partir de var(--bp-desktop), literal abajo
+   porque las custom properties no se resuelven dentro de @media. */
+
+.about {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+}
+
+.about-photo img {
+    width: 88px;
+    height: 88px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+    flex: none;
+}
+
+.about-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.about h1 {
+    margin: 0 0 6px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.about-subtitle {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-text-meta);
+    line-height: 1.5;
+}
+
+.about-terminal {
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+}
+
+.about-terminal__bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
+    background: var(--color-bg-chrome);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.about-terminal__bar span:not(.about-terminal__label) {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #3a3a3a;
+}
+
+.about-terminal__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-meta);
+    margin-left: 6px;
+}
+
+.about-terminal__body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.875rem;
+    line-height: 1.75;
+}
+
+.about-terminal__body p {
+    margin: 0;
+}
+
+.about-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about-actions .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex: 1 1 auto;
+    min-width: 100px;
+    padding: 12px;
+    font-size: 12px;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.about-actions .button-accent {
+    color: var(--color-accent-blue);
+}
+
+.about-actions svg {
+    width: 15px;
+    height: 15px;
+    flex: none;
+    display: block;
+}
+
+@media (min-width: 760px) {
+    .about {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        padding: 40px 40px 48px;
+        gap: 32px;
+    }
+
+    .about-photo img {
+        width: 200px;
+        height: 200px;
+        border-radius: 16px;
+    }
+
+    .about h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-subtitle {
+        font-size: 0.8125rem;
+    }
+
+    .about-actions {
+        justify-content: flex-start;
+    }
+
+    .about-actions .button {
+        flex: none;
+        min-width: 0;
+        font-size: 13px;
+        padding: 11px 18px;
+    }
+}
