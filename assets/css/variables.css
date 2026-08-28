@@ -34,8 +34,4 @@
      * de escritorio.
      */
     --bp-desktop: 760px;
-
-    /* TODO(fase-N): --light-color-secondary sigue en uso en footer.css.
-       Eliminarla cuando esa fase migre footer.css a los tokens nuevos. */
-    --light-color-secondary: #999;
 }
