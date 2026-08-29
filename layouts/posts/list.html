@@ -8,14 +8,17 @@
             <div class="content">{{ .Content }}</div>
         {{ end }}
 
-        {{/* Filter chips: "all N" + un chip por tag con su conteo, ordenados
-             de mas a menos posts. Son solo enlaces a /tags/<tag>/ por ahora,
-             sin filtrado JS (fuera de alcance de esta fase). */}}
+        {{/* Filter chips: los tags mas usados (top 8) con su conteo, ordenados
+             de mas a menos posts, + enlace a la nube completa en /tags/. Son
+             solo enlaces a /tags/<tag>/ por ahora, sin filtrado JS (fuera de
+             alcance de esta fase). */}}
         <div class="posts-filters">
-            <a class="chip chip--neutral" href="{{ .Permalink }}">all {{ len .Data.Pages }}</a>
-            {{ range .Site.Taxonomies.tags.ByCount }}
-                <a class="chip chip--neutral" href="/tags/{{ .Name | urlize }}/">#{{ .Name }} {{ .Count }}</a>
+            {{ range first 8 .Site.Taxonomies.tags.ByCount }}
+                <a class="chip chip--neutral" href="/tags/{{ .Name | urlize }}/">
+                    <span class="tag-cloud__hash">#</span>{{ .Name }}<span class="tag-cloud__count">{{ .Count }}</span>
+                </a>
             {{ end }}
+            <a class="chip chip--neutral" href="/tags/">All tags &rarr;</a>
         </div>
 
         {{ range $paginator.Pages.GroupByDate "2006" }}

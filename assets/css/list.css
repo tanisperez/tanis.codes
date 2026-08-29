@@ -19,17 +19,21 @@
     letter-spacing: -0.02em;
 }
 
-/* Filter chips: "all N" + un chip por tag, con su conteo. */
+/* Filter chips: los tags mas usados, con su conteo (ver .tag-cloud__hash y
+   .tag-cloud__count en tag.css para el mismo patron de separacion visual
+   nombre/contador que usa la nube de /tags/). */
 .posts-filters {
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
-    overflow-x: auto;
-    padding-bottom: 2px;
     margin-bottom: 18px;
 }
 
 .posts-filters .chip--neutral {
+    display: inline-flex;
     flex: none;
+    align-items: center;
+    gap: 6px;
     white-space: nowrap;
     font-size: 11px;
     padding: 5px 9px;
@@ -229,8 +233,6 @@
     }
 
     .posts-filters {
-        flex-wrap: wrap;
-        overflow: visible;
         gap: 8px;
         margin-bottom: 26px;
     }
@@ -287,6 +289,7 @@
         grid-column: 2;
         flex-direction: row;
         align-items: center;
+        justify-content: flex-start;
         gap: 12px;
     }
 
