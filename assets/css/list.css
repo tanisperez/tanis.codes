@@ -337,7 +337,7 @@
         grid-column: 3;
         grid-row: 1 / 4;
         flex-direction: column;
-        align-self: start;
+        align-self: center;
     }
 
     .project-card__links .button-accent {

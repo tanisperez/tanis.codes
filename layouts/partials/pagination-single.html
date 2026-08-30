@@ -2,12 +2,24 @@
     <div class="post-nav">
         <div class="post-nav__label">Read other posts</div>
         <div class="post-nav__grid">
-            {{ if .NextInSection }}
-                <a class="card post-nav__card" href="{{ .NextInSection.Permalink }}">{{ .NextInSection.Title }}</a>
-            {{ end }}
-
-            {{ if .PrevInSection }}
-                <a class="card post-nav__card" href="{{ .PrevInSection.Permalink }}">{{ .PrevInSection.Title }}</a>
+            {{ range (slice .NextInSection .PrevInSection) }}
+                {{ with . }}
+                    <div class="card post-item">
+                        {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 44) }}
+                        <div class="post-item__body">
+                            <div class="post-item__title"><a class="post-item__title-link" href="{{ .Permalink }}">{{ .Title }}</a></div>
+                            <div class="post-item__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
+                            <p class="post-item__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
+                            {{ with .Params.tags }}
+                                <div class="post-item__tags">
+                                    {{ range . }}
+                                        <a class="chip" href="/tags/{{ . | urlize }}/">{{ . }}</a>
+                                    {{ end }}
+                                </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ end }}
             {{ end }}
         </div>
     </div>

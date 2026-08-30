@@ -4,6 +4,7 @@ description: "A sleep sound app for iOS and Android — every sound is synthesis
 draft: false
 layout: "single"
 status: "active"
+icon: "/images/projects/quieto.svg"
 stack: ["iOS", "Android"]
 links: []
 ---

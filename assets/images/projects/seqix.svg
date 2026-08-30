@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Glow filters for active tiles: 0 (planet/blue), 4 (satellite/pink), 8 (infinity/magenta) -->
+    <filter id="glow-blue" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-pink" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-magenta" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0D1F35"/>
+      <stop offset="100%" stop-color="#040C14"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!--
+    Tile grid matches tiles.ts order (0-indexed, row-major):
+    0(Planet/blue)    1(Atom/violet)    2(Rocket/teal)
+    3(Star/gold)      4(Satellite/pink) 5(Pulsar/green)
+    6(Telescope/red)  7(Moon/navy)      8(Infinity/magenta)
+    tile=248px  gap=24px  offset=116px
+  -->
+
+  <!-- Row 0 -->
+
+  <!-- Tile 0: Planet #1A3A6E / glow #60C6FF — ACTIVE -->
+  <g filter="url(#glow-blue)">
+    <rect x="116" y="116" width="248" height="248" rx="36" fill="#1A3A6E"/>
+    <rect x="116" y="116" width="248" height="248" rx="36" fill="#60C6FF" opacity="0.14"/>
+    <rect x="116" y="116" width="248" height="248" rx="36" fill="url(#shine)"/>
+    <rect x="116" y="116" width="248" height="248" rx="36" fill="none" stroke="#60C6FF" stroke-width="4" opacity="0.95"/>
+  </g>
+
+  <!-- Tile 1: Atom #3D1A78 / glow #C77DFF -->
+  <rect x="388" y="116" width="248" height="248" rx="36" fill="#3D1A78"/>
+  <rect x="388" y="116" width="248" height="248" rx="36" fill="url(#shine)"/>
+  <rect x="388" y="116" width="248" height="248" rx="36" fill="none" stroke="#C77DFF" stroke-width="2" opacity="0.4"/>
+
+  <!-- Tile 2: Rocket #780000 / glow #FF2828 -->
+  <rect x="660" y="116" width="248" height="248" rx="36" fill="#780000"/>
+  <rect x="660" y="116" width="248" height="248" rx="36" fill="url(#shine)"/>
+  <rect x="660" y="116" width="248" height="248" rx="36" fill="none" stroke="#FF2828" stroke-width="2" opacity="0.4"/>
+
+  <!-- Row 1 -->
+
+  <!-- Tile 3: Star #7A5A08 / glow #FFD700 -->
+  <rect x="116" y="388" width="248" height="248" rx="36" fill="#7A5A08"/>
+  <rect x="116" y="388" width="248" height="248" rx="36" fill="url(#shine)"/>
+  <rect x="116" y="388" width="248" height="248" rx="36" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.4"/>
+
+  <!-- Tile 4: Satellite #0E5E52 / glow #00F5D4 — ACTIVE (center) -->
+  <g filter="url(#glow-pink)">
+    <rect x="388" y="388" width="248" height="248" rx="36" fill="#0E5E52"/>
+    <rect x="388" y="388" width="248" height="248" rx="36" fill="#00F5D4" opacity="0.16"/>
+    <rect x="388" y="388" width="248" height="248" rx="36" fill="url(#shine)"/>
+    <rect x="388" y="388" width="248" height="248" rx="36" fill="none" stroke="#00F5D4" stroke-width="4" opacity="0.95"/>
+  </g>
+
+  <!-- Tile 5: Pulsar #1A6B24 / glow #39D353 -->
+  <rect x="660" y="388" width="248" height="248" rx="36" fill="#1A6B24"/>
+  <rect x="660" y="388" width="248" height="248" rx="36" fill="url(#shine)"/>
+  <rect x="660" y="388" width="248" height="248" rx="36" fill="none" stroke="#39D353" stroke-width="2" opacity="0.4"/>
+
+  <!-- Row 2 -->
+
+  <!-- Tile 6: Telescope #6A1800 / glow #FF9500 -->
+  <rect x="116" y="660" width="248" height="248" rx="36" fill="#6A1800"/>
+  <rect x="116" y="660" width="248" height="248" rx="36" fill="url(#shine)"/>
+  <rect x="116" y="660" width="248" height="248" rx="36" fill="none" stroke="#FF9500" stroke-width="2" opacity="0.4"/>
+
+  <!-- Tile 7: Moon #2C2E40 / glow #C4D0E8 -->
+  <rect x="388" y="660" width="248" height="248" rx="36" fill="#2C2E40"/>
+  <rect x="388" y="660" width="248" height="248" rx="36" fill="url(#shine)"/>
+  <rect x="388" y="660" width="248" height="248" rx="36" fill="none" stroke="#C4D0E8" stroke-width="2" opacity="0.4"/>
+
+  <!-- Tile 8: Infinity #6B0A6B / glow #FF3CFF — ACTIVE -->
+  <g filter="url(#glow-magenta)">
+    <rect x="660" y="660" width="248" height="248" rx="36" fill="#6B0A6B"/>
+    <rect x="660" y="660" width="248" height="248" rx="36" fill="#FF3CFF" opacity="0.14"/>
+    <rect x="660" y="660" width="248" height="248" rx="36" fill="url(#shine)"/>
+    <rect x="660" y="660" width="248" height="248" rx="36" fill="none" stroke="#FF3CFF" stroke-width="4" opacity="0.95"/>
+  </g>
+</svg>

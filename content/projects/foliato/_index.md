@@ -4,6 +4,7 @@ description: "A 100% on-device PDF toolkit for iOS and Android — your PDF neve
 draft: false
 layout: "single"
 status: "active"
+icon: "/images/projects/foliato.svg"
 stack: ["iOS", "Android"]
 links:
   - label: "App Store"

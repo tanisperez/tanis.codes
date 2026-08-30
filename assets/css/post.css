@@ -198,6 +198,7 @@
 
     .post-toc--desktop {
         display: block;
+        margin-top: 12px;
         background: none;
         border: none;
         border-radius: 0;
@@ -238,13 +239,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
-}
-
-.post-nav__card {
-    padding: 14px;
-    font-size: 14.5px;
-    font-weight: 700;
-    line-height: 1.35;
 }
 
 @media (min-width: 760px) {

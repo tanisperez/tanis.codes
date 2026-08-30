@@ -4,10 +4,17 @@
 
     <div class="projects-list">
         {{ range .Sections }}
+            {{ $project := . }}
             {{ $status := .Params.status | default "active" }}
             <div class="card project-card">
                 <div class="avatar project-card__avatar">
-                    <span class="avatar--fallback">{{ upper (substr .Title 0 2) }}</span>
+                    {{ with .Params.icon }}
+                        {{ with resources.Get (strings.TrimPrefix "/" .) }}
+                            <img src="{{ .RelPermalink }}" alt="{{ $project.Title }} icon" loading="lazy" decoding="async">
+                        {{ end }}
+                    {{ else }}
+                        <span class="avatar--fallback">{{ upper (substr .Title 0 2) }}</span>
+                    {{ end }}
                 </div>
                 <div class="project-card__heading">
                     <h2 class="project-card__name"><a class="project-card__link" href="{{ .Permalink }}">{{ .Title }}</a></h2>
