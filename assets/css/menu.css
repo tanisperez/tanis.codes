@@ -24,20 +24,6 @@
     margin: 0;
 }
 
-.menu-hint {
-    display: block;
-    margin: 0;
-    padding: 24px 14px;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    color: var(--color-text-dim);
-    text-align: center;
-}
-
-.menu-hint span {
-    color: var(--color-text-secondary);
-}
-
 .menu-trigger {
     width: 24px;
     height: 24px;
@@ -100,10 +86,6 @@
 
     .menu-inner li:last-child a {
         border-bottom: none;
-    }
-
-    .menu-hint {
-        display: none;
     }
 
     .menu-trigger {

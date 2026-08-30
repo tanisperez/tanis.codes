@@ -172,14 +172,11 @@
 
 .post-sidebar {
     margin-top: 28px;
+    margin-bottom: 32px;
 }
 
-.post-share__label {
-    font-size: 11.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-text-dim);
-    margin-bottom: 8px;
+.post-share .pagination {
+    margin-top: 0;
 }
 
 @media (min-width: 760px) {
@@ -221,6 +218,7 @@
 /* Read other posts */
 .post-nav {
     margin-top: 32px;
+    margin-bottom: 32px;
     padding-top: 22px;
     border-top: 1px solid var(--color-border);
 }
