@@ -3,7 +3,7 @@ title: "Node Version Manager (NVM)"
 date: 2025-03-24T10:23:00+01:00
 draft: false
 toc: false
-image: "/images/node-version-manager-nvm/logo.png"
+image: "/images/icons/nvm.svg"
 description: "A comprehensive guide to installing and using Node Version Manager (NVM) for managing multiple Node.js versions"
 tags:
   - node

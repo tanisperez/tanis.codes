@@ -3,7 +3,7 @@ title: "Add Google Analytics to Hugo"
 date: 2022-09-02T08:31:49+02:00
 draft: true
 toc: false
-image: "/images/add-google-analytics-to-hugo/logo.png"
+image: "/images/icons/google-analytics.svg"
 tags:
   - hugo
   - blog

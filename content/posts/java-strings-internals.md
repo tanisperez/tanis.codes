@@ -3,7 +3,7 @@ title: "Java Strings Internals"
 date: 2025-10-13T18:16:00+02:00
 draft: false
 toc: true
-image: "/images/common/java.png"
+image: "/images/icons/java.svg"
 description: "Deep dive into Java Strings internals: learn about storage optimizations, encoding evolution, and performance improvements across different JDK versions."
 tags:
   - java

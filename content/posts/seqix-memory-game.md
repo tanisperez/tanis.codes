@@ -3,7 +3,7 @@ title: "Seqix: Memory Game"
 date: 2026-07-23T08:30:00+02:00
 draft: false
 toc: false
-image: "/images/seqix-memory-game/logo.png"
+image: "/images/projects/seqix.svg"
 description: "Seqix is a space-themed 'Simon says' memory game for iOS and Android, built with Expo and React Native."
 tags:
   - expo

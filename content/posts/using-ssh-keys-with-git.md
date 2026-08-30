@@ -3,7 +3,7 @@ title: "Using SSH keys with Git"
 date: 2025-04-16T22:10:00+01:00
 draft: false
 toc: true
-image: "/images/common/git.png"
+image: "/images/icons/git.svg"
 description: "Learn how to set up and use SSH keys with Git for secure and convenient repository access. Step-by-step guide for key generation, configuration and best practices."
 tags:
   - git

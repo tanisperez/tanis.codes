@@ -3,7 +3,7 @@ title: "Build a custom blog with Hugo"
 date: 2022-08-17T16:46:00+02:00
 draft: false
 toc: false
-image: "/images/build-a-custom-blog-with-hugo/logo.png"
+image: "/images/icons/hugo.svg"
 description: "Hugo is one of the fastest static site generator for building websites written in Go. It is a tool which combines files to turns them into a static website."
 tags:
   - hugo

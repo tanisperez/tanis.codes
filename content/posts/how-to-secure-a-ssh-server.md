@@ -3,7 +3,7 @@ title: "How to secure a ssh server"
 date: 2022-12-28T07:49:00+01:00
 draft: false
 toc: false
-image: "/images/how-to-secure-a-ssh-server/logo.png"
+image: "/images/icons/ssh.svg"
 description: "The Secure Shell Protocol (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network."
 tags:
   - ssh

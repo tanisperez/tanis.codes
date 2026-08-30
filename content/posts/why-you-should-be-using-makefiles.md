@@ -3,7 +3,7 @@ title: "Why you should be using Makefiles"
 date: 2022-08-19T17:06:00+02:00
 draft: false
 toc: false
-image: "/images/why-you-should-be-using-makefiles/logo.png"
+image: "/images/icons/makefile.svg"
 description: "A Makefile is a text file which defines rules for building software using the make program, but you can use it for everything you want."
 tags:
   - makefile

@@ -3,7 +3,7 @@ title: "Getting started with SDKMAN!"
 date: 2025-04-20T18:18:00+02:00
 draft: false
 toc: true
-image: "/images/getting-started-with-sdkman/logo.png"
+image: "/images/icons/sdkman.svg"
 description: "Learn how to install and use SDKMAN! to manage multiple versions of Java and other JVM-based development kits. A comprehensive guide for developers."
 tags:
   - java
