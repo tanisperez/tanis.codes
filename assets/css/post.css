@@ -171,12 +171,13 @@
 }
 
 .post-sidebar {
-    margin-top: 28px;
+    margin-top: 32px;
     margin-bottom: 32px;
 }
 
-.post-share .pagination {
-    margin-top: 0;
+.post-share {
+    padding-top: 22px;
+    border-top: 1px solid var(--color-border);
 }
 
 @media (min-width: 760px) {
@@ -223,7 +224,8 @@
     border-top: 1px solid var(--color-border);
 }
 
-.post-nav__label {
+.post-nav__label,
+.post-share__title {
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -254,36 +256,6 @@
 /* Pagination (shared with pagination-list.html, used by posts/tags list) */
 .pagination {
     margin-top: 20px;
-}
-
-.pagination__title {
-    display: flex;
-    text-align: center;
-    position: relative;
-    margin: 20px 0;
-    font-weight: bold;
-}
-
-.pagination__title-h {
-    text-align: center;
-    margin: 0 auto;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    z-index: 1;
-    background: var(--color-bg);
-    color: var(--color-text-secondary);
-}
-
-.pagination__title hr {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    margin-top: 15px;
-    z-index: 0;
 }
 
 .pagination__buttons {
