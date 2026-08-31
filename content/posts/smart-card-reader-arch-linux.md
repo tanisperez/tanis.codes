@@ -4,7 +4,7 @@ date: 2026-01-03T20:15:00+02:00
 draft: false
 toc: true
 image: "/images/icons/smart-card.svg"
-description: "Complete guide to set up smart card reader support on Arch Linux for certificate-based authentication"
+description: "Complete guide to set up smart card reader support on Arch Linux for certificate-based authentication."
 tags:
   - arch linux
   - linux

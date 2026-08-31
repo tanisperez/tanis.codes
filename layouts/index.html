@@ -4,33 +4,19 @@
 
 {{ define "main" }}
     <main class="home">
-        {{ $posts := first 5 (where .Site.RegularPages "Type" "==" "posts") }}
-        {{ $hero := index $posts 0 }}
-        {{ $tiles := after 1 $posts }}
+        {{ $posts := first 7 (where .Site.RegularPages "Type" "==" "posts") }}
 
         <div class="home-heading">
             <h1>Last articles</h1>
             <a class="home-heading__all" href="/posts">All posts &rarr;</a>
         </div>
 
-        {{ with $hero }}
-            <a class="card hero-card" href="{{ .Permalink }}">
-                {{ partial "post-image.html" (dict "page" . "size" "hero") }}
-                <div class="hero-card__content">
-                    <span class="hero-card__badge">LATEST</span>
-                    <h2 class="hero-card__title">{{ .Title }}</h2>
-                    <div class="hero-card__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
-                    <p class="hero-card__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
-                </div>
-            </a>
-        {{ end }}
-
         <div class="home-grid">
-            {{ range $tiles }}
+            {{ range $posts }}
                 <a class="card home-tile" href="{{ .Permalink }}">
                     {{ partial "post-image.html" (dict "page" . "size" "tile") }}
                     <div class="home-tile__content">
-                        <h3 class="home-tile__title">{{ .Title }}</h3>
+                        <h2 class="home-tile__title">{{ .Title }}</h2>
                         <div class="home-tile__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
                         <p class="home-tile__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
                     </div>

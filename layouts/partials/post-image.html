@@ -1,16 +1,15 @@
 {{/*
   post-image.html — renderiza el icono de portada de un post (SVG inline,
-  ver assets/images/icons/) o su fallback CSS cuando el post no tiene
+  ver assets/images/icons/) o un texto "#tag" cuando el post no tiene
   Params.image.
 
   Uso:
     {{ partial "post-image.html" (dict "page" . "size" "tile") }}
-    {{ partial "post-image.html" (dict "page" . "size" "hero") }}
     {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 44) }}
 
   Parametros (dict):
     page   - la Page del post (obligatorio)
-    size   - "avatar" | "tile" | "hero" (obligatorio)
+    size   - "avatar" | "tile" (obligatorio)
     pxsize - solo para size="avatar": lado exacto en px al que el llamador
              va a pintar el badge (opcional, por defecto 40)
 
@@ -19,8 +18,8 @@
   <img> -- para que herede por CSS el color de acento del tag cuando el
   icono usa currentColor (los 4 sin marca oficial: ssh, sdkman, smart-card,
   makefile); el resto lleva su color de marca fijo en el propio SVG. Igual
-  en avatar, tile y hero. Si el post no tiene Params.image se usa el tile
-  CSS de fallback (.tile-fallback) de siempre.
+  en avatar y tile. Si el post no tiene Params.image se usa el "#tag" CSS
+  de siempre (.post-tile__tag).
 */}}
 
 {{ $page := .page }}
@@ -50,13 +49,11 @@
     {{ end }}
   </div>
 {{ else }}
-  {{ $modifier := "tile-fallback--tile" }}
-  {{ if eq $size "hero" }}{{ $modifier = "tile-fallback--hero" }}{{ end }}
-  <div class="tile-fallback {{ $modifier }}{{ if $icon }} tile-fallback--icon{{ end }}" style="color: {{ $color | safeCSS }}">
+  <div class="post-tile{{ if $icon }} post-tile--icon{{ end }}" style="color: {{ $color | safeCSS }}">
     {{ if $icon }}
-      <div class="tile-fallback__icon">{{ $icon | safeHTML }}</div>
+      <div class="post-tile__icon">{{ $icon | safeHTML }}</div>
     {{ else }}
-      <div class="tile-fallback__tag">#{{ $tag }}</div>
+      <div class="post-tile__tag">#{{ $tag }}</div>
     {{ end }}
   </div>
 {{ end }}

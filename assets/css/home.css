@@ -1,7 +1,6 @@
-/* Home: hero (ultimo post) -> grid de tiles (siguientes posts) -> link
-   "All posts". Mobile-first, el salto a dos columnas ocurre en
-   var(--bp-desktop) (760px, literal abajo: las custom properties no se
-   resuelven dentro de @media en todos los navegadores soportados). */
+/* Home: una unica ficha ("home-tile") reutilizada para todos los posts,
+   todas iguales. Una sola columna tanto en mobile como en desktop: a 2
+   columnas la descripcion se cortaba demasiado. */
 
 .home {
     width: 100%;
@@ -39,66 +38,23 @@
     color: var(--color-text);
 }
 
-/* Hero: ultimo post, tile de fallback grande arriba (ver .tile-fallback en
-   main.css) + contenido debajo. */
-.hero-card {
-    margin-bottom: 14px;
-}
-
-.hero-card__content {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.hero-card__badge {
-    font-family: var(--font-sans);
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--color-accent-green);
-}
-
-.hero-card__title {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-}
-
-.hero-card__meta {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    color: var(--color-text-meta);
-}
-
-.hero-card__description {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--color-text-secondary);
-}
-
-/* Grid de tiles: los siguientes posts. 1 columna en mobile, 2 en desktop. */
 .home-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 
 .home-tile {
     display: flex;
-    gap: 13px;
-    align-items: flex-start;
-    padding: 13px;
+    gap: 11px;
+    align-items: center;
+    padding: 11px;
 }
 
-/* .tile-fallback--tile no trae flex-shrink:0 propio (main.css, fuera de
-   alcance de esta fase); sin esto se encogeria por debajo de 132px dentro
-   de esta fila flex en pantallas estrechas. */
-.home-tile .tile-fallback--tile {
+/* .post-tile no trae flex-shrink:0 propio (main.css, fuera de alcance de
+   esta fase); sin esto se encogeria por debajo de su ancho fijo dentro de
+   esta fila flex en pantallas estrechas. */
+.home-tile .post-tile {
     flex: none;
 }
 
@@ -122,15 +78,15 @@
     color: var(--color-text-meta);
 }
 
+/* Sin line-clamp en mobile: la columna de texto es demasiado estrecha
+   junto al icono de 96px y un clamp de 2 lineas cortaba la mayoria de
+   descripciones a la mitad. En desktop si hay sitio de sobra, asi que el
+   clamp vuelve en la media query. */
 .home-tile__description {
     margin: 0;
     font-size: 13px;
     line-height: 1.5;
     color: var(--color-text-secondary);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
 }
 
 @media (min-width: 760px) {
@@ -142,43 +98,13 @@
         font-size: 30px;
     }
 
-    .hero-card {
-        margin-bottom: 20px;
-    }
-
-    .hero-card__content {
-        padding: 20px 22px 22px;
-        gap: 9px;
-    }
-
-    .hero-card__badge {
-        font-size: 11.5px;
-    }
-
-    .hero-card__title {
-        font-size: 26px;
-        line-height: 1.2;
-    }
-
-    .hero-card__meta {
-        font-size: 12px;
-    }
-
-    .hero-card__description {
-        font-size: 15px;
-        line-height: 1.6;
-        max-width: 620px;
-    }
-
     .home-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
+        gap: 12px;
     }
 
     .home-tile {
-        gap: 16px;
-        padding: 16px;
+        gap: 14px;
+        padding: 13px;
     }
 
     .home-tile__title {
@@ -192,5 +118,9 @@
     .home-tile__description {
         font-size: 13.5px;
         line-height: 1.55;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 }
