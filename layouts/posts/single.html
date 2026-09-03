@@ -11,13 +11,15 @@
                 <span>Last updated on {{ .Lastmod.Month }} {{ .Lastmod.Day }}, {{ .Lastmod.Year }}</span>
                 <span class="post-meta__sep">|</span>
                 <span>{{ .ReadingTime }} min read</span>
-                {{ with .Params.tags }}
-                    <span class="post-meta__sep">|</span>
-                    {{ range . }}
-                        <span class="post-meta__tag">{{ . }}</span>
-                    {{ end }}
-                {{ end }}
             </div>
+
+            {{ with first 3 .Params.tags }}
+                <div class="post-tags">
+                    {{ range . }}
+                        <a class="chip" href="/tags/{{ . | urlize }}/"><span class="post-tags__hash">#</span>{{ . }}</a>
+                    {{ end }}
+                </div>
+            {{ end }}
 
             {{ if $showToc }}
                 <div class="post-toc post-toc--mobile">

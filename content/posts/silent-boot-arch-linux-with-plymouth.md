@@ -2,7 +2,7 @@
 title: "Silent boot in Arch Linux with Plymouth"
 date: 2025-03-12T16:28:00+01:00
 draft: false
-toc: false
+toc: true
 image: "/images/icons/arch-linux.svg"
 description: "A comprehensive guide to implementing a silent and elegant boot process in Arch Linux using Plymouth and GRUB silent."
 tags:

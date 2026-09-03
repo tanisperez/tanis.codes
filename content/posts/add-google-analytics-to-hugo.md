@@ -7,7 +7,6 @@ image: "/images/icons/google-analytics.svg"
 tags:
   - hugo
   - blog
-  - markdown
   - google-analytics
 ---
 In progress..

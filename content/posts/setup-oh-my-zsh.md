@@ -2,7 +2,7 @@
 title: "Set up Oh My Zsh"
 date: 2022-08-14T13:33:49+02:00
 draft: false
-toc: false
+toc: true
 image: "/images/icons/zsh.svg"
 description: "The Z shell (Zsh) is an Unix shell that can be used as an interactive login shell and as a command interpreter for shell scripting."
 tags:

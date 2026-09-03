@@ -7,7 +7,6 @@ image: "/images/icons/smart-card.svg"
 description: "Complete guide to set up smart card reader support on Arch Linux for certificate-based authentication."
 tags:
   - arch linux
-  - linux
   - smart card
   - security
 ---

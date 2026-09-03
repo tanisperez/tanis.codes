@@ -2,7 +2,7 @@
 title: "Deploy a Hugo website to Cloudflare"
 date: 2024-09-08T14:51:14+02:00
 draft: false
-toc: false
+toc: true
 image: "/images/icons/cloudflare.svg"
 description: "Cloudflare allow us to deploy and serve static websites for free using a GitHub or GitLab repository. Each commit will trigger an automatic build process on Cloudflare."
 tags:

@@ -8,7 +8,6 @@ description: "A comprehensive guide to installing and configuring QEMU with Virt
 tags:
   - qemu
   - arch linux
-  - virtualization
   - libvirt
 ---
 

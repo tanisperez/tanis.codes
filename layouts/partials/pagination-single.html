@@ -4,21 +4,13 @@
         <div class="post-nav__grid">
             {{ range (slice .NextInSection .PrevInSection) }}
                 {{ with . }}
-                    <div class="card post-item">
-                        {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 44) }}
-                        <div class="post-item__body">
-                            <div class="post-item__title"><a class="post-item__title-link" href="{{ .Permalink }}">{{ .Title }}</a></div>
-                            <div class="post-item__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
-                            <p class="post-item__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
-                            {{ with .Params.tags }}
-                                <div class="post-item__tags">
-                                    {{ range . }}
-                                        <a class="chip" href="/tags/{{ . | urlize }}/">{{ . }}</a>
-                                    {{ end }}
-                                </div>
-                            {{ end }}
+                    <a class="card tag-post-item" href="{{ .Permalink }}">
+                        {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 40) }}
+                        <div class="tag-post-item__body">
+                            <h2 class="tag-post-item__title">{{ .Title }}</h2>
+                            <div class="tag-post-item__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
                         </div>
-                    </div>
+                    </a>
                 {{ end }}
             {{ end }}
         </div>

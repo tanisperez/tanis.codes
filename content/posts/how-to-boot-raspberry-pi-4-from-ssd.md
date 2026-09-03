@@ -2,14 +2,13 @@
 title: "How to boot a Raspberry Pi 4 from a SSD"
 date: 2023-01-09T08:29:00+01:00
 draft: false
-toc: false
+toc: true
 image: "/images/icons/raspberry-pi.svg"
 description: "Booting a Raspberry Pi 4 from an USB SSD is a great idea to improve the performance and reliability of our little Pi computer."
 tags:
   - raspberry-pi
   - arm
   - ubuntu
-  - linux-server
 ---
 
 Booting a Raspberry Pi 4 from an USB SSD is a great idea to improve the performance and reliability of our small desktop or server. In this article we will see how to install **Ubuntu Server LTS 22.04** on a Raspberry Pi 4 with 4 GB of RAM. This also applies to the 8 GB version because we will be installing the [ARM64](https://en.wikipedia.org/wiki/AArch64) version.

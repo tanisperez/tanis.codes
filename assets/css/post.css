@@ -33,7 +33,7 @@
 }
 
 .post-content {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .post-content blockquote {
@@ -105,19 +105,32 @@
     gap: 8px;
     font-size: 0.8rem;
     color: var(--color-text-meta);
-    margin-bottom: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .post-meta__sep {
     color: var(--color-border-hover);
 }
 
-.post-meta__tag {
-    color: var(--color-accent-blue);
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5rem;
 }
 
-.post-meta__tag::before {
-    content: "#";
+.post-tags .chip {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12.5px;
+    padding: 6px 11px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.post-tags__hash {
+    color: var(--color-accent-blue-dark);
+    margin-right: 3px;
 }
 
 /* Table of contents */
