@@ -51,11 +51,15 @@
 }
 
 .menu a.is-active {
-    color: var(--color-accent-green);
+    color: var(--color-accent-blue);
 }
 
 .menu a.is-active:hover {
-    color: var(--color-accent-green);
+    color: var(--color-chip-hover-text);
+}
+
+.menu a.is-active:active {
+    color: var(--color-accent-blue-dark);
 }
 
 .menu-inner li:last-child a {
