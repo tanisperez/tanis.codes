@@ -42,7 +42,7 @@
                                 {{ with .Params.tags }}
                                     <div class="post-item__tags">
                                         {{ range . }}
-                                            <a class="chip" href="/tags/{{ . | urlize }}/">{{ . }}</a>
+                                            <a class="chip" href="/tags/{{ . | urlize }}/"><span class="post-tags__hash">#</span>{{ . }}</a>
                                         {{ end }}
                                     </div>
                                 {{ end }}

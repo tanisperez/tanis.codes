@@ -306,9 +306,9 @@ hr {
 .chip {
     display: inline-block;
     font-size: 11px;
-    color: var(--color-accent-blue);
-    background: var(--color-chip-bg);
-    border: 1px solid var(--color-chip-border);
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
     padding: 3px 8px;
     cursor: pointer;
@@ -316,29 +316,12 @@ hr {
 }
 
 .chip:hover {
-    background: #1b2f3d;
-    border-color: #2b5a76;
-    color: var(--color-chip-hover-text);
-}
-
-.chip:active {
-    background: var(--color-chip-bg);
-}
-
-/* Chip neutral: filter chips del listado de posts ("all 21", "#tag 5"...). */
-.chip--neutral {
-    color: var(--color-text-secondary);
-    background: var(--color-surface);
-    border-color: var(--color-border);
-}
-
-.chip--neutral:hover {
     background: #1c1c1c;
     border-color: var(--color-border-hover);
     color: var(--color-text);
 }
 
-.chip--neutral:active {
+.chip:active {
     background: #171717;
 }
 
