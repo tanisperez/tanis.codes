@@ -202,6 +202,14 @@
     gap: 8px;
 }
 
+/* Spacing already comes from the gap above; buttons.css's global
+   .button + .button margin-left doubles it here and, on desktop where
+   these buttons are width:100% in a column, pushes the second one out
+   of alignment with the first. */
+.project-card__links .button + .button {
+    margin-left: 0;
+}
+
 .project-card__links .button-accent {
     display: inline-flex;
     align-items: center;
