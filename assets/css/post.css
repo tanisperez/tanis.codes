@@ -1,6 +1,7 @@
 .post {
     width: 100%;
     max-width: 800px;
+    padding: 12px 16px 20px;
     text-align: left;
 }
 
@@ -9,6 +10,10 @@
    layouts/_default/single.html and layouts/projects/single.html, which
    also use .post, are unaffected. */
 @media (min-width: 760px) {
+    .post {
+        padding: 24px 40px;
+    }
+
     .post--article {
         max-width: 1000px;
     }
