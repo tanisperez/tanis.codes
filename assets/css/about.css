@@ -45,36 +45,9 @@
     line-height: 1.5;
 }
 
-.about-terminal {
+.about-bio {
     width: 100%;
     text-align: left;
-    overflow: hidden;
-}
-
-.about-terminal__bar {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 9px 12px;
-    background: var(--color-bg-chrome);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.about-terminal__bar span:not(.about-terminal__label) {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #3a3a3a;
-}
-
-.about-terminal__label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--color-text-meta);
-    margin-left: 6px;
-}
-
-.about-terminal__body {
     padding: 14px;
     display: flex;
     flex-direction: column;
@@ -83,7 +56,7 @@
     line-height: 1.75;
 }
 
-.about-terminal__body p {
+.about-bio p {
     margin: 0;
 }
 

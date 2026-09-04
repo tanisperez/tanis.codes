@@ -13,16 +13,10 @@
             <p class="about-subtitle">Estanislao Pérez Nartallo &middot; A Coruña, Spain</p>
         </div>
 
-        <div class="about-terminal card">
-            <div class="about-terminal__bar">
-                <span></span><span></span><span></span>
-                <span class="about-terminal__label">cat about.md</span>
-            </div>
-            <div class="about-terminal__body">
-                {{ range .Params.aboutLines }}
-                    <p>{{ . }}</p>
-                {{ end }}
-            </div>
+        <div class="about-bio card">
+            {{ range .Params.aboutLines }}
+                <p>{{ . }}</p>
+            {{ end }}
         </div>
 
         <div class="about-actions">
