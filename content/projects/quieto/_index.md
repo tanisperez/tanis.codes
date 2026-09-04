@@ -3,9 +3,7 @@ title: "Quieto"
 description: "A sleep sound app for iOS and Android — every sound is synthesised live on your device, never a recording"
 draft: false
 layout: "single"
-status: "active"
 icon: "/images/projects/quieto.svg"
-stack: ["iOS", "Android"]
 links: []
 ---
 

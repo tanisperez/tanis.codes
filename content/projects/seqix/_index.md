@@ -3,9 +3,7 @@ title: "Seqix"
 description: "A space-themed memory sequence game for iOS, Android and web"
 draft: false
 layout: "single"
-status: "active"
 icon: "/images/projects/seqix.svg"
-stack: ["Expo", "React Native"]
 links:
   - label: "App Store"
     url: "https://apps.apple.com/us/app/seqix/id6785265402"

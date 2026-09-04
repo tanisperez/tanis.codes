@@ -3,9 +3,7 @@ title: "Foliato"
 description: "A 100% on-device PDF toolkit for iOS and Android — your PDF never leaves your device"
 draft: false
 layout: "single"
-status: "active"
 icon: "/images/projects/foliato.svg"
-stack: ["iOS", "Android"]
 links:
   - label: "App Store"
     url: "https://apps.apple.com/us/app/foliato-offline-pdf-tools/id6795265777"
