@@ -1,4 +1,4 @@
-# [v2] tanis.codes
+# tanis.codes
 
 This blog is made with Hugo.
 
