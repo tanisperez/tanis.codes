@@ -1,31 +1,30 @@
+{{/* Pagina de UN tag (kind "term", /tags/<tag>/). El indice de todos los
+     tags (kind "taxonomy", /tags/) vive en layouts/tags/terms.html. */}}
 {{ define "main" }}
     {{ $paginator := .Paginate .Data.Pages }}
+    {{ $latest := index (first 1 .Data.Pages.ByDate.Reverse) 0 }}
 
     <main class="posts">
-        <h1>{{ .Title }}</h1>
+        <div class="tag-header">
+            <h1 class="tag-header__title"><span class="tag-header__hash">#</span>{{ .Title }}</h1>
+            <div class="tag-header__meta">{{ len .Data.Pages }} posts &middot; last updated {{ $latest.Date.Format "January 2, 2006" }}</div>
+        </div>
 
         {{ if .Content }}
             <div class="content">{{ .Content }}</div>
         {{ end }}
 
-        {{ range $paginator.Pages.GroupByDate "2006" }}
-            <div class="posts-group">
-                <div class="post-year">{{ .Key }}</div>
-
-                <ul class="posts-list">
-                    {{ range .Pages }}
-                        <li class="post-item">
-                            <a href="{{.Permalink}}">
-                                <span class="tag-title">{{.Title}}</span>
-                                <span class="post-day">
-                                    {{ .Date.Month }} {{ .Date.Day }}
-                                </span>
-                            </a>
-                        </li>
-                    {{ end }}
-                </ul>
-            </div>
-        {{ end }}
+        <div class="tag-posts">
+            {{ range $paginator.Pages }}
+                <a class="card tag-post-item" href="{{ .Permalink }}">
+                    {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 40) }}
+                    <div class="tag-post-item__body">
+                        <h2 class="tag-post-item__title">{{ .Title }}</h2>
+                        <div class="tag-post-item__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
+                    </div>
+                </a>
+            {{ end }}
+        </div>
     {{ partial "pagination-list.html" . }}
     </main>
 {{ end }}

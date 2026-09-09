@@ -27,8 +27,8 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: var(--dark-background);
-    color: var(--dark-color);
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 h2, h3, h4, h5, h6 {
@@ -83,12 +83,12 @@ img[src$='#badge'] {
 
 .store-badges a:hover img[src$='#badge'] {
     transform: scale(1.06);
-    box-shadow: 0 0 18px 4px var(--light-blue);
+    box-shadow: 0 0 18px 4px var(--color-accent-blue);
 }
 
 .store-badges a:active img[src$='#badge'] {
     transform: scale(0.97);
-    box-shadow: 0 0 26px 6px var(--light-blue);
+    box-shadow: 0 0 26px 6px var(--color-accent-blue);
 }
 
 figure {
@@ -129,7 +129,7 @@ figure figcaption.center { text-align: center; }
 figure figcaption.right { text-align: right; }
 
 em, i, strong {
-    color: var(--dark-color-variant);
+    color: var(--color-text-secondary);
 }
 
 code {
@@ -140,12 +140,12 @@ code {
     margin: 0 2px;
     border-radius: 5px;
     font-size: 0.95rem;
-    background: var(--dark-background-secondary);
+    background: var(--color-surface);
     word-break: break-word;
 }
 
 pre {
-    background-color: var(--dark-background-secondary);
+    background-color: var(--color-surface);
     padding: 10px 10px 10px 20px;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -161,7 +161,7 @@ pre code {
 }
 
 blockquote {
-    border-left: 5px solid var(--main-color);
+    border-left: 5px solid var(--color-accent-blue);
     background-color: #27292a;
     border-radius: 5px;
     margin: 10px 0;
@@ -209,7 +209,7 @@ hr {
     width: 100%;
     border: none;
     height: 1px;
-    background: var(--dark-border-color);
+    background: var(--color-border);
 }
 
 .hidden { display: none; }
@@ -270,4 +270,148 @@ hr {
 
 @media (max-width: 900px) {
     .hide-on-tablet { display: none; }
+}
+
+/* ==========================================================================
+   Reusable primitives (Fase 2 del rediseno, ver plan)
+   ========================================================================== */
+
+/* Card: tarjeta clicable generica. Funciona igual sobre un <a> (todo el
+   bloque es el enlace, ej. .home-article) o sobre un <div>/<li> contenedor
+   que envuelve un enlace interior (ej. .post-item) - el hover/active se
+   aplica al elemento que lleve esta clase, sea cual sea su tag. */
+.card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.card:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-hover);
+    transform: translateY(-1px);
+}
+
+.card:active {
+    background: var(--color-surface-active);
+    transform: translateY(0);
+}
+
+/* Chip: pill de tag, usada tanto suelta como dentro de .post-tags. */
+.chip {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.chip:hover {
+    background: #1c1c1c;
+    border-color: var(--color-border-hover);
+    color: var(--color-text);
+}
+
+.chip:active {
+    background: #171717;
+}
+
+/* Avatar: badge pequeno (40-44px) para logos reales reducidos o iniciales. */
+.avatar {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #1f1f1f;
+    border: 1px solid #2a2a2a;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar__icon {
+    width: 62%;
+    height: 62%;
+}
+
+.avatar__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.avatar--fallback {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: inherit;
+}
+
+/* Post tile: caja generada por CSS (rayas diagonales + icono SVG, o #tag si
+   el post no tiene Params.image) usada en home para representar cada post
+   -- no son fotos de portada reducidas de tamano, es el arte definitivo.
+   Fija su propio tamano (width+height) para evitar CLS; mas pequena en
+   mobile porque si no le come demasiado ancho a la ficha. */
+.post-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-family: var(--font-mono);
+    border: 1px solid #262626;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    width: 72px;
+    height: 72px;
+    background-color: #1b1b1b;
+    background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 9px);
+    padding: 7px;
+}
+
+.post-tile__tag {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Variante con icono real (SVG, ver assets/images/icons/) en vez del #tag de
+   texto: centrado en vez de anclado abajo-izquierda. Tamano en % del propio
+   tile (no px fijo) para que escale con su ancho pintado real. */
+.post-tile--icon {
+    align-items: center;
+    justify-content: center;
+}
+
+.post-tile__icon {
+    aspect-ratio: 1 / 1;
+    width: 60%;
+}
+
+.post-tile__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@media (min-width: 760px) {
+    .post-tile {
+        width: 96px;
+        height: 96px;
+        padding: 9px;
+    }
 }

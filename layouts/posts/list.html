@@ -8,22 +8,48 @@
             <div class="content">{{ .Content }}</div>
         {{ end }}
 
+        {{/* Filter chips: los tags mas usados (top 8) con su conteo, ordenados
+             de mas a menos posts, + enlace a la nube completa en /tags/. Son
+             solo enlaces a /tags/<tag>/ por ahora, sin filtrado JS (fuera de
+             alcance de esta fase). */}}
+        <div class="posts-filters">
+            {{ range first 8 .Site.Taxonomies.tags.ByCount }}
+                <a class="chip chip--neutral" href="/tags/{{ .Name | urlize }}/">
+                    <span class="tag-cloud__hash">#</span>{{ .Name }}<span class="tag-cloud__count">{{ .Count }}</span>
+                </a>
+            {{ end }}
+            <a class="chip chip--neutral" href="/tags/">All tags &rarr;</a>
+        </div>
+
         {{ range $paginator.Pages.GroupByDate "2006" }}
             <div class="posts-group">
-                <div class="post-year">{{ .Key }}</div>
+                <div class="posts-year">
+                    <span>{{ .Key }}</span>
+                    <span class="posts-year__rule"></span>
+                </div>
 
-                <ul class="posts-list">
+                <div class="posts-list">
                     {{ range .Pages }}
-                        <li class="post-item">
-                            <a href="{{.Permalink}}">
-                                <span class="post-title">{{.Title}}</span>
-                                <span class="post-day">
-                                    {{ .Date.Month }} {{ .Date.Day }}
-                                </span>
-                            </a>
-                        </li>
+                        {{/* .card sobre un <div> con un <a> interior para el titulo
+                             (patron previsto por .card, ver main.css): evita anidar
+                             <a> dentro de <a> ahora que cada tag es tambien un enlace. */}}
+                        <div class="card post-item">
+                            {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 44) }}
+                            <div class="post-item__body">
+                                <h2 class="post-item__title"><a class="post-item__title-link" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                                <div class="post-item__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
+                                <p class="post-item__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
+                                {{ with .Params.tags }}
+                                    <div class="post-item__tags">
+                                        {{ range . }}
+                                            <a class="chip" href="/tags/{{ . | urlize }}/"><span class="post-tags__hash">#</span>{{ . }}</a>
+                                        {{ end }}
+                                    </div>
+                                {{ end }}
+                            </div>
+                        </div>
                     {{ end }}
-                </ul>
+                </div>
             </div>
         {{ end }}
     {{ partial "pagination-list.html" . }}

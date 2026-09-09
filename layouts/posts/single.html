@@ -1,19 +1,52 @@
 {{ define "main" }}
-<main class="post">
-    <article>
-        <h1 class="post-title">{{ .Title | markdownify }}</h1>
-        <span>Last updated on {{ .Lastmod.Month }} {{ .Lastmod.Day }}, {{ .Lastmod.Year }}</span>
+{{ $showToc := and .Params.toc .TableOfContents }}
+<main class="post post--article">
+    <div class="reading-progress"><div class="reading-progress__fill"></div></div>
 
-        <div class="post-content">
-            {{ .Content }}
-        </div>
-    </article>
+    <div class="post-layout">
+        <article class="post-main">
+            <h1 class="post-title">{{ .Title | markdownify }}</h1>
 
-    {{ partial "tags.html" . }}
+            <div class="post-meta">
+                <span>Last updated on {{ .Lastmod.Month }} {{ .Lastmod.Day }}, {{ .Lastmod.Year }}</span>
+                <span class="post-meta__sep">|</span>
+                <span>{{ .ReadingTime }} min read</span>
+            </div>
 
-    {{ partial "sharing-buttons.html" . }}
+            {{ with first 3 .Params.tags }}
+                <div class="post-tags">
+                    {{ range . }}
+                        <a class="chip" href="/tags/{{ . | urlize }}/"><span class="post-tags__hash">#</span>{{ . }}</a>
+                    {{ end }}
+                </div>
+            {{ end }}
 
-    {{ partial "pagination-single.html" . }}
+            {{ if $showToc }}
+                <div class="post-toc post-toc--mobile">
+                    <div class="post-toc__label">Contents</div>
+                    {{ .TableOfContents }}
+                </div>
+            {{ end }}
 
+            <div class="post-content">
+                {{ .Content }}
+            </div>
+
+            {{ partial "pagination-single.html" . }}
+        </article>
+
+        <aside class="post-sidebar">
+            {{ if $showToc }}
+                <div class="post-toc post-toc--desktop">
+                    <div class="post-toc__label">Contents</div>
+                    {{ .TableOfContents }}
+                </div>
+            {{ end }}
+
+            <div class="post-share">
+                {{ partial "sharing-buttons.html" . }}
+            </div>
+        </aside>
+    </div>
 </main>
 {{ end }}

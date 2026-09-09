@@ -3,8 +3,8 @@ title: "MacBook 12 lid close on Arch Linux"
 date: 2026-03-27T23:51:20+02:00
 draft: false
 toc: true
-image: "/images/common/apple.png"
-description: "How to fix the lid close on MacBook 12 2017 running Arch Linux"
+image: "/images/icons/apple.svg"
+description: "How to fix the lid close on MacBook 12 2017 running Arch Linux."
 tags:
   - arch linux
   - linux

@@ -1,0 +1,59 @@
+{{/*
+  post-image.html — renderiza el icono de portada de un post (SVG inline,
+  ver assets/images/icons/) o un texto "#tag" cuando el post no tiene
+  Params.image.
+
+  Uso:
+    {{ partial "post-image.html" (dict "page" . "size" "tile") }}
+    {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 44) }}
+
+  Parametros (dict):
+    page   - la Page del post (obligatorio)
+    size   - "avatar" | "tile" (obligatorio)
+    pxsize - solo para size="avatar": lado exacto en px al que el llamador
+             va a pintar el badge (opcional, por defecto 40)
+
+  Decision (migracion de logos 120x70 a SVG): Params.image apunta a un SVG
+  (assets/images/icons/*.svg). Se inyecta inline con safeHTML -- no via
+  <img> -- para que herede por CSS el color de acento del tag cuando el
+  icono usa currentColor (los 4 sin marca oficial: ssh, sdkman, smart-card,
+  makefile); el resto lleva su color de marca fijo en el propio SVG. Igual
+  en avatar y tile. Si el post no tiene Params.image se usa el "#tag" CSS
+  de siempre (.post-tile__tag).
+*/}}
+
+{{ $page := .page }}
+{{ $size := .size }}
+
+{{ $icon := "" }}
+{{ with $page.Params.image }}
+  {{ with resources.Get (strings.TrimPrefix "/" .) }}
+    {{ $icon = .Content }}
+  {{ end }}
+{{ end }}
+
+{{ $tag := "post" }}
+{{ with $page.Params.tags }}
+  {{ $tag = index . 0 }}
+{{ end }}
+{{ $colors := slice "var(--color-accent-blue)" "var(--color-accent-green)" "var(--color-accent-blue-dark)" }}
+{{ $color := index $colors (mod (len $tag) 3) }}
+
+{{ if eq $size "avatar" }}
+  {{ $pxsize := .pxsize | default 40 }}
+  <div class="avatar" style="width: {{ $pxsize }}px; height: {{ $pxsize }}px">
+    {{ if $icon }}
+      <div class="avatar__icon" style="color: {{ $color | safeCSS }}">{{ $icon | safeHTML }}</div>
+    {{ else }}
+      <span class="avatar--fallback">{{ upper (substr $page.Title 0 2) }}</span>
+    {{ end }}
+  </div>
+{{ else }}
+  <div class="post-tile{{ if $icon }} post-tile--icon{{ end }}" style="color: {{ $color | safeCSS }}">
+    {{ if $icon }}
+      <div class="post-tile__icon">{{ $icon | safeHTML }}</div>
+    {{ else }}
+      <div class="post-tile__tag">#{{ $tag }}</div>
+    {{ end }}
+  </div>
+{{ end }}

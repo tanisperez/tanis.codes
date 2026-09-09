@@ -4,31 +4,24 @@
 
 {{ define "main" }}
     <main class="home">
-        <h1>Last articles</h1>
-        <div class="home-articles">
-            {{ range $i, $p := first 10 (where .Site.RegularPages "Type" "==" "posts") }}
-                <a class="home-article" href="{{ $p.Permalink }}">
-                    <div class="home-article-image">
-                        {{- $page := $p }}
-                        {{- with $p.Params.image }}
-                            {{- with resources.Get (strings.TrimPrefix "/" .) }}
-                                {{- $logo := .Process "webp lossless" }}
-                                <img src="{{ $logo.RelPermalink }}" width="{{ $logo.Width }}" height="{{ $logo.Height }}" {{ if lt $i 3 }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} decoding="async" alt="{{ $page.Title }}">
-                            {{- end }}
-                        {{- end }}
-                    </div>
-                    <div class="home-article-content">
-                        <h2>{{ $p.Title }}</h2>
-                        <span>{{ $p.Date.Month }} {{ $p.Date.Day }}, {{ $p.Date.Year }}</span>
+        {{ $posts := first 7 (where .Site.RegularPages "Type" "==" "posts") }}
+
+        <div class="home-heading">
+            <h1>Last articles</h1>
+            <a class="home-heading__all" href="/posts">All posts &rarr;</a>
+        </div>
+
+        <div class="home-grid">
+            {{ range $posts }}
+                <a class="card home-tile" href="{{ .Permalink }}">
+                    {{ partial "post-image.html" (dict "page" . "size" "tile") }}
+                    <div class="home-tile__content">
+                        <h2 class="home-tile__title">{{ .Title }}</h2>
+                        <div class="home-tile__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
+                        <p class="home-tile__description">{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
                     </div>
                 </a>
             {{ end }}
         </div>
-
-        <span class="button button-primary">
-            <a href="/posts">
-                <span class="button__text">View older posts</span>
-            </a>
-        </span>
     </main>
 {{ end }}

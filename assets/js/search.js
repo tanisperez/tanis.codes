@@ -83,6 +83,13 @@ document.addEventListener("keydown", function (event) {
 });
 
 function displaySearch() {
+    // menu.js runs before this in the bundle and declares `menu` at the top
+    // level, so it's reachable here: close the mobile menu first, otherwise
+    // it stays open (z-index: 9999) and covers most of the search modal.
+    if (menu && menu.style.display === "block") {
+        menu.style.removeProperty("display");
+    }
+
     if (!indexed) {
         buildIndex();
     }

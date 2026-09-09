@@ -4,6 +4,8 @@ description: "Privacy policy for the Seqix mobile and web application"
 draft: false
 ---
 
+*[Leer en español](/projects/seqix/privacidad/)*
+
 *Last updated: June 28, 2026*
 
 This Privacy Policy describes how Seqix ("the App") handles information when you use it on iOS, Android or the web.

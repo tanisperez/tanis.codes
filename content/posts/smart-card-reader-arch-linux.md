@@ -3,11 +3,10 @@ title: "Smart Card Reader on Arch Linux"
 date: 2026-01-03T20:15:00+02:00
 draft: false
 toc: true
-image: "/images/smart-card-reader-arch-linux/logo.png"
-description: "Complete guide to set up smart card reader support on Arch Linux for certificate-based authentication"
+image: "/images/icons/smart-card.svg"
+description: "Complete guide to set up smart card reader support on Arch Linux for certificate-based authentication."
 tags:
   - arch linux
-  - linux
   - smart card
   - security
 ---

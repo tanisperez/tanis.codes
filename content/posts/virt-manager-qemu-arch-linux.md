@@ -3,12 +3,11 @@ title: "Virt-Manager with QEMU on Arch Linux"
 date: 2025-03-30T06:23:00+01:00
 draft: false
 toc: true
-image: "/images/virt-manager-qemu-arch-linux/logo.png"
-description: "A comprehensive guide to installing and configuring QEMU with Virt-Manager for virtualization on Arch Linux"
+image: "/images/icons/qemu.svg"
+description: "A comprehensive guide to installing and configuring QEMU with Virt-Manager for virtualization on Arch Linux."
 tags:
   - qemu
   - arch linux
-  - virtualization
   - libvirt
 ---
 

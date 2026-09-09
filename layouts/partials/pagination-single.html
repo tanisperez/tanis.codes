@@ -1,27 +1,17 @@
 {{ if (or .NextInSection .PrevInSection) }}
-    <div class="pagination">
-        <div class="pagination__title">
-            <span class="pagination__title-h">Read other posts</span>
-            <hr />
-        </div>
-
-        <div class="pagination__buttons">
-            {{ if .NextInSection }}
-            <span class="button button-primary previous">
-                <a href="{{ .NextInSection.Permalink }}">
-                    <span class="button__icon">←</span>
-                    <span class="button__text">{{ .NextInSection.Title }}</span>
-                </a>
-            </span>
-            {{ end }}
-
-            {{ if .PrevInSection }}
-            <span class="button button-primary next">
-                <a href="{{ .PrevInSection.Permalink }}">
-                    <span class="button__text">{{ .PrevInSection.Title }}</span>
-                    <span class="button__icon">→</span>
-                </a>
-            </span>
+    <div class="post-nav">
+        <div class="post-nav__label">Read other posts</div>
+        <div class="post-nav__grid">
+            {{ range (slice .NextInSection .PrevInSection) }}
+                {{ with . }}
+                    <a class="card tag-post-item" href="{{ .Permalink }}">
+                        {{ partial "post-image.html" (dict "page" . "size" "avatar" "pxsize" 40) }}
+                        <div class="tag-post-item__body">
+                            <h2 class="tag-post-item__title">{{ .Title }}</h2>
+                            <div class="tag-post-item__meta">{{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min</div>
+                        </div>
+                    </a>
+                {{ end }}
             {{ end }}
         </div>
     </div>

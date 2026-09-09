@@ -2,8 +2,8 @@
 title: "Create a git tag with GitHub Actions"
 date: 2022-08-28T16:12:00+02:00
 draft: false
-toc: false
-image: "/images/create-a-git-tag-with-github-actions/logo.png"
+toc: true
+image: "/images/icons/github-actions.svg"
 description: "GitHub Actions allow us to automate, customize and execute software development workflows right into our repository."
 tags:
   - git

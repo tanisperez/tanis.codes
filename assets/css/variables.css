@@ -1,43 +1,37 @@
 @charset "UTF-8";
 
 :root {
-    /* Light theme color */
-    --light-background: #fff;
-    --light-background-secondary: #eaeaea;
-    --light-background-header: #fafafa;
-    --light-color: #222;
-    --light-color-variant: black;
-    --light-color-secondary: #999;
-    --light-border-color: #dcdcdc;
-    --light-table-color: #dcdcdc;
+    /* Design tokens: dark-only palette (see new-design plan, Fase 1) */
+    --color-bg: #0e0e0e;              /* fondo de pagina */
+    --color-bg-chrome: #080808;       /* header/footer */
+    --color-surface: #161616;         /* tarjeta */
+    --color-surface-hover: #1b1b1b;
+    --color-surface-active: #191919;
+    --color-surface-alt: #121212;     /* cajas tipo "cat about.md", intro card */
+    --color-border: #242424;
+    --color-border-hover: #343434;
+    --color-text: #ededed;
+    --color-text-secondary: #9a9a9a;  /* descripciones */
+    --color-text-meta: #8a8a8a;       /* fecha - read time */
+    --color-text-dim: #6f6f6f;
+    --color-text-faint: #5f5f5f;
+    --color-accent-blue: #3EAFFF;
+    --color-accent-blue-dark: #2C87AF;
+    --color-accent-green: #5FD702;
+    --color-chip-bg: #16222b;
+    --color-chip-border: #1e3a4a;
+    --color-chip-hover-text: #7cc9ff;
+    --radius-card: 12px;
+    --radius-pill: 999px;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-    /* Dark theme colors */
-    --dark-background: #212121;
-    --dark-background-secondary: #3b3d42;
-    --dark-background-header: #181818;
-    --dark-color: rgb(255, 255, 255);
-    --dark-color-variant: white;
-    --dark-color-secondary: #b3b3bd;
-    --dark-border-color: #4e4e57;
-    --dark-table-color: #4e4e57;
-    --dark-color-hover: #323438;
-    --dark-color-menu-hover: #606065;
-
-    /* Main colors */
-    --main-color: #0f466b;
-    --white: #FFF;
-    --light-blue: #3EAFFF;
-    --dark-blue: #2C87AF;
-    --green-terminal: #5FD702;
-
-    /* Media queries */
-    --phoneWidth: (max-width: 684px);
-    --tabletWidth: (max-width: 900px);
-
-    /* Content */
-    --max-width: 860px;
+    /*
+     * Unico breakpoint, mobile-first (min-width). 760px deja margen por
+     * encima de los moviles mas anchos actuales (~430px) y cae justo en
+     * el hueco entre las dos maquetas de referencia (412px y 1120px), de
+     * forma que ningun movil/phablet real cruza accidentalmente al layout
+     * de escritorio.
+     */
+    --bp-desktop: 760px;
 }
-
-/* Media Queries */
-@custom-media --phone (max-width: 684px);
-@custom-media --tablet (max-width: 900px);

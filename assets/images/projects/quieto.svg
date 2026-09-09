@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Quieto mark: four waveform bars fading toward the bottom, on a dark radial-gradient field.
+       Reads as both a sound waveform and calm ripples on still water — the same dual reading the
+       previous crescent-moon mark aimed for, in a simpler, more legible shape at small sizes. -->
+  <defs>
+    <radialGradient id="qbg" cx="50%" cy="52%" r="90%">
+      <stop offset="0%" stop-color="#15120E"/>
+      <stop offset="78%" stop-color="#0A0C0E"/>
+      <stop offset="100%" stop-color="#0A0C0E"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#qbg)"/>
+
+  <g fill="#F4EFE6">
+    <rect x="287" y="273" width="450" height="26" rx="13" opacity="0.30"/>
+    <rect x="164" y="427" width="696" height="26" rx="13" opacity="0.95"/>
+    <rect x="246" y="580" width="532" height="26" rx="13" opacity="0.55"/>
+    <rect x="358" y="734" width="308" height="26" rx="13" opacity="0.22"/>
+  </g>
+</svg>

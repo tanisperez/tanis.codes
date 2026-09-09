@@ -1,0 +1,35 @@
+{{ define "main" }}
+<main class="about">
+    <div class="about-photo">
+        {{ with resources.Get "images/about/photo.jpeg" }}
+            {{ $photo := .Process "webp lossless" }}
+            <img src="{{ $photo.RelPermalink }}" width="200" height="200" loading="eager" decoding="async" alt="Tanis">
+        {{ end }}
+    </div>
+
+    <div class="about-content">
+        <div>
+            <h1>{{ .Title }}</h1>
+            <p class="about-subtitle">Estanislao Pérez Nartallo &middot; A Coruña, Spain</p>
+        </div>
+
+        <div class="about-bio card">
+            {{ range .Params.aboutLines }}
+                <p>{{ . }}</p>
+            {{ end }}
+        </div>
+
+        <div class="about-actions">
+            {{ with index (where .Site.Params.social "name" "linkedin") 0 }}
+                <a href="{{ .url }}" class="button button-accent" target="_blank" rel="noopener">{{ partial "svg.html" . }}<span>LinkedIn</span></a>
+            {{ end }}
+            {{ with index (where .Site.Params.social "name" "github") 0 }}
+                <a href="{{ .url }}" class="button" target="_blank" rel="noopener">{{ partial "svg.html" . }}<span>GitHub</span></a>
+            {{ end }}
+            {{ with index (where .Site.Params.social "name" "X") 0 }}
+                <a href="{{ .url }}" class="button" target="_blank" rel="noopener">{{ partial "svg.html" . }}<span>X</span></a>
+            {{ end }}
+        </div>
+    </div>
+</main>
+{{ end }}

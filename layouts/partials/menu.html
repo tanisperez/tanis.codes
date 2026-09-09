@@ -1,7 +1,7 @@
 <nav class="menu">
     <ul class="menu-inner">
         {{ range .Site.Menus.main -}}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            <li><a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} class="is-active"{{ end }}>{{ .Name }}</a></li>
         {{- end }}
     </ul>
 </nav>

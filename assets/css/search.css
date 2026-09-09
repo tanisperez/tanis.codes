@@ -24,10 +24,10 @@
     max-width: 48rem;
     box-sizing: border-box;
     border-radius: .375rem;
-    border: 1px solid rgba(63, 63, 70, 1);
+    border: 1px solid var(--color-border);
     --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px, var(--tw-shadow);
-    background-color: rgba(39, 39, 42, 1);
+    background-color: var(--color-surface);
 }
 
 #search-modal header {
@@ -61,7 +61,7 @@
     width: 2rem;
     align-items: center;
     justify-content: center;
-    color: rgba(161, 161, 170, 1);
+    color: var(--color-text-secondary);
 }
 
 .search-icon span {
@@ -90,7 +90,7 @@
     border-width: 0;
     border-style: solid;
     border-color: initial;
-    color: #FFF;
+    color: var(--color-text);
     font-size: 18px;
     line-height: 28px;
 }
@@ -121,18 +121,18 @@
     padding-right: .75rem;
     border-radius: .375rem;
     appearance: none;
-    background-color: rgba(63, 63, 70, 1);
+    background-color: var(--color-surface);
 }
 
 #search-results li a:focus {
-    background-color: var(--dark-color-menu-hover);
+    background-color: var(--color-surface-hover);
     outline-color: transparent;
     outline-width: 2px;
     outline-style: dotted;
 }
 
 #search-results li a:hover {
-    background-color: var(--dark-color-menu-hover);
+    background-color: var(--color-surface-hover);
 }
 
 .result-detail {
@@ -141,7 +141,7 @@
 }
 
 .result-detail-title {
-    color: var(--white);
+    color: var(--color-text);
     margin-bottom: -.25rem;
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -149,28 +149,28 @@
 }
 
 .result-detail-mod-date {
-    color: var(--dark-color);
+    color: var(--color-text-secondary);
     font-size: .875rem;
     line-height: 1.25rem;
     margin-bottom: 10px;
 }
 
 .result-detail-description {
-    color: var(--white);
+    color: var(--color-text);
     font-size: .875rem;
     line-height: 1.25rem;
 }
 
 .result-detail-arrow {
     display: block;
-    color: rgba(113, 113, 122, 1);
+    color: var(--color-text-dim);
     margin-left: .5rem;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
 #close-search-button {
-    color: rgba(255, 255, 255, 1);
+    color: var(--color-text);
     display: flex;
     justify-content: center;
     align-items: center;

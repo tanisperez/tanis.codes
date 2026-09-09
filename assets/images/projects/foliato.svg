@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Foliato mark (legacy PDFabric artwork, kept pending an icon redesign): a page with its
+       corner turned down, revealing a woven-fabric lining underneath — "fabric" as in cloth, for
+       the old-name pun, and as in the material the app works with (PDFs).
+
+       Emerald is the BACKGROUND rather than an accent on a dark field: at home-screen size
+       an icon is recognised by its dominant colour, and a near-black field with a small
+       green detail just reads as "a white page on black". The fold is sized at ~37% of the
+       page width for the same reason — the weave is the concept, and at 60px anything
+       smaller disappears entirely.
+
+       Colours track src/constants/appTheme.ts's emerald family so the icon reads as part of
+       the same system as the in-app UI. -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="78%">
+      <stop offset="0%" stop-color="#0d9668"/>
+      <stop offset="100%" stop-color="#04503a"/>
+    </radialGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#eef4f1" stop-opacity="1"/>
+    </linearGradient>
+    <clipPath id="flapClip">
+      <path d="M568,808 L728,648 L728,808 Z"/>
+    </clipPath>
+    <!-- Chunkier than a literal textile weave: at favicon size a fine pattern turns to mush,
+         so the stripes are sized to survive downscaling to ~4 visible bands. -->
+    <pattern id="weaveA" width="34" height="34" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="34" stroke="#34d399" stroke-width="16"/>
+    </pattern>
+    <pattern id="weaveB" width="34" height="34" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="34" stroke="#6ee7b7" stroke-width="16"/>
+    </pattern>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Contact shadow as a plain offset path, not a blur filter: rsvg-convert renders
+       feGaussianBlur inconsistently across the sizes `make icon` emits. -->
+  <path d="M326,216 H698 Q728,216 728,246 V648 L568,808 H326 Q296,808 296,778 V246 Q296,216 326,216 Z"
+        fill="#023324" transform="translate(0,14)" opacity="0.22"/>
+
+  <!-- Page, front face, bottom-right corner cut away for the fold -->
+  <path d="M326,216 H698 Q728,216 728,246 V648 L568,808 H326 Q296,808 296,778 V246 Q296,216 326,216 Z"
+        fill="url(#shine)"/>
+
+  <!-- Text-hint bars (no real glyphs — legible as "a document" down to favicon size) -->
+  <rect x="348" y="336" width="300" height="20" rx="10" fill="#a3bdb1"/>
+  <rect x="348" y="390" width="300" height="20" rx="10" fill="#a3bdb1"/>
+  <rect x="348" y="444" width="180" height="20" rx="10" fill="#a3bdb1"/>
+
+  <!-- Folded corner: the turned-down flap reveals the woven weft/warp lining -->
+  <g clip-path="url(#flapClip)">
+    <rect x="540" y="620" width="220" height="220" fill="#065f46"/>
+    <rect x="540" y="620" width="220" height="220" fill="url(#weaveA)"/>
+    <rect x="540" y="620" width="220" height="220" fill="url(#weaveB)" opacity="0.8"/>
+  </g>
+  <path d="M568,808 L728,648" stroke="#04503a" stroke-width="7" stroke-opacity="0.35" stroke-linecap="round"/>
+</svg>
