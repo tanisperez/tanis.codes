@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- ChessCounter's actual app icon: a petrol/white checkerboard, straight from the app's own
+       assets/icon.svg source (see the app repo's `make icon` pipeline). Kept identical here
+       rather than redrawn, since the icon itself already reads clearly at favicon size. -->
+  <defs>
+    <pattern id="board" width="256" height="256" patternUnits="userSpaceOnUse">
+      <rect width="256" height="256" fill="#FFFFFF" />
+      <rect width="128" height="128" fill="#1F5E63" />
+      <rect x="128" y="128" width="128" height="128" fill="#1F5E63" />
+    </pattern>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#board)" />
+</svg>
