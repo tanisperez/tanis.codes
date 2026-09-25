@@ -1,7 +1,6 @@
 ---
 title: "ChessCounter"
 description: "Learn chess openings through guided, move-by-move lessons for iOS and Android"
-draft: true
 layout: "single"
 icon: "/images/projects/chess-counter.svg"
 links: []
