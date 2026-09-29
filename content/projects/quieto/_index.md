@@ -4,7 +4,11 @@ description: "A sleep sound app for iOS and Android that synthesises every sound
 draft: false
 layout: "single"
 icon: "/images/projects/quieto.svg"
-links: []
+links:
+  - label: "App Store"
+    url: "https://apps.apple.com/us/app/quieto-sleep-white-noise/id6808614161"
+  - label: "Google Play"
+    url: "https://play.google.com/store/apps/details?id=codes.tanis.quieto&hl=en"
 ---
 
 Quieto plays relaxing sounds and noise to help you fall asleep. Every sound in the catalogue, from white noise and rain to ocean waves and a campfire, is synthesised in real time, on your own device, from mathematical descriptions of sound rather than played back from a recording. That means no loop seam: a sleep app is listened to for hours straight, and a sound that audibly repeats every 30 seconds is the last thing you want next to your pillow.
@@ -27,6 +31,14 @@ Each scene pairs its sound with a gently animated backdrop, and a sleep timer fa
 ## Nothing is recorded, nothing is uploaded
 
 Quieto has no account, no cloud and no server component. There is nothing resembling "your content," because every sound is generated on the spot, so there's simply nothing to upload. Quieto is free, with no in-app purchases, no subscriptions and no ads.
+
+## Download
+
+Get Quieto on your phone:
+
+[![Download on the App Store](/images/common/app-store-badge.png#badge)](https://apps.apple.com/us/app/quieto-sleep-white-noise/id6808614161) 
+[![Get it on Google Play](/images/common/google-play-badge.png#badge)](https://play.google.com/store/apps/details?id=codes.tanis.quieto&hl=en)
+{.store-badges}
 
 ## Privacy Policy
 
