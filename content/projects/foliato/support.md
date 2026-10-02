@@ -15,7 +15,10 @@ Foliato is a PDF viewer and toolkit for iOS and Android. It opens, reads and rew
 - **Split** — select the pages you want and extract them into a new PDF.
 - **Reorder** — drag a page's thumbnail to move it to a new position.
 - **Rotate** — tap a page (or all of them) to rotate it 90° at a time.
+- **Compress**: pick a compression level and see the resulting size before you save. Pages are rebuilt as images, so text stops being selectable in the compressed copy; if the file would not get smaller, Foliato hands back the original.
 - **Sign** — draw your signature with your finger and drag it onto any page, or several pages, at the size and position you want.
+- **Sign with certificate**: sign with your own digital certificate (`.p12` or `.pfx`), place a visible stamp on one, several or all pages, and save the certificate encrypted on your device if you want to reuse it. The certificate's password is asked for on every signature and never stored.
+- **Signature inspector**: from the viewer's "…" menu, see the signatures a PDF carries, whether it was modified after signing, and the certificate behind each one.
 - **Image to PDF** — pick photos from your library and turn them into a PDF, one photo per page.
 - **Watermark** — type a text watermark and drag it into place, resizing, rotating and adjusting its opacity.
 - **Page numbers** — choose a format, a position and a starting number, and Foliato stamps every page.
@@ -23,7 +26,7 @@ Foliato is a PDF viewer and toolkit for iOS and Android. It opens, reads and rew
 ## Frequently asked questions
 
 **Does Foliato compress PDFs?**
-No. Foliato doesn't reduce file size — it only merges, splits, reorders, rotates, signs, watermarks or numbers pages.
+Yes. Compress rebuilds each page as an image at the quality you choose, which can shrink scanned or image-heavy PDFs a lot. The text in the compressed copy is no longer selectable, and a PDF that is already small may not get smaller; in that case Foliato keeps the original.
 
 **Can it run OCR or make scanned text searchable?**
 No, Foliato has no OCR feature.
@@ -43,11 +46,17 @@ No, Foliato doesn't support protecting or removing passwords from a PDF.
 **Can I fill in a form, or highlight and annotate a PDF?**
 Not yet. Highlighting, notes and shape annotations are planned for a future version — 1.0 ships the viewer as a reader only. Form filling isn't currently on the roadmap.
 
+**Does Foliato use the Internet?**
+Your PDFs never leave your device, and almost everything works with no connection. Two features contact third-party servers when you use them: signing with a certificate (it asks a public timestamping authority for a timestamp and the certificate's issuer whether it was revoked) and the revocation check when you open a signature's certificate, which you can turn off in Settings. Neither sends your document or your certificate. See the [privacy policy](/projects/foliato/privacy-policy/).
+
+**Is the signature legally valid?**
+Sign with certificate produces a real cryptographic signature in the standard PAdES format, an advanced electronic signature. It is not a qualified electronic signature, because the signing happens in the app and not inside a certified signature device. How much weight a given signature has depends on the person or authority you are sending it to.
+
 **Does Foliato sync across devices or back up to the cloud?**
 No. Foliato has no account and no cloud component — everything happens locally on the device you're using.
 
 **Is there a paid version or in-app purchase?**
-Foliato 1.0.0 is entirely free, with no in-app purchases.
+Foliato is entirely free, with no in-app purchases.
 
 ## Requirements
 
