@@ -6,13 +6,13 @@ draft: false
 
 *[Leer en español](/projects/foliato/privacidad/)*
 
-*Last updated: October 2, 2026*
+*Last updated: October 19, 2026*
 
 This Privacy Policy describes how Foliato ("the App") handles information when you use it on iOS or Android.
 
 ## Your files never leave your device
 
-Foliato is a PDF viewer and toolkit that runs entirely on your device. Opening, viewing, merging, splitting, reordering, rotating, signing, watermarking, numbering, or turning images into a PDF — every one of these operations is performed locally by the App. Foliato has no server component: it never uploads a PDF, an image, or any part of their content anywhere, and it has no way to do so.
+Foliato is a PDF viewer and toolkit that runs entirely on your device. Opening, viewing, merging, splitting, reordering, rotating, signing, watermarking, numbering, protecting a PDF with a password, removing a password, or turning images into a PDF — every one of these operations is performed locally by the App. Foliato has no server component: it never uploads a PDF, an image, or any part of their content anywhere, and it has no way to do so.
 
 There are two features that contact the Internet, described in full under "The two features that go online" below. Neither sends your document.
 
@@ -21,6 +21,10 @@ There are two features that contact the Internet, described in full under "The t
 When you choose a PDF or an image through the system file or photo picker, the operating system — not Foliato — copies that file into the App's private cache so the App can read it. That copy is local to your device, is not accessible to anyone else, and is periodically cleared by the operating system itself.
 
 On iOS specifically, opening a PDF from another app via "Open with" can leave a copy in the App's `Documents/Inbox` folder, which is how iOS delivers incoming files to an app. That copy is also local to your device and governed by iOS's own storage rules.
+
+## PDF passwords
+
+Foliato can open password-protected PDFs, protect a PDF with a password, and remove a password. All of it happens on your device: the encryption and decryption are done by the App itself, and the PDF is never sent anywhere. **A PDF's password is never stored and never transmitted.** You type it, Foliato uses it while that document is being opened or processed, and it is forgotten afterwards, so Foliato asks again the next time. Foliato cannot recover a password you have lost, and has no copy of it.
 
 ## Photo library access
 
@@ -37,7 +41,7 @@ Everything else in Foliato works with no connection at all. Two features, and on
 
 **2. Checking a signature's certificate.** When you open a signature found in a PDF and look at its certificate, Foliato asks the signer's issuing authority, with the same kind of request, whether that certificate has been revoked. This check is **on by default** and you can turn it off at any time in Settings, under "Check revocation online". It does not run for the certificates you have saved in Foliato.
 
-**What is never sent:** your PDF or any part of its content, your certificate itself, your private key, your password, your name, or any account or device identifier (Foliato has none).
+**What is never sent:** your PDF or any part of its content, your certificate itself, your private key, any password (your certificate's or a PDF's), your name, or any account or device identifier (Foliato has none).
 
 **What the receiving servers can see:** like any request over the Internet, your IP address and the time of the request. A certificate's serial number also identifies a certificate that its issuer knows it issued to someone, so you should treat it as information about that certificate. These servers belong to third parties, not to Foliato, and they handle that information under their own policies, including how long they keep it. Foliato does not receive any of it.
 

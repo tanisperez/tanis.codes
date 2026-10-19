@@ -6,13 +6,13 @@ draft: false
 
 *[Read in English](/projects/foliato/privacy-policy/)*
 
-*Última actualización: 2 de octubre de 2026*
+*Última actualización: 19 de octubre de 2026*
 
 Esta política de privacidad explica cómo trata Foliato ("la App") la información cuando la usas en iOS o Android.
 
 ## Tus ficheros nunca salen de tu dispositivo
 
-Foliato es un visor y un conjunto de herramientas para PDF que funciona íntegramente en tu dispositivo. Abrir, ver, unir, dividir, reordenar, rotar, firmar, marcar con agua, numerar o convertir imágenes en un PDF: cada una de estas operaciones la realiza la App de forma local. Foliato no tiene ningún componente de servidor: nunca sube un PDF, una imagen ni ninguna parte de su contenido a ningún sitio, y no tiene forma de hacerlo.
+Foliato es un visor y un conjunto de herramientas para PDF que funciona íntegramente en tu dispositivo. Abrir, ver, unir, dividir, reordenar, rotar, firmar, marcar con agua, numerar, proteger un PDF con contraseña, quitar una contraseña o convertir imágenes en un PDF: cada una de estas operaciones la realiza la App de forma local. Foliato no tiene ningún componente de servidor: nunca sube un PDF, una imagen ni ninguna parte de su contenido a ningún sitio, y no tiene forma de hacerlo.
 
 Hay dos funciones que se conectan a Internet, descritas por completo en "Las dos funciones que se conectan a Internet" más abajo. Ninguna envía tu documento.
 
@@ -21,6 +21,10 @@ Hay dos funciones que se conectan a Internet, descritas por completo en "Las dos
 Cuando eliges un PDF o una imagen a través del selector de ficheros o de fotos del sistema, es el sistema operativo —no Foliato— quien copia ese fichero a la caché privada de la App para que pueda leerlo. Esa copia es local a tu dispositivo, no es accesible para nadie más, y el propio sistema operativo la elimina periódicamente.
 
 En iOS en concreto, abrir un PDF desde otra app mediante "Abrir con" puede dejar una copia en la carpeta `Documents/Inbox` de la App, que es como iOS entrega los ficheros entrantes a una aplicación. Esa copia también es local a tu dispositivo y se rige por las propias reglas de almacenamiento de iOS.
+
+## Contraseñas de PDF
+
+Foliato puede abrir PDF protegidos con contraseña, proteger un PDF con contraseña y quitarla. Todo ocurre en tu dispositivo: el cifrado y el descifrado los hace la propia App y el PDF no se envía a ningún sitio. **La contraseña de un PDF nunca se guarda ni se transmite.** La escribes, Foliato la usa mientras ese documento se abre o se procesa y después se olvida, así que te la volverá a pedir la próxima vez. Foliato no puede recuperar una contraseña que hayas perdido y no tiene copia de ella.
 
 ## Acceso a la fototeca
 
@@ -37,7 +41,7 @@ Todo lo demás en Foliato funciona sin ninguna conexión. Dos funciones, y solo 
 
 **2. Comprobar el certificado de una firma.** Cuando abres una firma que lleva un PDF y consultas su certificado, Foliato pregunta a la autoridad emisora del firmante, con el mismo tipo de petición, si ese certificado ha sido revocado. Esta comprobación está **activada por defecto** y puedes desactivarla en cualquier momento en Ajustes, en "Comprobar revocación en línea". No se ejecuta para los certificados que tienes guardados en Foliato.
 
-**Lo que nunca se envía:** tu PDF ni ninguna parte de su contenido, el certificado en sí, tu clave privada, tu contraseña, tu nombre, ni ningún identificador de cuenta o de dispositivo (Foliato no tiene ninguno).
+**Lo que nunca se envía:** tu PDF ni ninguna parte de su contenido, el certificado en sí, tu clave privada, ninguna contraseña (ni la de tu certificado ni la de un PDF), tu nombre, ni ningún identificador de cuenta o de dispositivo (Foliato no tiene ninguno).
 
 **Lo que pueden ver los servidores que reciben la petición:** como en cualquier petición por Internet, tu dirección IP y la hora de la petición. Además, el número de serie identifica un certificado que su emisor sabe a quién emitió, así que conviene tratarlo como información sobre ese certificado. Esos servidores son de terceros, no de Foliato, y tratan esa información según sus propias políticas, incluido el tiempo que la conservan. Foliato no recibe nada de eso.
 
