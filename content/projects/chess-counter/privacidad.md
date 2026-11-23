@@ -6,13 +6,15 @@ draft: false
 
 *[Read in English](/projects/chess-counter/privacy-policy/)*
 
-*Última actualización: 21 de septiembre de 2026*
+*Última actualización: 23 de noviembre de 2026*
 
 Esta política de privacidad explica cómo trata ChessCounter ("la App") la información cuando la usas en iOS o Android.
 
-## Ninguna petición de red de ningún tipo
+## Todo ocurre en tu dispositivo
 
-ChessCounter funciona íntegramente en tu dispositivo. Cada lección de ajedrez, el rival contra el que juegas en Partida libre, y el propio tablero, los calcula la App de forma local. ChessCounter no tiene ningún componente de servidor y no realiza ninguna petición de red, así que no hay nada que pueda enviar a ningún sitio.
+ChessCounter funciona íntegramente en tu dispositivo. Cada lección de ajedrez, el rival contra el que juegas en Partida libre, y el propio tablero, los calcula la App de forma local, y funcionan sin conexión a internet. ChessCounter no tiene ningún servidor propio y no envía ninguno de tus datos a ningún sitio.
+
+La App solo se conecta a internet para hablar con la App Store o Google Play sobre ChessCounter Pro, como se explica más abajo.
 
 ## Qué se guarda en tu dispositivo
 
@@ -21,8 +23,15 @@ ChessCounter guarda tres cosas de forma local, usando el almacenamiento estánda
 - **Tus preferencias**, apariencia (claro/oscuro/automático), silencio, idioma y estilo de piezas.
 - **Tu progreso en las lecciones**, qué variantes de cada apertura has empezado o completado.
 - **Tus puntos y tu racha de días**, los totales que se muestran en la pantalla de inicio de la app.
+- **Si tienes ChessCounter Pro desbloqueado**, para que siga funcionando sin conexión.
 
 Nada de esto sale nunca de tu dispositivo, ni se comparte con nadie, incluido el propio desarrollador.
+
+## ChessCounter Pro (compra integrada)
+
+ChessCounter Pro es una compra única y opcional que desbloquea todas las variantes de las aperturas. Se vende a través de la App Store en iOS y de Google Play en Android, y la compra la gestionan por completo Apple o Google según sus propias políticas de privacidad. El desarrollador nunca ve tu nombre, tus datos de pago ni tu cuenta de la tienda.
+
+Para mostrar el precio y comprobar si tienes Pro, la App pide a la tienda el producto y tus compras anteriores de ese producto: al arrancar, al abrir la pantalla de compra, al comprar y al pulsar «Restaurar compras». La App solo guarda la respuesta, si tienes Pro o no, en tu dispositivo.
 
 ## Ninguna recogida de datos
 
@@ -32,7 +41,7 @@ ChessCounter no recoge, transmite ni comparte ningún dato personal. En concreto
 - **Sin analítica ni seguimiento**, no se usa ningún SDK de analítica, red publicitaria ni servicio de seguimiento de terceros.
 - **Sin datos de ubicación**, la App no accede a la ubicación de tu dispositivo.
 - **Sin cámara ni micrófono**, la App no accede a la cámara, al micrófono ni a los contactos.
-- **Sin compras**, ChessCounter no tiene compras integradas ni suscripciones.
+- **Sin suscripciones**, ChessCounter Pro es un pago único, y el desarrollador no recoge ningún dato de la compra.
 
 ## Privacidad de menores
 
