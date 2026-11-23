@@ -1,13 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <!-- ChessCounter's actual app icon: a petrol/white checkerboard, straight from the app's own
-       assets/icon.svg source (see the app repo's `make icon` pipeline). Kept identical here
-       rather than redrawn, since the icon itself already reads clearly at favicon size. -->
-  <defs>
-    <pattern id="board" width="256" height="256" patternUnits="userSpaceOnUse">
-      <rect width="256" height="256" fill="#FFFFFF" />
-      <rect width="128" height="128" fill="#1F5E63" />
-      <rect x="128" y="128" width="128" height="128" fill="#1F5E63" />
-    </pattern>
-  </defs>
-  <rect width="1024" height="1024" fill="url(#board)" />
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+    <!-- App icon "Escudo y dos espadas" (UI design canvas, page "Icono de la app", option G): a petrol
+         shield with a gold rim and a gold knight, two crossed swords behind it (defend and attack),
+         on the dark theme background. iOS and the Play Store icon render from this file. -->
+    <rect width="1024" height="1024" fill="#0E1618" />
+    <g>
+        <g transform="rotate(-45 512 512) translate(0 60)">
+            <path d="M482 20 L512 -50 L542 20 V800 H482 Z" fill="#F2EFE6" />
+            <path d="M512 0 V780" stroke="#C9C4B6" stroke-width="8" />
+            <rect x="372" y="796" width="280" height="54" rx="27" fill="#D9C179" />
+            <rect x="490" y="850" width="44" height="110" rx="14" fill="#B89A4E" />
+            <circle cx="512" cy="980" r="40" fill="#D9C179" />
+        </g>
+        <g transform="rotate(45 512 512) translate(0 60)">
+            <path d="M482 20 L512 -50 L542 20 V800 H482 Z" fill="#F2EFE6" />
+            <path d="M512 0 V780" stroke="#C9C4B6" stroke-width="8" />
+            <rect x="372" y="796" width="280" height="54" rx="27" fill="#D9C179" />
+            <rect x="490" y="850" width="44" height="110" rx="14" fill="#B89A4E" />
+            <circle cx="512" cy="980" r="40" fill="#D9C179" />
+        </g>
+        <g transform="translate(512 512) scale(1.06) translate(-512 -529)">
+            <path d="M512 196 L776 278 V520 C776 690 664 800 512 862 C360 800 248 690 248 520 V278 Z" fill="#1F5E63" stroke="#D9C179" stroke-width="28" stroke-linejoin="round" />
+            <g transform="translate(188 166) scale(0.62)">
+                <path d="M372 730 C372 650 410 600 468 552 L420 545 C380 540 342 552 312 532 C282 512 282 470 304 448 L448 324 C468 300 488 270 496 236 L516 176 L560 232 C664 248 734 330 744 452 C754 572 704 660 694 730 Z" fill="#D9C179" />
+                <rect x="336" y="726" width="392" height="56" rx="18" fill="#D9C179" />
+                <rect x="300" y="790" width="464" height="70" rx="22" fill="#D9C179" />
+                <circle cx="468" cy="384" r="24" fill="#1F5E63" />
+                <path d="M560 300 C620 330 660 390 670 470" fill="none" stroke="#1F5E63" stroke-width="16" stroke-linecap="round" opacity=".55" />
+            </g>
+        </g>
+    </g>
 </svg>
